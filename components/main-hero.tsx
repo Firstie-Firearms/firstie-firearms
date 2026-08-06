@@ -45,10 +45,10 @@ export function MainHero() {
 
         <div className="container mx-auto px-4 z-10 text-center space-y-4">
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }} className="space-y-2">
-            <h1 className="text-lg sm:text-2xl md:text-3xl font-serif text-foreground leading-relaxed text-balance">
+            <h1 className="text-lg sm:text-2xl md:text-3xl font-sans text-foreground leading-relaxed text-balance">
               {"Commemorative Service Academy Pistols for Graduation and Commissioning"}
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-serif text-balance">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-sans text-balance">
               {"Forged in Tradition | Establishing a Legacy"}
             </p>
           </motion.div>
