@@ -123,7 +123,7 @@ export function MainHero() {
         <div className="max-w-4xl mx-auto text-center space-y-6">
 
           <p className="text-lg text-muted-foreground font-serif leading-relaxed">
-            {"Founded by Academy graduates and family, Firstie Firearms creates custom firearms rooted in honor, service, and tradition. Each piece serves as a symbol connecting those who carry it to the enduring legacy of military college graduates, past, present, and future."}
+            {"Founded by Academy graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition. Each piece serves as a symbol—connecting those who carry it to the enduring legacy of military college graduates, past, present, and future."}
           </p>
         </div>
       </section>
