@@ -5,9 +5,10 @@ interface StickyOrderButtonProps {
   href?: string
   gold: string
   anchorSelector?: string
+  price?: string
 }
 
-export function StickyOrderButton({ label, href = "#order", gold }: StickyOrderButtonProps) {
+export function StickyOrderButton({ label, href = "#order", gold, price }: StickyOrderButtonProps) {
   const btnClass =
     "flex items-center justify-center font-sans font-bold uppercase tracking-widest text-background rounded-sm shadow-lg transition-all hover:brightness-110 active:scale-[0.98] px-8 py-3"
 
@@ -25,11 +26,11 @@ export function StickyOrderButton({ label, href = "#order", gold }: StickyOrderB
           <span className="sm:hidden flex flex-col items-center leading-tight text-xs tracking-widest">
             <span>{firstWord}</span>
             {restWords && <span>{restWords}</span>}
-            <span className="mt-0.5 opacity-90">$500.00</span>
+            {price && <span className="mt-0.5 opacity-90">{price}</span>}
           </span>
           <span className="hidden sm:flex flex-col items-center text-sm leading-tight">
             <span>{label}</span>
-            <span className="text-xs opacity-90 tracking-widest">$500.00</span>
+            {price && <span className="text-xs opacity-90 tracking-widest">{price}</span>}
           </span>
         </a>
       </div>

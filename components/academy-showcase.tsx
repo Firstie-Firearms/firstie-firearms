@@ -601,6 +601,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           } ${classYear} Pistol`}
           gold={config.gold}
           anchorSelector="#features-anchor"
+          price={Number.parseInt(classYear.replace(/\D/g, ""), 10) === 2027 ? "$2,395.00" : "$500.00"}
         />
       )}
     </div>
