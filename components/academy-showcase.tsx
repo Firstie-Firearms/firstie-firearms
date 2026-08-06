@@ -393,7 +393,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                   {"The United States Naval Academy Class of 2027\u2019s Custom Glock 19X V is more than a firearm\u2014it is a commemorative heirloom created to honor one of life's greatest achievements: earning a commission as an officer in the United States Navy or Marine Corps."}
                 </p>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                  {"Every pistol begins as a Glock 19X and is transformed through an extensive deep-laser engraving process that captures the history, traditions, and future of the Naval Academy. The slide is precision-engraved, polished to highlight every detail, and protected with a durable Cerakote coating designed to preserve the artwork for generations."}
+                  {"Every pistol begins as a Glock 19X V and is transformed through an extensive deep-laser engraving process that captures the history, traditions, and future of the Naval Academy. The slide is precision-engraved, polished to highlight every detail, and protected with a durable Cerakote coating designed to preserve the artwork for generations."}
                 </p>
 
                 <div className="space-y-3">
@@ -436,7 +436,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <div className="space-y-3">
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Custom Finishes and Upgrades"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                    {"The frame is finished in Battleship Gray accented by Admiral Bronze, creating a distinctive appearance inspired by the Navy's fleet. Performance upgrades include an Overwatch Precision PolyDAT trigger and an SLR Rifleworks Glock 19X magwell, both custom finished to complement the pistol's commemorative design."}
+                    {"The frame is finished in Battleship Gray accented by Admiral Bronze, creating a distinctive appearance inspired by the Navy's fleet. Performance upgrades include an Overwatch Precision PolyDAT trigger and an SLR Rifleworks Glock 19X V magwell, both custom finished to complement the pistol's commemorative design."}
                   </p>
                 </div>
 
