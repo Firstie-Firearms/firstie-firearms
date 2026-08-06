@@ -21,12 +21,16 @@ export function StickyOrderButton({ label, href = "#order", gold }: StickyOrderB
       <div className="container mx-auto flex items-center justify-between gap-6 px-6 py-4">
         <p className="text-sm font-semibold text-foreground hidden sm:block">{label}</p>
         <a href={href} className={`${btnClass} w-full sm:w-auto`} style={{ backgroundColor: gold }}>
-          {/* Mobile: two lines. Desktop: single line. */}
+          {/* Mobile: three lines. Desktop: two lines. */}
           <span className="sm:hidden flex flex-col items-center leading-tight text-xs tracking-widest">
             <span>{firstWord}</span>
             {restWords && <span>{restWords}</span>}
+            <span className="mt-0.5 opacity-90">$500.00</span>
           </span>
-          <span className="hidden sm:inline text-sm">{label}</span>
+          <span className="hidden sm:inline flex-col items-center text-sm">
+            <span className="block">{label}</span>
+            <span className="block text-xs opacity-90 tracking-widest">$500.00</span>
+          </span>
         </a>
       </div>
     </div>
