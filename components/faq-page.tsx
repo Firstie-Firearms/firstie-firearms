@@ -116,6 +116,59 @@ const categories: FaqCategory[] = [
     ],
   },
   {
+    title: "State Delivery",
+    items: [
+      {
+        question: "Will my firearm be compliant with my state's laws?",
+        answer: (
+          <div className="space-y-3">
+            <p>{"Yes. Firstie Firearms is committed to shipping every firearm in compliance with applicable federal, state, and local laws."}</p>
+            <p>{"Because firearm and magazine laws vary by state, your package may differ slightly depending on where it is being transferred."}</p>
+            <p>{"For customers in states with magazine-capacity restrictions, Firstie Firearms will provide a state-compliant configuration whenever possible. Depending on your state's requirements, this may include:"}</p>
+            <ul className="space-y-1.5 pl-1">
+              {[
+                "Supplying compliant-capacity magazines.",
+                "Shipping the firearm without magazines when required by law.",
+                "Coordinating with your receiving FFL to ensure your order is transferred in accordance with state regulations.",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: GOLD }} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p>{"Our goal is to provide the same premium commemorative firearm to customers nationwide while ensuring every shipment complies with the laws of the destination state."}</p>
+            <p>{"If you have questions about your state's requirements, please contact us before placing your order. We're happy to help coordinate with your local FFL."}</p>
+          </div>
+        ),
+      },
+      {
+        question: "I purchased my pistol in another state. Can I bring it into Maryland?",
+        answer: (
+          <div className="space-y-3">
+            <p>{"In many cases, yes."}</p>
+            <p>{"Maryland law generally does not prohibit the possession of a detachable magazine capable of holding more than 10 rounds. Instead, Maryland law primarily restricts the manufacture, sale, offer for sale, purchase, receipt, or transfer of detachable magazines over 10 rounds within Maryland. See Maryland Criminal Law § 4-305."}</p>
+            <p>{"If you lawfully purchased your firearm and magazines outside Maryland, you may, in many circumstances, legally possess them in Maryland. However, the legality of any particular situation depends on factors such as how the firearm was acquired, how it is transported, and your individual circumstances."}</p>
+            <p>{"If you are flying with a firearm, you must also comply with:"}</p>
+            <ul className="space-y-1.5 pl-1">
+              {[
+                "TSA airline transportation requirements.",
+                "Federal interstate transportation laws, including 18 U.S.C. § 926A, where applicable.",
+                "Maryland's laws governing the transportation and carrying of handguns.",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: GOLD }} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p>{"Because firearm laws change and individual circumstances vary, Firstie Firearms recommends reviewing current federal and state laws or consulting your local FFL or qualified attorney if you have questions about transporting firearms into Maryland."}</p>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
     title: "Product",
     items: [
       {
