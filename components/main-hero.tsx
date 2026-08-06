@@ -120,10 +120,11 @@ export function MainHero() {
 
       {/* Founders Section */}
       <section id="heritage" className="container mx-auto px-4 py-16 border-t border-border">
-        <div className="text-center">
-          <p className="text-lg text-muted-foreground font-serif leading-relaxed whitespace-nowrap">
+        <div className="text-center px-4">
+          <p className="text-lg text-muted-foreground font-serif leading-relaxed">
             {"Founded by Academy graduates and family, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
-            <br />
+          </p>
+          <p className="text-lg text-muted-foreground font-serif leading-relaxed mt-2">
             {"Each piece serves as a symbol connecting those who carry it to the enduring legacy of military college graduates, past, present, and future."}
           </p>
         </div>
