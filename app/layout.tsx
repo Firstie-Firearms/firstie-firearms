@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AgeGateProvider } from "@/components/age-gate-provider"
+import { ScrollToTop } from "@/components/scroll-to-top"
 import "./globals.css"
 
 const _inter = Inter({ subsets: ["latin"] })
@@ -73,6 +74,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        <ScrollToTop />
         <AgeGateProvider>{children}</AgeGateProvider>
         <Analytics />
       </body>
