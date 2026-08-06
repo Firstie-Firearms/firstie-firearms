@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates.",
     images: [
       {
-        url: `${BASE_URL}/og-default.png`,
+        url: `${BASE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Firstie Firearms — Commemorative Service Academy Pistols",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Service Academy Graduation Gifts | Firstie Firearms",
     description:
       "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates.",
-    images: [`${BASE_URL}/og-default.png`],
+    images: [`${BASE_URL}/opengraph-image`],
   },
   robots: {
     index: true,
