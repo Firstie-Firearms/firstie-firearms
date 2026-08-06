@@ -22,16 +22,12 @@ export function StickyOrderButton({ label, href = "#order", gold, price }: Stick
       <div className="container mx-auto flex items-center justify-between gap-6 px-6 py-4">
         <p className="text-sm font-semibold text-foreground hidden sm:block">{label}</p>
         <a href={href} className={`${btnClass} w-full sm:w-auto`} style={{ backgroundColor: gold }}>
-          {/* Mobile: three lines. Desktop: two lines. */}
+          {/* Mobile: two lines. Desktop: single line. */}
           <span className="sm:hidden flex flex-col items-center leading-tight text-xs tracking-widest">
             <span>{firstWord}</span>
             {restWords && <span>{restWords}</span>}
-            {price && <span className="mt-0.5 opacity-90">{price}</span>}
           </span>
-          <span className="hidden sm:flex flex-col items-center text-sm leading-tight">
-            <span>{label}</span>
-            {price && <span className="text-xs opacity-90 tracking-widest">{price}</span>}
-          </span>
+          <span className="hidden sm:inline text-sm">{label}</span>
         </a>
       </div>
     </div>
