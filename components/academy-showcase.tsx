@@ -271,27 +271,6 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                     "One 17-round factory magazine",
                     "Two 17+2-round factory magazines",
                     "One custom two-level protective presentation case",
-                    "One personalized interior nameplate",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Personalization */}
-              <div className="space-y-2 pt-4 border-t border-border">
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Personalization</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{"Included in the price. The interior nameplate includes two lines of text. Submit at time of ordering."}</p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{"Examples:"}</p>
-                <ul className="space-y-1.5">
-                  {[
-                    "Graduate's name",
-                    "Company or battalion",
-                    "Service selection",
-                    "Commissioning date",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
@@ -333,7 +312,6 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                     "Tungsten Cerakote",
                     "Burnt Bronze Cerakote",
                     "Custom two-level presentation case",
-                    "Personalized interior nameplate",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
@@ -438,7 +416,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                     {"Each pistol is housed in a custom two-level display case created specifically for the Class of 2027. Anchors frame the presentation, while the inside lid features the mission of the United States Naval Academy. The lower compartment provides dedicated storage for additional magazines and personal keepsakes, centered around a fixed Navy anchor that serves as a lasting reminder of service and commitment."}
                   </p>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                    {"The completed pistol is housed in a custom two-level protective case designed to present the firearm as a commemorative piece while providing durable storage for the included magazines. Dense, closed-cell black-core foam protects the contents, while the personalized interior nameplate connects the finished case directly to the graduate."}
+                    {"The completed pistol is housed in a custom two-level protective case designed to present the firearm as a commemorative piece while providing durable storage for the included magazines. Dense, closed-cell black-core foam protects the contents."}
                   </p>
                 </div>
 
@@ -547,23 +525,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 "One 17-round factory magazine",
                 "Two 17+2-round factory magazines",
                 "One custom two-level protective presentation case",
-                "One personalized interior nameplate",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Personalization */}
-          <div className="space-y-2 pt-4 border-t border-border">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Personalization</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{"Included in the price. The interior nameplate includes two lines of text. Submit at time of ordering."}</p>
-            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{"Examples:"}</p>
-            <ul className="space-y-1.5">
-              {["Graduate's name", "Company or battalion", "Service selection", "Commissioning date"].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                   <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
                   {item}
@@ -604,7 +566,6 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 "Tungsten Cerakote",
                 "Burnt Bronze Cerakote",
                 "Custom two-level presentation case",
-                "Personalized interior nameplate",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                   <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />

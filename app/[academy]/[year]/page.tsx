@@ -16,7 +16,7 @@ function getPageSeo(academyKey: string, year: string): { title: string; descript
     return {
       title: "USNA Class of 2027 Graduation Gift | Firstie Firearms",
       description:
-        "Discover the made-to-order USNA Class of 2027 commemorative GLOCK 19X V, featuring class-inspired engraving, custom Cerakote, personalization, and a two-level presentation case.",
+        "Discover the made-to-order USNA Class of 2027 commemorative GLOCK 19X V, featuring class-inspired engraving, custom Cerakote, and a two-level presentation case.",
       h1: "USNA Class of 2027 Commemorative GLOCK 19X V",
     }
   }
@@ -106,7 +106,7 @@ export default async function AcademyPage({ params }: AcademyPageProps) {
           "@type": "Product",
           name: "USNA Class of 2027 Commemorative GLOCK 19X V",
           description:
-            "Made-to-order USNA Class of 2027 commemorative GLOCK 19X V featuring class-inspired engraving, Tungsten and Burnt Bronze Cerakote, Overwatch Precision PolyDAT trigger, SLR Rifleworks magwell, and a custom two-level presentation case with personalized interior nameplate.",
+            "Made-to-order USNA Class of 2027 commemorative GLOCK 19X V featuring class-inspired engraving, Tungsten and Burnt Bronze Cerakote, Overwatch Precision PolyDAT trigger, SLR Rifleworks magwell, and a custom two-level presentation case.",
           brand: { "@type": "Brand", name: "Firstie Firearms" },
           category: "Commemorative Firearms",
           url: canonicalUrl,

@@ -21,7 +21,7 @@ const categories: FaqCategory[] = [
       {
         question: "What does the product cost?",
         answer:
-          "Pricing is listed on the USNA Class of 2027 product page. Personalization is included in the price — there is no additional charge for the engraved interior nameplate.",
+          "Pricing is listed on the USNA Class of 2027 product page.",
       },
       {
         question: "Is full payment required at the time of ordering?",
@@ -42,26 +42,6 @@ const categories: FaqCategory[] = [
         question: "Can I order after graduation?",
         answer:
           "Yes. The Class of 2027 design will remain available after graduation. Orders placed outside the scheduled production batches have an estimated three-month production timeline.",
-      },
-    ],
-  },
-  {
-    title: "Personalization",
-    items: [
-      {
-        question: "What can be personalized?",
-        answer:
-          "The interior nameplate on the presentation case includes two lines of custom text. Common examples include the graduate's name, company or battalion, service selection, and commissioning date.",
-      },
-      {
-        question: "Is personalization included in the price?",
-        answer:
-          "Yes. Personalization is included in the purchase price at no additional charge.",
-      },
-      {
-        question: "When do I submit the graduate's information?",
-        answer:
-          "Personalization details are submitted at the time of ordering. Please have the two lines of text ready when placing your order.",
       },
     ],
   },
@@ -157,7 +137,6 @@ const categories: FaqCategory[] = [
                 "Tungsten Cerakote",
                 "Burnt Bronze Cerakote",
                 "Custom two-level protective presentation case",
-                "Personalized interior nameplate",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: GOLD }} />
@@ -186,7 +165,7 @@ const categories: FaqCategory[] = [
       {
         question: "What is included with the case?",
         answer:
-          "The completed pistol is housed in a custom two-level protective presentation case. The upper level displays the pistol and is designed to present the firearm as a commemorative piece. The lower level provides dedicated storage for the included magazines. Dense, closed-cell black-core foam protects all contents, and the personalized interior nameplate connects the finished case directly to the graduate.",
+          "The completed pistol is housed in a custom two-level protective presentation case. The upper level displays the pistol and is designed to present the firearm as a commemorative piece. The lower level provides dedicated storage for the included magazines. Dense, closed-cell black-core foam protects all contents.",
       },
     ],
   },
