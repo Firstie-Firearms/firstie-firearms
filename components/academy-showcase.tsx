@@ -227,7 +227,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       {pageTitle && (
         <section className="w-full border-b border-border px-6 py-12 md:py-16">
           <div className="max-w-3xl mx-auto space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold leading-tight text-balance" style={{ color: config.gold }}>
+            <h2 className="text-base md:text-xl font-bold leading-tight whitespace-nowrap" style={{ color: config.gold }}>
               {"Commemorate Your Reunion with a Custom Firstie Firearm"}
             </h2>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
