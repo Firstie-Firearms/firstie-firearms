@@ -337,9 +337,6 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-muted-foreground leading-relaxed pt-1 italic">
-                  {"The standard product includes the factory magazine configuration listed above. Firstie Firearms does not substitute reduced-capacity magazines. The product cannot be shipped or transferred where the included configuration is prohibited."}
-                </p>
               </div>
 
             </div>
@@ -592,9 +589,6 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-muted-foreground leading-relaxed pt-1 italic">
-              {"The standard product includes the factory magazine configuration listed above. Firstie Firearms does not substitute reduced-capacity magazines. The product cannot be shipped or transferred where the included configuration is prohibited."}
-            </p>
           </div>
         </div>
       )}
