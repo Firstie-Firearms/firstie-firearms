@@ -77,7 +77,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6">
           {/* Academy Name */}
           <div className="flex items-center justify-center">
-            <span className="text-6xl font-bold tracking-widest text-center" style={{ color: config.gold }}>
+            <span className="text-7xl font-bold tracking-widest text-center" style={{ color: config.gold }}>
               {config.shortName}
             </span>
           </div>
@@ -114,7 +114,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           {/* Mobile Info Section - shown only on mobile */}
           <section className="lg:hidden container mx-auto px-4 py-6 space-y-4">
             <div className="flex items-center justify-center h-32">
-              <span className="text-5xl font-bold tracking-widest text-center" style={{ color: config.gold }}>
+              <span className="text-6xl font-bold tracking-widest text-center" style={{ color: config.gold }}>
                 {config.shortName}
               </span>
             </div>
