@@ -12,7 +12,7 @@ const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
 const BASE_URL = "https://www.firstiefirearms.com"
 
 const OG_IMAGE = `${BASE_URL}/opengraph-image`
-const OG_TITLE = "Service Academy Graduation Gifts | Firstie Firearms"
+const OG_TITLE = "Firstie Firearms - Service Academy Commemorative Pistols"
 const OG_DESCRIPTION =
   "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates, featuring class-inspired artwork, custom cases, and lawful FFL delivery."
 
