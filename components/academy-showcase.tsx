@@ -223,6 +223,37 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         </div>
       )}
 
+      {/* Reunion narrative — only shown on Reunions pages */}
+      {pageTitle && (
+        <section className="w-full border-b border-border px-6 py-12 md:py-16">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold leading-tight text-balance" style={{ color: config.gold }}>
+              {"Commemorate Your Reunion with a Custom Firstie Firearm"}
+            </h2>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              {"Every reunion is an opportunity to honor the bonds forged through shared hardship, service, and sacrifice. A custom reunion edition from Firstie Firearms is more than a firearm—it's a lasting tribute to your class and the legacy you've built together."}
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              {"Whether you're celebrating a 5th, 10th, 25th, or 50th reunion, we'll work with your class representatives to design a one-of-a-kind commemorative pistol featuring artwork, insignia, class mottos, milestones, or other meaningful elements unique to your class."}
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              {"From the initial concept through final production, our team will collaborate closely with you to create a firearm that every classmate will be proud to own and pass down for generations."}
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              {"If you're interested in creating a custom reunion edition for your class, we'd love to hear from you. "}
+              <a
+                href="mailto:info@firstiefirearms.com"
+                className="font-semibold transition-opacity hover:opacity-75"
+                style={{ color: config.gold }}
+              >
+                {"Contact Firstie Firearms"}
+              </a>
+              {" to begin the design process and bring your class's vision to life."}
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* Custom Build Features — full width, no sidebar */}
       <section id="features-anchor" className="relative px-4 py-8 md:py-16">
         <div className="mb-8 md:mb-12 max-w-screen-xl mx-auto text-center">
