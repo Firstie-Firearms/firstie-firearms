@@ -319,12 +319,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Base Firearm</h3>
                 <ul className="space-y-1.5">
                   {[
-                    "Factory-new GLOCK 19X V",
+                    "GLOCK 19X V",
                     "9x19 mm",
-                    "Factory GLOCK Marksman Barrel",
-                    "Factory passive Safe Action system",
-                    "Factory tritium sights",
-                    "Factory-new and unfired by Firstie Firearms",
+                    "Marksman Barrel",
+                    "Safe Action System",
+                    "Tritium Night Sights",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
@@ -571,12 +570,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Base Firearm</h3>
             <ul className="space-y-1.5">
               {[
-                "Factory-new GLOCK 19X V",
+                "GLOCK 19X V",
                 "9x19 mm",
-                "Factory GLOCK Marksman Barrel",
-                "Factory passive Safe Action system",
-                "Factory tritium sights",
-                "Factory-new and unfired by Firstie Firearms",
+                "Marksman Barrel",
+                "Safe Action System",
+                "Tritium Night Sights",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                   <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
