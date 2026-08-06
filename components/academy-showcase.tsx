@@ -342,8 +342,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                     "SLR Rifleworks magwell",
                     "Deep multi-layer laser engraving",
                     "Hand-finishing and polishing",
-                    "Tungsten Cerakote",
-                    "Burnt Bronze Cerakote",
+                    ...(academy === "USNA" && classYear === "Class of 2027"
+                      ? ["Custom Cerakote - Battleship Gray", "Custom Cerakote - Admiral Bronze"]
+                      : ["Custom Cerakote"]),
                     "Custom two-level presentation case",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -593,8 +594,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 "SLR Rifleworks magwell",
                 "Deep multi-layer laser engraving",
                 "Hand-finishing and polishing",
-                "Tungsten Cerakote",
-                "Burnt Bronze Cerakote",
+                ...(academy === "USNA" && classYear === "Class of 2027"
+                  ? ["Custom Cerakote - Battleship Gray", "Custom Cerakote - Admiral Bronze"]
+                  : ["Custom Cerakote"]),
                 "Custom two-level presentation case",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
