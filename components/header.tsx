@@ -19,6 +19,11 @@ const NAV_ITEMS: { label: string; academy: Academy }[] = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<Academy | null>(null)
+  const [openMobileAccordion, setOpenMobileAccordion] = useState<Academy | null>(null)
+
+  const toggleMobileAccordion = (academy: Academy) => {
+    setOpenMobileAccordion((prev) => (prev === academy ? null : academy))
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 glass border-b border-border/50">
@@ -110,33 +115,53 @@ export function Header() {
             <div className="container mx-auto px-4 py-4 space-y-2">
               {NAV_ITEMS.map(({ label, academy }) => (
                 <div key={academy}>
-                  <div
-                    className="block text-sm font-bold py-2"
+                  <button
+                    type="button"
+                    onClick={() => toggleMobileAccordion(academy)}
+                    className="w-full flex items-center justify-between text-sm font-bold py-2 hover:opacity-80 transition-opacity"
                     style={{ color: "#b8946a" }}
                   >
                     {label}
-                  </div>
-                  <div className="pl-4 space-y-1">
-                    {CLASS_YEARS.map((year) => (
-                      <Link
-                        key={year}
-                        href={`/${ACADEMY_TO_SLUG[academy]}/${year}`}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="block text-xs font-medium hover:opacity-80 transition-opacity py-1"
-                        style={{ color: "#b8946a" }}
+                    <ChevronDown
+                      className="w-4 h-4 transition-transform duration-200"
+                      style={{ transform: openMobileAccordion === academy ? "rotate(180deg)" : "rotate(0deg)" }}
+                    />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {openMobileAccordion === academy && (
+                      <motion.div
+                        key="accordion"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
                       >
-                        {`Class of ${year}`}
-                      </Link>
-                    ))}
-                    <Link
-                      href={`/${ACADEMY_TO_SLUG[academy]}/reunions`}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block text-xs font-medium hover:opacity-80 transition-opacity py-1"
-                      style={{ color: "#b8946a" }}
-                    >
-                      {"Reunions"}
-                    </Link>
-                  </div>
+                        <div className="pl-4 pb-2 space-y-1">
+                          {CLASS_YEARS.map((year) => (
+                            <Link
+                              key={year}
+                              href={`/${ACADEMY_TO_SLUG[academy]}/${year}`}
+                              onClick={() => setIsMenuOpen(false)}
+                              className="block text-xs font-medium hover:opacity-80 transition-opacity py-1"
+                              style={{ color: "#b8946a" }}
+                            >
+                              {`Class of ${year}`}
+                            </Link>
+                          ))}
+                          <Link
+                            href={`/${ACADEMY_TO_SLUG[academy]}/reunions`}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="block text-xs font-medium hover:opacity-80 transition-opacity py-1 border-t border-border pt-2"
+                            style={{ color: "#b8946a" }}
+                          >
+                            {"Reunions"}
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
               <Link
