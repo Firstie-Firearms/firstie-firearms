@@ -46,11 +46,7 @@ export function Footer() {
                   {"info@firstiefirearms.com"}
                 </a>
               </p>
-              <p>
-                <a href="tel:+13198303553" className="hover:text-foreground transition-colors">
-                  {"(319) 830-3553"}
-                </a>
-              </p>
+
             </div>
           </div>
         </div>
