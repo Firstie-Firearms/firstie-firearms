@@ -258,7 +258,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       <div className="flex border-t border-border">
 
         {/* Product Details Sidebar — same w-80 as left nav, only on lg+ */}
-        {academy === "USNA" && classYear === "Class of 2027" && (
+        {!pageTitle && (
           <aside className="hidden lg:block w-80 shrink-0 border-r border-border">
             <div className="p-6 space-y-6">
 
@@ -267,7 +267,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Package Contents</h3>
                 <ul className="space-y-1.5">
                   {[
-                    "One finished USNA Class of 2027 commemorative GLOCK 19X V",
+                    `One finished ${config.shortName} ${classYear} commemorative GLOCK 19X V`,
                     "One custom two-level protective presentation case",
                     "Two 17+2-round factory magazines",
                     "One 17-round factory magazine",
@@ -510,7 +510,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       </div>{/* end below-hero flex row */}
 
       {/* Product Details — mobile only, shown below description */}
-      {academy === "USNA" && classYear === "Class of 2027" && (
+      {!pageTitle && (
         <div className="block lg:hidden border-t border-border px-6 py-8 space-y-6">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">What&apos;s Included</h2>
 
@@ -519,7 +519,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Package Contents</h3>
             <ul className="space-y-1.5">
               {[
-                "One finished USNA Class of 2027 commemorative GLOCK 19X V",
+                `One finished ${config.shortName} ${classYear} commemorative GLOCK 19X V`,
                 "One custom two-level protective presentation case",
                 "Two 17+2-round factory magazines",
                 "One 17-round factory magazine",
