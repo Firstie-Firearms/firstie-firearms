@@ -444,10 +444,13 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <div className="space-y-3">
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"A Presentation Worthy of the Occasion"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                    {"Each pistol is housed in a custom two-level display case created specifically for the Class of 2027. Anchors frame the presentation, while the inside lid features the mission of the United States Naval Academy. The lower compartment provides dedicated storage for additional magazines and personal keepsakes, centered around a fixed Navy anchor that serves as a lasting reminder of service and commitment."}
+                    {"A commemorative firearm deserves a presentation equal to the achievement it honors. Each USNA Class of 2027 Custom Glock 19X V is housed in an exclusive custom-designed, two-level presentation case created specifically for this class. Framed by Navy anchors, the inside lid proudly displays the mission of the United States Naval Academy, serving as a constant reminder of the purpose, honor, and ideals that shape every graduate."}
                   </p>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                    {"The completed pistol is housed in a custom two-level protective case designed to present the firearm as a commemorative piece while providing durable storage for the included magazines. Dense, closed-cell black-core foam protects the contents."}
+                    {"Precision-cut, dense closed-cell black-core foam securely cradles the pistol and included magazines, protecting them during storage and transport while presenting the firearm as the centerpiece of the display. Beneath the upper tray, a second compartment provides dedicated storage for additional magazines and personal keepsakes, centered around a fixed Navy anchor that symbolizes a lifetime of service, steadfast leadership, and commitment to the nation."}
+                  </p>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
+                    {"While designed to showcase the pistol as a commemorative heirloom, the presentation case is equally built for practical use. Durable construction and protective foam make it ideal for safely transporting the firearm to and from the range, because this is not simply a display piece\u2014it is a battle-ready Glock engineered to be carried, trained with, and enjoyed for generations. The result is a presentation worthy of the occasion while preserving the reliability, functionality, and craftsmanship that define every Firstie Firearms custom pistol."}
                   </p>
                 </div>
 
