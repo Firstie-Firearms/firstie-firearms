@@ -22,23 +22,33 @@ export const metadata: Metadata = {
   generator: "v0.app",
   icons: {
     icon: "/favicon.png",
-    apple: "/favicon.png",
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.png",
   },
   openGraph: {
     type: "website",
+    url: BASE_URL,
     siteName: "Firstie Firearms",
     locale: "en_US",
+    title: "Service Academy Graduation Gifts | Firstie Firearms",
+    description:
+      "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates.",
     images: [
       {
-        url: "/og-default.jpg",
+        url: `${BASE_URL}/og-default.png`,
         width: 1200,
         height: 630,
         alt: "Firstie Firearms — Commemorative Service Academy Pistols",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    title: "Service Academy Graduation Gifts | Firstie Firearms",
+    description:
+      "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates.",
+    images: [`${BASE_URL}/og-default.png`],
   },
   robots: {
     index: true,
