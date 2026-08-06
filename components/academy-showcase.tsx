@@ -637,13 +637,15 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       )}
 
       {/* Sticky / floating order CTA — hides until features section scrolls out of view */}
-      <StickyOrderButton
-        label={pageTitle ? `Preorder ${pageTitle} Pistol` : `${
-          Number.parseInt(classYear.replace(/\D/g, ""), 10) >= 2028 ? "Preorder" : "Order"
-        } ${classYear} Pistol`}
-        gold={config.gold}
-        anchorSelector="#features-anchor"
-      />
+      {!pageTitle && (
+        <StickyOrderButton
+          label={`${
+            Number.parseInt(classYear.replace(/\D/g, ""), 10) >= 2028 ? "Preorder" : "Order"
+          } ${classYear} Pistol`}
+          gold={config.gold}
+          anchorSelector="#features-anchor"
+        />
+      )}
     </div>
   )
 }
