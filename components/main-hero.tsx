@@ -91,7 +91,7 @@ export function MainHero() {
                         color: academyData[academy].goldColor,
                       }}
                     >
-                      {"COMING SOON - SEPTEMBER '26"}
+                      {"COMING SOON - OCTOBER '26"}
                     </div>
                   ) : (
                     <div
@@ -101,7 +101,7 @@ export function MainHero() {
                         color: academyData[academy].goldColor,
                       }}
                     >
-                      {"COMING SOON - AUGUST '27"}
+                      {"COMING SOON - AUGUST '26"}
                     </div>
                   )}
 

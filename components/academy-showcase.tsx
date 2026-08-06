@@ -155,7 +155,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 : classYear === "Class of 2027"
                 ? academy === "USNA"
                   ? "COMING SOON - AUGUST '26"
-                  : "COMING SOON - SEPTEMBER '26"
+                  : "COMING SOON - OCTOBER '26"
                 : `COMING SOON - AUGUST '${String((Number.parseInt(classYear.replace(/\D/g, ""), 10) - 1) % 100).padStart(2, "0")}`}
             </div>
           </section>
