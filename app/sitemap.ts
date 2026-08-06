@@ -35,5 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   )
 
-  return [...staticRoutes, ...academyRoutes]
+  const reunionRoutes: MetadataRoute.Sitemap = Object.keys(ACADEMY_SLUGS).map((slug) => ({
+    url: `${BASE_URL}/${slug}/reunions`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }))
+
+  return [...staticRoutes, ...academyRoutes, ...reunionRoutes]
 }

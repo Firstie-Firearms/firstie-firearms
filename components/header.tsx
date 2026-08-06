@@ -69,6 +69,14 @@ export function Header() {
                         {`Class of ${year}`}
                       </Link>
                     ))}
+                    <Link
+                      href={`/${ACADEMY_TO_SLUG[academy]}/reunions`}
+                      onClick={() => setOpenDropdown(null)}
+                      className="block w-full text-left px-4 py-2 text-base font-medium hover:bg-muted transition-colors border-t border-border"
+                      style={{ color: "#b8946a" }}
+                    >
+                      {"Reunions"}
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -120,6 +128,14 @@ export function Header() {
                         {`Class of ${year}`}
                       </Link>
                     ))}
+                    <Link
+                      href={`/${ACADEMY_TO_SLUG[academy]}/reunions`}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block text-xs font-medium hover:opacity-80 transition-opacity py-1"
+                      style={{ color: "#b8946a" }}
+                    >
+                      {"Reunions"}
+                    </Link>
                   </div>
                 </div>
               ))}

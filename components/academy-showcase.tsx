@@ -7,6 +7,7 @@ interface AcademyShowcaseProps {
   academy: Academy
   classYear?: string
   h1?: string
+  pageTitle?: string
 }
 
 const academyConfig = {
@@ -66,7 +67,7 @@ const weaponFeatures = [
   },
 ]
 
-export function AcademyShowcase({ academy, classYear = "Class of 2027", h1 }: AcademyShowcaseProps) {
+export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, pageTitle }: AcademyShowcaseProps) {
   const config = academyConfig[academy]
 
   return (
@@ -84,16 +85,21 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1 }: Ac
           {/* Class Year Section */}
           <div className="space-y-4 pt-6 border-t border-border">
             <p className="text-sm font-bold text-center leading-relaxed" style={{ color: config.gold }}>
-              {(classYear === "Class of 2027" || classYear === "Class of 2028")
+              {pageTitle
+                ? `Designed in Collaboration with Members of Reunion Classes`
+                : (classYear === "Class of 2027" || classYear === "Class of 2028")
                 ? `Designed in Collaboration with Members of the ${classYear}`
                 : `To be Designed in Collaboration with Members of the ${classYear}`
               }
             </p>
 
-            {/* Class Year */}
+            {/* Class Year or Page Title */}
             <div className="flex items-center justify-center">
-              <span className="text-7xl font-bold tracking-wider text-center" style={{ color: config.gold }}>
-                {classYear.replace(/\D/g, "")}
+              <span
+                className={`font-bold tracking-wider text-center ${pageTitle ? "text-5xl" : "text-7xl"}`}
+                style={{ color: config.gold }}
+              >
+                {pageTitle ?? classYear.replace(/\D/g, "")}
               </span>
             </div>
 
@@ -113,16 +119,21 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1 }: Ac
               </span>
             </div>
             <p className="text-sm font-bold text-center leading-relaxed px-4" style={{ color: config.gold }}>
-              {(classYear === "Class of 2027" || classYear === "Class of 2028")
+              {pageTitle
+                ? `Designed in Collaboration with Members of Reunion Classes`
+                : (classYear === "Class of 2027" || classYear === "Class of 2028")
                 ? `Designed in Collaboration with Members of the ${classYear}`
                 : `To be Designed in Collaboration with Members of the ${classYear}`
               }
             </p>
             
-            {/* Class Year */}
+            {/* Class Year or Page Title */}
             <div className="flex items-center justify-center">
-              <span className="text-6xl font-bold tracking-wider text-center" style={{ color: config.gold }}>
-                {classYear.replace(/\D/g, "")}
+              <span
+                className={`font-bold tracking-wider text-center ${pageTitle ? "text-4xl" : "text-6xl"}`}
+                style={{ color: config.gold }}
+              >
+                {pageTitle ?? classYear.replace(/\D/g, "")}
               </span>
             </div>
           </section>
@@ -139,7 +150,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1 }: Ac
               className="absolute top-4 left-4 z-20 inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60"
               style={{ borderColor: config.gold, color: config.gold }}
             >
-              {classYear === "Class of 2027"
+              {pageTitle
+                ? "COMING SOON"
+                : classYear === "Class of 2027"
                 ? academy === "USNA"
                   ? "COMING SOON - AUGUST '26"
                   : "COMING SOON - SEPTEMBER '26"
@@ -615,7 +628,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1 }: Ac
 
       {/* Sticky / floating order CTA — hides until features section scrolls out of view */}
       <StickyOrderButton
-        label={`${
+        label={pageTitle ? `Preorder ${pageTitle} Pistol` : `${
           Number.parseInt(classYear.replace(/\D/g, ""), 10) >= 2028 ? "Preorder" : "Order"
         } ${classYear} Pistol`}
         gold={config.gold}
