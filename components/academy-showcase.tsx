@@ -203,13 +203,23 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         </div>
       ) : (
         <div className="w-full border-y border-white/10 flex items-center justify-center py-3" style={{ backgroundColor: config.color }}>
-          <button
-            type="button"
-            className="font-sans text-sm font-semibold uppercase tracking-widest px-8 py-2 border transition-opacity hover:opacity-80"
-            style={{ borderColor: config.gold, color: config.gold }}
-          >
-            Sign Up for Release Update
-          </button>
+          {pageTitle ? (
+            <a
+              href="mailto:info@firstiefirearms.com"
+              className="font-sans text-sm font-semibold uppercase tracking-widest px-8 py-2 border transition-opacity hover:opacity-80"
+              style={{ borderColor: config.gold, color: config.gold }}
+            >
+              Contact Firstie Firearms
+            </a>
+          ) : (
+            <button
+              type="button"
+              className="font-sans text-sm font-semibold uppercase tracking-widest px-8 py-2 border transition-opacity hover:opacity-80"
+              style={{ borderColor: config.gold, color: config.gold }}
+            >
+              Sign Up for Release Update
+            </button>
+          )}
         </div>
       )}
 
