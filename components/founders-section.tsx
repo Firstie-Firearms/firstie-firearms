@@ -20,7 +20,7 @@ export function FoundersSection() {
             <div className="space-y-6 font-serif text-muted-foreground leading-relaxed">
               <p className="text-lg">
                 {
-                  "Academy Custom Glocks is owned and operated by graduates of the United States Military Academy and the United States Naval Academy."
+                  "Academy Custom GLOCKs is owned and operated by graduates of the United States Military Academy and the United States Naval Academy."
                 }
               </p>
               <p>

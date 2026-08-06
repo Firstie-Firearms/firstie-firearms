@@ -23,7 +23,7 @@ export function HeroSection({ selectedAcademy }: HeroSectionProps) {
       <div className="absolute inset-0 z-0">
         <img
           src="/custom-glock-pistol-tactical-black-on-dark-backgro.jpg"
-          alt="Academy Custom Glock"
+          alt="Academy Custom GLOCK"
           className="w-full h-full object-cover opacity-40"
         />
       </div>
@@ -40,7 +40,7 @@ export function HeroSection({ selectedAcademy }: HeroSectionProps) {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            {"Exclusive custom Glock firearms crafted for military academy graduates. Each individually numbered and engraved."}
+            {"Exclusive custom GLOCK firearms crafted for military academy graduates. Each individually numbered and engraved."}
           </p>
         </motion.div>
       </div>

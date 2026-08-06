@@ -77,7 +77,7 @@ export function MainHero() {
 
                 <img
                   src={`/custom-glock-pistol-.jpg?height=800&width=600&query=custom glock pistol ${academy} military academy themed on tactical background`}
-                  alt={`${academy} Custom Glock`}
+                  alt={`${academy} Custom GLOCK`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   style={academy === "USMA" || academy === "USAFA" ? { filter: "grayscale(100%) brightness(0.5)" } : undefined}
                 />

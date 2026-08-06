@@ -383,7 +383,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           {academy === "USNA" && classYear === "Class of 2027" ? (
             <section className="container mx-auto px-4 py-8 md:py-16 border-t border-border">
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 md:mb-4" style={{ color: config.gold }}>
-                {"USNA Class of 2027\u2019s Custom Glock 19X V"}
+                {"USNA Class of 2027\u2019s Custom GLOCK 19X V"}
               </h2>
               <p className="text-center text-sm md:text-base font-bold mb-8 md:mb-12 text-balance" style={{ color: config.gold }}>
                 {"A Legacy Forged in Steel. A Tribute to Service. A Gift Worthy of an Annapolis Graduate."}
@@ -391,10 +391,10 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
 
               <div className="max-w-4xl mx-auto space-y-8">
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                  {"The United States Naval Academy Class of 2027\u2019s Custom Glock 19X V is more than a firearm\u2014it is a commemorative heirloom created to honor one of life's greatest achievements: earning a commission as an officer in the United States Navy or Marine Corps."}
+                  {"The United States Naval Academy Class of 2027\u2019s Custom GLOCK 19X V is more than a firearm\u2014it is a commemorative heirloom created to honor one of life's greatest achievements: earning a commission as an officer in the United States Navy or Marine Corps."}
                 </p>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                  {"Every pistol begins as a Glock 19X V and is transformed through an extensive deep-laser engraving process that captures the history, traditions, and future of the Naval Academy. The slide is precision-engraved, polished to highlight every detail, and protected with a durable Cerakote coating designed to preserve the artwork for generations."}
+                  {"Every pistol begins as a GLOCK 19X V and is transformed through an extensive deep-laser engraving process that captures the history, traditions, and future of the Naval Academy. The slide is precision-engraved, polished to highlight every detail, and protected with a durable Cerakote coating designed to preserve the artwork for generations."}
                 </p>
 
                 <div className="space-y-3">
@@ -437,24 +437,24 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <div className="space-y-3">
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Custom Finishes and Upgrades"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                    {"The frame is finished in Battleship Gray accented by Admiral Bronze, creating a distinctive appearance inspired by the Navy's fleet. Performance upgrades include an Overwatch Precision PolyDAT trigger and an SLR Rifleworks Glock 19X V magwell, both custom finished to complement the pistol's commemorative design."}
+                    {"The frame is finished in Battleship Gray accented by Admiral Bronze, creating a distinctive appearance inspired by the Navy's fleet. Performance upgrades include an Overwatch Precision PolyDAT trigger and an SLR Rifleworks GLOCK 19X V magwell, both custom finished to complement the pistol's commemorative design."}
                   </p>
                 </div>
 
                 <div className="space-y-3">
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"A Presentation Worthy of the Occasion"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                    {"A commemorative firearm deserves a presentation equal to the achievement it honors. Each USNA Class of 2027 Custom Glock 19X V is housed in an exclusive two-level presentation case designed specifically for this class. Framed by Navy anchors, the inside lid features the mission of the United States Naval Academy, while dense, closed-cell black-core foam securely protects the pistol and included magazines. A lower compartment provides dedicated storage for additional magazines and personal keepsakes, centered around a fixed Navy anchor symbolizing a lifetime of service."}
+                    {"A commemorative firearm deserves a presentation equal to the achievement it honors. Each USNA Class of 2027 Custom GLOCK 19X V is housed in an exclusive two-level presentation case designed specifically for this class. Framed by Navy anchors, the inside lid features the mission of the United States Naval Academy, while dense, closed-cell black-core foam securely protects the pistol and included magazines. A lower compartment provides dedicated storage for additional magazines and personal keepsakes, centered around a fixed Navy anchor symbolizing a lifetime of service."}
                   </p>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                    {"Built to honor the occasion without sacrificing function, the case is as practical as it is beautiful. Durable enough for transport to and from the range, it protects a battle-ready Glock that is meant to be fired, carried, and enjoyed\u2014not simply displayed. It is a presentation worthy of a lasting heirloom and a firearm built for generations of service."}
+                    {"Built to honor the occasion without sacrificing function, the case is as practical as it is beautiful. Durable enough for transport to and from the range, it protects a battle-ready GLOCK that is meant to be fired, carried, and enjoyed\u2014not simply displayed. It is a presentation worthy of a lasting heirloom and a firearm built for generations of service."}
                   </p>
                 </div>
 
                 <div className="space-y-3">
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"A Gift That Lasts a Lifetime"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
-                    {"Whether purchased for a graduating midshipman, proud parent, family member, sponsor, or mentor, the USNA Class of 2027\u2019s Custom Glock 19X V stands as a lasting tribute to sacrifice, achievement, and the beginning of a career dedicated to serving the nation."}
+                    {"Whether purchased for a graduating midshipman, proud parent, family member, sponsor, or mentor, the USNA Class of 2027\u2019s Custom GLOCK 19X V stands as a lasting tribute to sacrifice, achievement, and the beginning of a career dedicated to serving the nation."}
                   </p>
                 </div>
 
