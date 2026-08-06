@@ -226,10 +226,12 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       {/* Reunion narrative — only shown on Reunions pages */}
       {pageTitle && (
         <section className="w-full border-b border-border px-6 py-12 md:py-16">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold leading-tight whitespace-nowrap overflow-visible text-center" style={{ color: config.gold }}>
+          <div className="w-full text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold leading-tight whitespace-nowrap inline-block" style={{ color: config.gold }}>
               {"Commemorate Your Reunion with a Custom Firstie Firearm"}
             </h2>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-6">
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
               {"Every reunion is an opportunity to honor the bonds forged through shared hardship, service, and sacrifice. A custom reunion edition from Firstie Firearms is more than a firearm—it's a lasting tribute to your class and the legacy you've built together."}
             </p>
