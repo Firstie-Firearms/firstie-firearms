@@ -11,18 +11,22 @@ const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
 
 const BASE_URL = "https://www.firstiefirearms.com"
 
+const OG_IMAGE = `${BASE_URL}/opengraph-image`
+const OG_TITLE = "Service Academy Graduation Gifts | Firstie Firearms"
+const OG_DESCRIPTION =
+  "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates, featuring class-inspired artwork, custom cases, and lawful FFL delivery."
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Service Academy Graduation Gifts | Firstie Firearms",
+    default: OG_TITLE,
     template: "%s | Firstie Firearms",
   },
-  description:
-    "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates, featuring class-inspired artwork, custom cases, and lawful FFL delivery.",
+  description: OG_DESCRIPTION,
   generator: "v0.app",
   icons: {
     icon: "/favicon.png",
-    apple: "/apple-icon.png",
+    apple: "/favicon.png",
     shortcut: "/favicon.png",
   },
   openGraph: {
@@ -30,25 +34,24 @@ export const metadata: Metadata = {
     url: BASE_URL,
     siteName: "Firstie Firearms",
     locale: "en_US",
-    title: "Service Academy Graduation Gifts | Firstie Firearms",
-    description:
-      "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates.",
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
     images: [
       {
-        url: `${BASE_URL}/opengraph-image`,
+        url: OG_IMAGE,
+        secureUrl: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Firstie Firearms — Commemorative Service Academy Pistols",
+        alt: "Firstie Firearms logo — Commemorative Service Academy Pistols",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Service Academy Graduation Gifts | Firstie Firearms",
-    description:
-      "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates.",
-    images: [`${BASE_URL}/opengraph-image`],
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: [OG_IMAGE],
   },
   robots: {
     index: true,

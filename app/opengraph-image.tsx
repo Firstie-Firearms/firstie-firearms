@@ -1,18 +1,12 @@
 import { ImageResponse } from "next/og"
+import { logoDataUrl } from "@/lib/og-logo"
 
 export const runtime = "edge"
 export const alt = "Firstie Firearms — Commemorative Service Academy Pistols"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-export default async function OGImage() {
-  const logoUrl = new URL(
-    "/firstie-logo-transparent.png",
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "http://localhost:3000"
-  ).toString()
-
+export default function OGImage() {
   return new ImageResponse(
     (
       <div
@@ -27,12 +21,12 @@ export default async function OGImage() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={logoUrl}
+          src={logoDataUrl}
           alt="Firstie Firearms"
-          style={{ width: 540, height: "auto", objectFit: "contain" }}
+          style={{ width: 520, height: "auto", objectFit: "contain" }}
         />
       </div>
     ),
-    { width: 1200, height: 630 }
+    { width: 1200, height: 630 },
   )
 }
