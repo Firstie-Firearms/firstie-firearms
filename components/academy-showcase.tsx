@@ -268,9 +268,10 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <ul className="space-y-1.5">
                   {[
                     "One finished USNA Class of 2027 commemorative GLOCK 19X V",
-                    "One 17-round factory magazine",
-                    "Two 17+2-round factory magazines",
                     "One custom two-level protective presentation case",
+                    "Two 17+2-round factory magazines",
+                    "One 17-round factory magazine",
+                    "State-compliant magazines provided where required by law",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
@@ -326,9 +327,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Included Magazines</h3>
                 <ul className="space-y-1.5">
                   {[
-                    "One 17-round factory magazine",
                     "Two 17+2-round factory magazines",
-                    "Three magazines total",
+                    "One 17-round factory magazine",
+                    "State-compliant magazines provided where required by law",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
@@ -522,9 +523,10 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             <ul className="space-y-1.5">
               {[
                 "One finished USNA Class of 2027 commemorative GLOCK 19X V",
-                "One 17-round factory magazine",
-                "Two 17+2-round factory magazines",
                 "One custom two-level protective presentation case",
+                "Two 17+2-round factory magazines",
+                "One 17-round factory magazine",
+                "State-compliant magazines provided where required by law",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                   <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
@@ -580,9 +582,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Included Magazines</h3>
             <ul className="space-y-1.5">
               {[
-                "One 17-round factory magazine",
                 "Two 17+2-round factory magazines",
-                "Three magazines total",
+                "One 17-round factory magazine",
+                "State-compliant magazines provided where required by law",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                   <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
