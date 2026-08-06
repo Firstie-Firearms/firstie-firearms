@@ -27,9 +27,9 @@ export function StickyOrderButton({ label, href = "#order", gold }: StickyOrderB
             {restWords && <span>{restWords}</span>}
             <span className="mt-0.5 opacity-90">$500.00</span>
           </span>
-          <span className="hidden sm:inline flex-col items-center text-sm">
-            <span className="block">{label}</span>
-            <span className="block text-xs opacity-90 tracking-widest">$500.00</span>
+          <span className="hidden sm:flex flex-col items-center text-sm leading-tight">
+            <span>{label}</span>
+            <span className="text-xs opacity-90 tracking-widest">$500.00</span>
           </span>
         </a>
       </div>
