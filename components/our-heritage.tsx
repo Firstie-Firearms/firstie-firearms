@@ -46,7 +46,7 @@ export function OurHeritage() {
               {"At Firstie Firearms, our mission is to honor the service and sacrifice of military academy graduates by creating custom firearms that reflect their commitment to duty, honor, and country. We believe that those who have dedicated their lives to defending our nation deserve firearms crafted with the same precision, integrity, and excellence they demonstrated throughout their careers. Each limited-edition piece connects its owner to a brotherhood and sisterhood that spans generations—linking past, present, and future defenders of freedom."}
             </p>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed font-serif">
-              {"We are committed to preserving the traditions and values of the United States Military Academy, United States Naval Academy, and United States Air Force Academy through our work. Through individually numbered engravings and class-year-specific designs, we ensure that every firearm remains exclusive and meaningful. Firstie Firearms is more than a company—it is a tribute to the Long Gray Line, the Fleet, and the Wild Blue Yonder."}
+              {"We are committed to preserving the traditions and values of the United States Military Academy, United States Naval Academy, and United States Air Force Academy through our work. Through custom engravings and class-year-specific designs, we ensure that every firearm remains exclusive and meaningful. Firstie Firearms is more than a company\u2014it is a tribute to the Long Gray Line, the Fleet, and the Wild Blue Yonder."}
             </p>
           </div>
         </div>
