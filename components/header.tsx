@@ -61,7 +61,8 @@ export function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 mt-2 w-44 rounded border border-border bg-background shadow-lg overflow-hidden z-50"
+                    className="absolute top-full left-0 w-44 rounded border border-border bg-background shadow-lg overflow-hidden z-50"
+                    style={{ marginTop: "0px", paddingTop: "8px" }}
                   >
                     {CLASS_YEARS.map((year) => (
                       <Link
@@ -110,64 +111,73 @@ export function Header() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden border-t border-border/50 overflow-hidden"
+            transition={{ duration: 0.2 }}
+            className="md:hidden border-t border-border/50"
+            style={{ overflow: "hidden" }}
           >
-            <div className="container mx-auto px-4 py-4 space-y-2">
+            <div className="container mx-auto px-4 py-4 space-y-1">
               {NAV_ITEMS.map(({ label, academy }) => (
                 <div key={academy}>
                   <button
                     type="button"
                     onClick={() => toggleMobileAccordion(academy)}
-                    className="w-full flex items-center justify-between text-sm font-bold py-2 hover:opacity-80 transition-opacity"
+                    className="w-full flex items-center justify-between text-sm font-bold py-3 hover:opacity-80 transition-opacity"
                     style={{ color: "#b8946a" }}
                   >
                     {label}
                     <ChevronDown
                       className="w-4 h-4 transition-transform duration-200"
-                      style={{ transform: openMobileAccordion === academy ? "rotate(180deg)" : "rotate(0deg)" }}
+                      style={{
+                        transform: openMobileAccordion === academy ? "rotate(180deg)" : "rotate(0deg)",
+                      }}
                     />
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {openMobileAccordion === academy && (
-                      <motion.div
-                        key="accordion"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
+                  {/* Use CSS max-height transition instead of framer-motion to avoid key conflicts */}
+                  <div
+                    style={{
+                      maxHeight: openMobileAccordion === academy ? "500px" : "0px",
+                      overflow: "hidden",
+                      transition: "max-height 0.25s ease",
+                    }}
+                  >
+                    <div className="pl-4 pb-3 space-y-1">
+                      {CLASS_YEARS.map((year) => (
+                        <Link
+                          key={year}
+                          href={`/${ACADEMY_TO_SLUG[academy]}/${year}`}
+                          onClick={() => {
+                            setIsMenuOpen(false)
+                            setOpenMobileAccordion(null)
+                          }}
+                          className="block text-xs font-medium hover:opacity-80 transition-opacity py-1.5"
+                          style={{ color: "#b8946a" }}
+                        >
+                          {`Class of ${year}`}
+                        </Link>
+                      ))}
+                      <Link
+                        href={`/${ACADEMY_TO_SLUG[academy]}/reunions`}
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setOpenMobileAccordion(null)
+                        }}
+                        className="block text-xs font-medium hover:opacity-80 transition-opacity py-1.5 border-t border-border mt-1 pt-2"
+                        style={{ color: "#b8946a" }}
                       >
-                        <div className="pl-4 pb-2 space-y-1">
-                          {CLASS_YEARS.map((year) => (
-                            <Link
-                              key={year}
-                              href={`/${ACADEMY_TO_SLUG[academy]}/${year}`}
-                              onClick={() => setIsMenuOpen(false)}
-                              className="block text-xs font-medium hover:opacity-80 transition-opacity py-1"
-                              style={{ color: "#b8946a" }}
-                            >
-                              {`Class of ${year}`}
-                            </Link>
-                          ))}
-                          <Link
-                            href={`/${ACADEMY_TO_SLUG[academy]}/reunions`}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="block text-xs font-medium hover:opacity-80 transition-opacity py-1 border-t border-border pt-2"
-                            style={{ color: "#b8946a" }}
-                          >
-                            {"Reunions"}
-                          </Link>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        {"Reunions"}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               ))}
               <Link
                 href="/heritage"
-                onClick={() => setIsMenuOpen(false)}
-                className="block text-sm font-bold hover:opacity-80 transition-opacity py-2"
+                onClick={() => {
+                  setIsMenuOpen(false)
+                  setOpenMobileAccordion(null)
+                }}
+                className="block text-sm font-bold hover:opacity-80 transition-opacity py-3"
                 style={{ color: "#b8946a" }}
               >
                 {"Our Heritage"}
