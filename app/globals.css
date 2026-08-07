@@ -183,3 +183,24 @@
 .glow-bar {
   animation: glow 2s ease-in-out infinite;
 }
+
+/*
+ * Age gate — fail-closed content hiding.
+ *
+ * #site-content is hidden by default (no [data-age-gate] attribute, or any
+ * value other than "verified"). The blocking inline script in <head> and the
+ * client-side AgeGate component are the ONLY things that can reveal it, and
+ * only once a "verified" status has been positively confirmed for this
+ * browser session. This means:
+ *   - No flash of unrestricted content while JS is loading/hydrating.
+ *   - If JS fails entirely, content stays hidden (fails closed).
+ *   - If storage is unavailable, content stays hidden (fails closed).
+ */
+#site-content {
+  visibility: hidden;
+}
+
+html[data-age-gate="verified"] #site-content {
+  visibility: visible;
+}
+

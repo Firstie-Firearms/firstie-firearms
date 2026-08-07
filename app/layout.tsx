@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AgeGateProvider } from "@/components/age-gate-provider"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { AGE_GATE_INLINE_SCRIPT } from "@/lib/age-gate"
 import "./globals.css"
 
 const _inter = Inter({ subsets: ["latin"] })
@@ -81,7 +82,19 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className="bg-background">
+    <html lang="en" className="bg-background" data-age-gate="pending">
+      <head>
+        {/*
+          Blocking, synchronous script — runs before <body> paints and
+          before React hydrates. It only ever sets data-age-gate to
+          "verified" if sessionStorage positively confirms the visitor
+          already verified their age THIS browser session; any error or
+          missing value leaves it at the fail-closed "pending" default
+          already set above, which keeps #site-content hidden (see
+          globals.css).
+        */}
+        <script dangerouslySetInnerHTML={{ __html: AGE_GATE_INLINE_SCRIPT }} />
+      </head>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
