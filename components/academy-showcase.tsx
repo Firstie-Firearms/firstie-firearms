@@ -188,7 +188,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           </section>
 
           {/* Hero Section */}
-          <section className="relative h-[30vh] md:h-[50vh] overflow-hidden">
+          <section className="relative h-[35vh] md:h-[75vh] overflow-hidden">
             {h1 && <h1 className="sr-only">{h1}</h1>}
             <img
               src={`/custom-glock-pistol-.jpg?height=800&width=1600&query=custom glock pistol ${academy} military academy on tactical background`}
