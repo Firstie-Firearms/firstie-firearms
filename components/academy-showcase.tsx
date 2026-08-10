@@ -222,48 +222,48 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
 
       {/* Delivery Batch Banner — full viewport width, outside sidebar layout */}
       {classYear === "Class of 2027" ? (
-        <div className="w-full border-y border-white/10" style={{ backgroundColor: config.color }}>
-          <div className="flex flex-col sm:flex-row items-stretch divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+        <div className="w-full border-y border-white/10 overflow-x-auto" style={{ backgroundColor: config.color }}>
+          <div className="flex flex-col sm:flex-row sm:justify-center sm:min-w-max items-stretch divide-y sm:divide-y-0 sm:divide-x divide-white/10">
             {/* Batch 1 */}
-            <div className="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-center sm:gap-8 px-6 sm:px-10 py-2.5 gap-1">
-              <p className="font-sans text-sm font-bold" style={{ color: config.gold }}>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 px-6 sm:px-8 py-2.5 gap-1 whitespace-nowrap">
+              <p className="font-sans text-sm font-bold whitespace-nowrap" style={{ color: config.gold }}>
                 First Production Batch
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                <div className="flex items-baseline justify-between sm:justify-start gap-2">
-                  <span className="text-[10px] font-sans uppercase tracking-wider text-white/50">Order Deadline</span>
-                  <span className="font-sans text-xs font-semibold text-white">November 1, 2026</span>
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 whitespace-nowrap">
+                <div className="flex items-baseline justify-between sm:justify-start gap-2 whitespace-nowrap">
+                  <span className="text-[10px] font-sans uppercase tracking-wider text-white/50 whitespace-nowrap">Order Deadline</span>
+                  <span className="font-sans text-xs font-semibold text-white whitespace-nowrap">November 1, 2026</span>
                 </div>
-                <div className="flex items-baseline justify-between sm:justify-start gap-2">
-                  <span className="text-[10px] font-sans uppercase tracking-wider text-white/50">Est. Delivery</span>
-                  <span className="font-sans text-xs font-semibold text-white">December 15, 2026</span>
+                <div className="flex items-baseline justify-between sm:justify-start gap-2 whitespace-nowrap">
+                  <span className="text-[10px] font-sans uppercase tracking-wider text-white/50 whitespace-nowrap">Est. Delivery</span>
+                  <span className="font-sans text-xs font-semibold text-white whitespace-nowrap">December 15, 2026</span>
                 </div>
               </div>
             </div>
             {/* Batch 2 */}
-            <div className="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-center sm:gap-8 px-6 sm:px-10 py-2.5 gap-1">
-              <p className="font-sans text-sm font-bold" style={{ color: config.gold }}>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 px-6 sm:px-8 py-2.5 gap-1 whitespace-nowrap">
+              <p className="font-sans text-sm font-bold whitespace-nowrap" style={{ color: config.gold }}>
                 Commissioning Delivery Batch
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                <div className="flex items-baseline justify-between sm:justify-start gap-2">
-                  <span className="text-[10px] font-sans uppercase tracking-wider text-white/50">Order Deadline</span>
-                  <span className="font-sans text-xs font-semibold text-white">April 1, 2027</span>
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 whitespace-nowrap">
+                <div className="flex items-baseline justify-between sm:justify-start gap-2 whitespace-nowrap">
+                  <span className="text-[10px] font-sans uppercase tracking-wider text-white/50 whitespace-nowrap">Order Deadline</span>
+                  <span className="font-sans text-xs font-semibold text-white whitespace-nowrap">April 1, 2027</span>
                 </div>
-                <div className="flex items-baseline justify-between sm:justify-start gap-2">
-                  <span className="text-[10px] font-sans uppercase tracking-wider text-white/50">Est. Delivery</span>
-                  <span className="font-sans text-xs font-semibold text-white">May 15, 2027</span>
+                <div className="flex items-baseline justify-between sm:justify-start gap-2 whitespace-nowrap">
+                  <span className="text-[10px] font-sans uppercase tracking-wider text-white/50 whitespace-nowrap">Est. Delivery</span>
+                  <span className="font-sans text-xs font-semibold text-white whitespace-nowrap">May 15, 2027</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className="w-full border-y border-white/10 flex items-center justify-center py-1.5" style={{ backgroundColor: config.color }}>
+        <div className="w-full border-y border-white/10 flex items-center justify-center py-1.5 px-4 overflow-x-auto" style={{ backgroundColor: config.color }}>
           {pageTitle ? (
             <a
               href="mailto:info@firstiefirearms.com"
-              className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80"
+              className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
               style={{ borderColor: config.gold, color: config.gold }}
             >
               Contact Firstie Firearms
@@ -271,7 +271,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           ) : (
             <button
               type="button"
-              className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80"
+              className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
               style={{ borderColor: config.gold, color: config.gold }}
             >
               Sign Up for Release Update
