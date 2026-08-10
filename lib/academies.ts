@@ -60,11 +60,14 @@ export function isClassAvailable(academy: Academy, year: string) {
   return academy === CURRENT_AVAILABLE_ACADEMY && digits === CURRENT_AVAILABLE_YEAR
 }
 
-// USNA classes release in August, USMA/USAFA classes release in October.
-const COMING_SOON_MONTH: Record<Academy, string> = {
-  USNA: "AUGUST",
-  USMA: "OCTOBER",
-  USAFA: "OCTOBER",
+/**
+ * Release month for a given academy/year's "coming soon" tag. USNA classes
+ * always release in August. USMA/USAFA's Class of 2027 releases in October,
+ * but Classes of 2028, 2029, and 2030 release in August.
+ */
+function getComingSoonMonth(academy: Academy, yearNum: number) {
+  if (academy === "USNA") return "AUGUST"
+  return yearNum === 2027 ? "OCTOBER" : "AUGUST"
 }
 
 /**
@@ -76,5 +79,5 @@ const COMING_SOON_MONTH: Record<Academy, string> = {
 export function getComingSoonLabel(academy: Academy, year: string) {
   const yearNum = Number.parseInt(year.replace(/\D/g, ""), 10)
   const labelYear = String((yearNum - 1) % 100).padStart(2, "0")
-  return `COMING SOON - ${COMING_SOON_MONTH[academy]} '${labelYear}`
+  return `COMING SOON - ${getComingSoonMonth(academy, yearNum)} '${labelYear}`
 }
