@@ -281,7 +281,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       )}
 
       {/* Product Photo Carousel */}
-      <section className="w-full border-b border-border px-4 py-6 md:py-8">
+      <section className="w-full px-4 py-6 md:py-8">
         <ProductPhotoCarousel images={productPhotos} accentColor={config.gold} />
       </section>
 
