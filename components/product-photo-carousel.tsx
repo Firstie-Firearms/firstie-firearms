@@ -283,7 +283,7 @@ function Lightbox({ images, index, accentColor, onClose, onPrev, onNext }: Light
       onClick={handleBackgroundClick}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="fixed inset-0 z-[100] flex h-dvh w-dvw flex-col bg-black/95"
+      className="fixed inset-0 z-[100] flex h-dvh w-dvw flex-col bg-black"
     >
       {/* Close button */}
       <button
