@@ -50,10 +50,15 @@ export function MainHero() {
         </div>
 
         <div className="container mx-auto px-4 z-10 text-center space-y-4">
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }} className="space-y-2">
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }} className="space-y-3 max-w-3xl mx-auto">
             <h1 className="text-lg sm:text-2xl md:text-3xl font-sans text-foreground leading-relaxed text-balance">
-              {"Commemorative Service Academy Pistols for Graduation and Commissioning"}
+              {"Service Academy Graduation Gifts & Commemorative Pistols"}
             </h1>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-sans leading-relaxed text-pretty">
+              {
+                "Firstie Firearms creates class-specific commemorative pistols for graduates of the United States Naval Academy, West Point, and United States Air Force Academy, each featuring academy-specific design, class-year artwork, and a custom presentation case to mark graduation and commissioning."
+              }
+            </p>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-sans text-balance">
               {"Forged in Tradition | Establishing a Legacy"}
             </p>

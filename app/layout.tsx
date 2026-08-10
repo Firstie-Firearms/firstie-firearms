@@ -13,17 +13,21 @@ const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
 const BASE_URL = "https://www.firstiefirearms.com"
 
 const OG_IMAGE = `${BASE_URL}/opengraph-image`
-const OG_TITLE = "Firstie Firearms - Service Academy Commemorative Pistols"
-const OG_DESCRIPTION =
+// Default title/description for pages that don't set their own metadata.
+// The homepage (app/page.tsx) overrides these with an `absolute` title so
+// the "%s | Firstie Firearms" template below is never applied to it —
+// that keeps "Firstie Firearms" from being appended a second time.
+const DEFAULT_TITLE = "Firstie Firearms - Service Academy Commemorative Pistols"
+const DEFAULT_DESCRIPTION =
   "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates, featuring class-inspired artwork, custom cases, and lawful FFL delivery."
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: OG_TITLE,
+    default: DEFAULT_TITLE,
     template: "%s | Firstie Firearms",
   },
-  description: OG_DESCRIPTION,
+  description: DEFAULT_DESCRIPTION,
   generator: "v0.app",
   icons: {
     icon: "/favicon.png",
@@ -35,8 +39,8 @@ export const metadata: Metadata = {
     url: BASE_URL,
     siteName: "Firstie Firearms",
     locale: "en_US",
-    title: OG_TITLE,
-    description: OG_DESCRIPTION,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [
       {
         url: OG_IMAGE,
@@ -50,8 +54,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: OG_TITLE,
-    description: OG_DESCRIPTION,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [OG_IMAGE],
   },
   robots: {
@@ -66,19 +70,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // Factual only — no telephone, address, reviews, ratings, founders, awards,
+  // or affiliations are included unless verified elsewhere in the project.
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Firstie Firearms LLC",
+    name: "Firstie Firearms",
     url: BASE_URL,
     description:
       "Veteran-owned, academy-graduate-founded Type 07 FFL creating made-to-order commemorative firearms for service academy graduates.",
     logo: `${BASE_URL}/favicon.png`,
-    foundingLocation: {
-      "@type": "Place",
-      addressCountry: "US",
-      addressRegion: "TX",
-    },
+  }
+
+  // WebSite entity so Google can resolve the correct site name in search
+  // results independent of the homepage <title>.
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Firstie Firearms",
+    alternateName: "Firstie Firearms",
+    url: BASE_URL,
   }
 
   return (
@@ -99,6 +110,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <ScrollToTop />
         <AgeGateProvider>{children}</AgeGateProvider>

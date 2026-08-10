@@ -1,18 +1,24 @@
 import type { Metadata } from "next"
 import { MainHero } from "@/components/main-hero"
 
+// Exact strings requested for the Google search-result appearance. `title`
+// uses `absolute` so the root layout's "%s | Firstie Firearms" template is
+// NOT applied here — otherwise "Firstie Firearms" would be appended twice.
+const HOME_TITLE = "Service Academy Graduation Gifts | Firstie Firearms"
+const HOME_DESCRIPTION =
+  "Commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates, featuring class-specific artwork and custom presentation cases."
+
 export const metadata: Metadata = {
-  title: "Firstie Firearms - Service Academy Commemorative Pistols",
-  description:
-    "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates, featuring class-inspired artwork, custom cases, and lawful FFL delivery.",
+  title: { absolute: HOME_TITLE },
+  description: HOME_DESCRIPTION,
   alternates: {
-    canonical: "https://www.firstiefirearms.com",
+    canonical: "https://www.firstiefirearms.com/",
   },
   openGraph: {
-    title: "Firstie Firearms - Service Academy Commemorative Pistols",
-    description:
-      "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates, featuring class-inspired artwork, custom cases, and lawful FFL delivery.",
-    url: "https://www.firstiefirearms.com",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    url: "https://www.firstiefirearms.com/",
+    siteName: "Firstie Firearms",
     images: [
       {
         url: "https://www.firstiefirearms.com/opengraph-image",
@@ -24,9 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Firstie Firearms - Service Academy Commemorative Pistols",
-    description:
-      "Made-to-order commemorative pistols for Naval Academy, West Point, and Air Force Academy graduates, featuring class-inspired artwork, custom cases, and lawful FFL delivery.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: ["https://www.firstiefirearms.com/opengraph-image"],
   },
 }
