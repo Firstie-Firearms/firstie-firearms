@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card"
 import { StickyOrderButton } from "@/components/sticky-order-button"
 import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
 import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-breadcrumb"
-import { academyCollectionHref } from "@/lib/academies"
+import { academyCollectionHref, getComingSoonLabel, isClassAvailable } from "@/lib/academies"
 import type { Academy } from "@/types"
 
 interface AcademyShowcaseProps {
@@ -122,6 +122,10 @@ function getProductPhotos(academy: Academy, classYear: string): ProductPhoto[] {
 export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, pageTitle, breadcrumbItems }: AcademyShowcaseProps) {
   const config = academyConfig[academy]
   const productPhotos = getProductPhotos(academy, classYear)
+  // Reunions pages (pageTitle set) represent the Class of 2030 — always
+  // "coming soon" today, same as every other not-yet-released class/academy.
+  const available = !pageTitle && isClassAvailable(academy, classYear)
+  const comingSoonLabel = getComingSoonLabel(academy, classYear)
 
   return (
     <div className="min-h-screen pt-20" style={{ "--academy-color": config.color, "--gold-color": config.gold } as any}>
@@ -210,19 +214,14 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               src={`/custom-glock-pistol-.jpg?height=800&width=1600&query=custom glock pistol ${academy} military academy on tactical background`}
               alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
               className="w-full h-full object-cover opacity-40"
+              style={available ? undefined : { filter: "grayscale(100%) brightness(0.6)" }}
             />
             <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 items-start">
               <div
-                className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60"
+                className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60 whitespace-nowrap"
                 style={{ borderColor: config.gold, color: config.gold }}
               >
-                {pageTitle
-                  ? "COMING SOON"
-                  : classYear === "Class of 2027"
-                  ? academy === "USNA"
-                    ? "COMING SOON - AUGUST '26"
-                    : "COMING SOON - OCTOBER '26"
-                  : `COMING SOON - AUGUST '${String((Number.parseInt(classYear.replace(/\D/g, ""), 10) - 1) % 100).padStart(2, "0")}`}
+                {available ? "AVAILABLE NOW" : comingSoonLabel}
               </div>
               <div
                 className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60"

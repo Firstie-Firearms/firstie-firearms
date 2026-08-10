@@ -1,6 +1,6 @@
 import type { Academy } from "@/types"
 import { academyNames } from "@/types"
-import { ACADEMY_TO_SLUG, CLASS_YEARS, classYearLabel } from "@/lib/academies"
+import { ACADEMY_TO_SLUG, CLASS_YEARS, classYearLabel, getComingSoonLabel, isClassAvailable } from "@/lib/academies"
 
 export type ClassCollectionStatus = "available" | "coming-soon"
 
@@ -19,11 +19,6 @@ export interface AcademyClassCollectionItem {
 
 const SHORT_NAMES: Record<Academy, string> = { USNA: "USNA", USMA: "USMA", USAFA: "USAFA" }
 
-// The current, actively orderable class. Everything else in CLASS_YEARS
-// already has a live (coming-soon) product page — see app/[academy]/[year] —
-// so it is safe to link to it from the collection grid.
-const CURRENT_AVAILABLE_YEAR = "2027"
-
 /**
  * Builds the class library for a single academy from the shared CLASS_YEARS
  * list. To add a future class (e.g. Class of 2031), add its year to
@@ -31,9 +26,10 @@ const CURRENT_AVAILABLE_YEAR = "2027"
  * that calls it, will automatically render a new card with no other code
  * changes required.
  *
- * To change a class's image, copy, URL, or status: edit the fields returned
- * below for that year (or promote it to CURRENT_AVAILABLE_YEAR once it is
- * actually orderable).
+ * Availability (and therefore the grayed-out preview treatment + status tag)
+ * comes from the shared isClassAvailable/getComingSoonLabel helpers in
+ * lib/academies.ts, so this stays perfectly in sync with the homepage,
+ * collection-page hero, and individual product pages.
  */
 export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[] {
   const slug = ACADEMY_TO_SLUG[academy]
@@ -44,7 +40,7 @@ export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[
     .sort((a, b) => Number(a) - Number(b))
     .map((year) => {
       const label = classYearLabel(year)
-      const isAvailable = year === CURRENT_AVAILABLE_YEAR
+      const isAvailable = isClassAvailable(academy, year)
       const imageQuery = encodeURIComponent(
         `custom engraved GLOCK 19X V pistol ${shortName} ${label} commemorative with presentation case`,
       )
@@ -60,7 +56,7 @@ export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[
         imageAlt: `${shortName} ${label} commemorative GLOCK 19X V`,
         href: `/${slug}/${year}`,
         status: isAvailable ? "available" : "coming-soon",
-        statusLabel: isAvailable ? "Available Now" : "Coming Soon",
+        statusLabel: isAvailable ? "AVAILABLE NOW" : getComingSoonLabel(academy, year),
         ctaLabel: isAvailable ? `View ${label}` : `Preview ${label}`,
       } satisfies AcademyClassCollectionItem
     })
