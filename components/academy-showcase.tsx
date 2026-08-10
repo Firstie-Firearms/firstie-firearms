@@ -1,6 +1,7 @@
 import { Target, Crosshair, Shield, Gauge, Flame, Briefcase } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { StickyOrderButton } from "@/components/sticky-order-button"
+import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
 import type { Academy } from "@/types"
 
 interface AcademyShowcaseProps {
@@ -67,8 +68,56 @@ const weaponFeatures = [
   },
 ]
 
+/**
+ * Product photo array for the carousel. This is the ONLY place photos need
+ * to be added, removed, or reordered — the carousel component itself is
+ * fully dynamic and works with any number of images.
+ *
+ * To add a photo: append a new object to the `views` array below.
+ * To remove a photo: delete its entry from the `views` array.
+ * To reorder photos: change the order of entries in the `views` array —
+ * the carousel and full-screen viewer always follow this array's order.
+ *
+ * Replace the placeholder `/custom-glock-pistol-.jpg?...` query-based src
+ * with real photography URLs when available. `thumbnailSrc` can point to a
+ * smaller/optimized version for the carousel strip; `src` is used for the
+ * full-screen viewer and should be the highest-resolution version.
+ */
+function getProductPhotos(academy: Academy, classYear: string): ProductPhoto[] {
+  const shortName = academyConfig[academy].shortName
+  const views = [
+    "complete left side profile",
+    "complete right side profile",
+    "slide top engraving detail",
+    "left grip panel engraving detail",
+    "right grip panel engraving detail",
+    "front sight and barrel detail",
+    "rear tritium night sight detail",
+    "trigger and PolyDAT trigger shoe detail",
+    "magwell and controls detail",
+    "Cerakote finish close-up",
+    "muzzle and rifling detail",
+    "presentation case closed, exterior",
+    "presentation case open with pistol and magazines",
+    "class crest engraving detail",
+    "full set with case, magazines, and documentation",
+  ]
+
+  return views.map((view) => {
+    const query = encodeURIComponent(
+      `custom engraved GLOCK 19X V pistol ${shortName} ${classYear} commemorative, ${view}`,
+    )
+    return {
+      src: `/custom-glock-pistol-.jpg?height=1400&width=2000&query=${query}`,
+      thumbnailSrc: `/custom-glock-pistol-.jpg?height=500&width=700&query=${query}`,
+      alt: `${shortName} ${classYear} commemorative GLOCK 19X V \u2014 ${view}`,
+    }
+  })
+}
+
 export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, pageTitle }: AcademyShowcaseProps) {
   const config = academyConfig[academy]
+  const productPhotos = getProductPhotos(academy, classYear)
 
   return (
     <div className="min-h-screen pt-20" style={{ "--academy-color": config.color, "--gold-color": config.gold } as any}>
@@ -230,6 +279,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           )}
         </div>
       )}
+
+      {/* Product Photo Carousel */}
+      <section className="w-full border-b border-border px-4 py-6 md:py-8">
+        <ProductPhotoCarousel images={productPhotos} accentColor={config.gold} />
+      </section>
 
       {/* Reunion narrative — only shown on Reunions pages */}
       {pageTitle && (
