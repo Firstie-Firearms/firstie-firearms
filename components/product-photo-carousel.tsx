@@ -308,7 +308,7 @@ function Lightbox({ images, index, accentColor, onClose, onPrev, onNext }: Light
       </div>
 
       {/* Main image area */}
-      <div className="relative flex-1 flex items-center justify-center px-4 py-12 sm:py-16 md:px-20 pointer-events-none">
+      <div className="relative min-h-0 flex-1 flex items-center justify-center px-4 py-12 sm:py-16 md:px-20 pointer-events-none">
         <img
           key={image.src}
           src={image.src}
