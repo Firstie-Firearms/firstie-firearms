@@ -1,6 +1,7 @@
 import { Target, Crosshair, Shield, Gauge, Flame, Briefcase } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { StickyOrderButton } from "@/components/sticky-order-button"
+import { ProductImageGallery, type GalleryImage } from "@/components/product-image-gallery"
 import type { Academy } from "@/types"
 
 interface AcademyShowcaseProps {
@@ -67,8 +68,41 @@ const weaponFeatures = [
   },
 ]
 
+/**
+ * Product photo array for the gallery. Replace these placeholder entries with
+ * real photography for each academy/class-year build. The gallery component
+ * itself is fully dynamic and supports any number of images.
+ */
+function getGalleryImages(academy: Academy, classYear: string): GalleryImage[] {
+  const shortName = academyConfig[academy].shortName
+  const views = [
+    "complete left side profile",
+    "complete right side profile",
+    "slide top engraving detail",
+    "left grip panel engraving detail",
+    "right grip panel engraving detail",
+    "front sight and barrel detail",
+    "rear tritium night sight detail",
+    "trigger and PolyDAT trigger shoe detail",
+    "magwell and controls detail",
+    "Cerakote finish close-up",
+    "muzzle and rifling detail",
+    "presentation case closed, exterior",
+    "presentation case open with pistol and magazines",
+    "class crest engraving detail",
+    "full set with case, magazines, and documentation",
+  ]
+
+  return views.map((view, index) => ({
+    src: `/custom-glock-pistol-.jpg?height=1000&width=1400&query=custom engraved GLOCK 19X V pistol ${shortName} ${classYear} commemorative, ${view}`,
+    thumbnailSrc: `/custom-glock-pistol-.jpg?height=200&width=200&query=custom engraved GLOCK 19X V pistol ${shortName} ${classYear} commemorative, ${view}`,
+    alt: `${shortName} ${classYear} commemorative GLOCK 19X V \u2014 ${view}`,
+  }))
+}
+
 export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, pageTitle }: AcademyShowcaseProps) {
   const config = academyConfig[academy]
+  const galleryImages = getGalleryImages(academy, classYear)
 
   return (
     <div className="min-h-screen pt-20" style={{ "--academy-color": config.color, "--gold-color": config.gold } as any}>
@@ -230,6 +264,13 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           )}
         </div>
       )}
+
+      {/* Product Photo Gallery */}
+      <section className="w-full px-4 py-8 md:py-12 border-b border-border">
+        <div className="max-w-4xl mx-auto">
+          <ProductImageGallery images={galleryImages} accentColor={config.gold} />
+        </div>
+      </section>
 
       {/* Reunion narrative — only shown on Reunions pages */}
       {pageTitle && (
