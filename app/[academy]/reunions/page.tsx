@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { AcademyShowcase } from "@/components/academy-showcase"
-import { ACADEMY_SLUGS } from "@/lib/academies"
+import { ACADEMY_SLUGS, academyCollectionHref } from "@/lib/academies"
+import { buildBreadcrumbSchema } from "@/lib/breadcrumb-schema"
 import { academyNames } from "@/types"
 
 const BASE_URL = "https://www.firstiefirearms.com"
@@ -64,16 +65,19 @@ export default async function ReunionsPage({ params }: ReunionsPageProps) {
   const academyName = academyNames[academyKey]
   const canonicalUrl = `${BASE_URL}/${academy.toLowerCase()}/reunions`
   const h1 = `${academyName} Reunions Commemorative Pistol`
+  const collectionHref = academyCollectionHref(academyKey)
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
-      { "@type": "ListItem", position: 2, name: academyName, item: `${BASE_URL}/${academy.toLowerCase()}/reunions` },
-      { "@type": "ListItem", position: 3, name: "Reunions", item: canonicalUrl },
-    ],
-  }
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: `${academyName} Graduation Gifts`, href: collectionHref },
+    { label: "Reunions" },
+  ]
+
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", url: BASE_URL },
+    { name: `${academyName} Graduation Gifts`, url: `${BASE_URL}${collectionHref}` },
+    { name: "Reunions", url: canonicalUrl },
+  ])
 
   return (
     <>
@@ -82,7 +86,13 @@ export default async function ReunionsPage({ params }: ReunionsPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <AcademyShowcase academy={academyKey} classYear="Class of 2030" h1={h1} pageTitle="Reunions" />
+      <AcademyShowcase
+        academy={academyKey}
+        classYear="Class of 2030"
+        h1={h1}
+        pageTitle="Reunions"
+        breadcrumbItems={breadcrumbItems}
+      />
     </>
   )
 }

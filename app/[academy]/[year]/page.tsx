@@ -102,16 +102,20 @@ export default async function AcademyPage({ params }: AcademyPageProps) {
   const { h1 } = getPageSeo(academyKey, year)
   const canonicalUrl = `${BASE_URL}/${academy.toLowerCase()}/${year}`
   const academyName = academyNames[academyKey]
+  const collectionHref = academyCollectionHref(academyKey)
 
-  // BreadcrumbList schema — always present
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
-      { "@type": "ListItem", position: 2, name: academyName, item: `${BASE_URL}/${academy.toLowerCase()}/${year}` },
-    ],
-  }
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: `${academyName} Graduation Gifts`, href: collectionHref },
+    { label },
+  ]
+
+  // BreadcrumbList schema — always present, mirrors breadcrumbItems above
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", url: BASE_URL },
+    { name: `${academyName} Graduation Gifts`, url: `${BASE_URL}${collectionHref}` },
+    { name: label, url: canonicalUrl },
+  ])
 
   // Product schema only for USNA Class of 2027 (the only currently orderable product)
   const productSchema =
@@ -141,7 +145,7 @@ export default async function AcademyPage({ params }: AcademyPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
         />
       )}
-      <AcademyShowcase academy={academyKey} classYear={label} h1={h1} />
+      <AcademyShowcase academy={academyKey} classYear={label} h1={h1} breadcrumbItems={breadcrumbItems} />
     </>
   )
 }
