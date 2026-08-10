@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { AcademyShowcase } from "@/components/academy-showcase"
-import { ACADEMY_SLUGS, CLASS_YEARS, classYearLabel } from "@/lib/academies"
+import { ACADEMY_SLUGS, CLASS_YEARS, academyCollectionHref, classYearLabel } from "@/lib/academies"
+import { buildBreadcrumbSchema } from "@/lib/breadcrumb-schema"
 import { academyNames } from "@/types"
 
 const BASE_URL = "https://www.firstiefirearms.com"

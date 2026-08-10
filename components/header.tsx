@@ -6,7 +6,7 @@ import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 import type { Academy } from "@/types"
-import { ACADEMY_TO_SLUG } from "@/lib/academies"
+import { ACADEMY_TO_SLUG, academyCollectionHref } from "@/lib/academies"
 
 const CLASS_YEARS = ["2027", "2028", "2029", "2030"]
 
@@ -64,6 +64,14 @@ export function Header() {
                     className="absolute top-full left-0 w-44 rounded border border-border bg-background shadow-lg overflow-hidden z-50"
                     style={{ marginTop: "0px", paddingTop: "8px" }}
                   >
+                    <Link
+                      href={academyCollectionHref(academy)}
+                      onClick={() => setOpenDropdown(null)}
+                      className="block w-full text-left px-4 py-2 text-base font-bold hover:bg-muted transition-colors border-b border-border"
+                      style={{ color: "#b8946a" }}
+                    >
+                      {`All ${label} Classes`}
+                    </Link>
                     {CLASS_YEARS.map((year) => (
                       <Link
                         key={year}
@@ -142,6 +150,17 @@ export function Header() {
                     }}
                   >
                     <div className="pl-4 pb-3 space-y-1">
+                      <Link
+                        href={academyCollectionHref(academy)}
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setOpenMobileAccordion(null)
+                        }}
+                        className="block text-xs font-bold hover:opacity-80 transition-opacity py-1.5 border-b border-border mb-1 pb-2"
+                        style={{ color: "#b8946a" }}
+                      >
+                        {`All ${label} Classes`}
+                      </Link>
                       {CLASS_YEARS.map((year) => (
                         <Link
                           key={year}

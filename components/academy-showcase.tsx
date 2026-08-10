@@ -1,7 +1,10 @@
+import Link from "next/link"
 import { Target, Crosshair, Shield, Gauge, Flame, Briefcase } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { StickyOrderButton } from "@/components/sticky-order-button"
 import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
+import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-breadcrumb"
+import { academyCollectionHref } from "@/lib/academies"
 import type { Academy } from "@/types"
 
 interface AcademyShowcaseProps {
@@ -9,6 +12,7 @@ interface AcademyShowcaseProps {
   classYear?: string
   h1?: string
   pageTitle?: string
+  breadcrumbItems?: SiteBreadcrumbItem[]
 }
 
 const academyConfig = {
@@ -115,12 +119,24 @@ function getProductPhotos(academy: Academy, classYear: string): ProductPhoto[] {
   })
 }
 
-export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, pageTitle }: AcademyShowcaseProps) {
+export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, pageTitle, breadcrumbItems }: AcademyShowcaseProps) {
   const config = academyConfig[academy]
   const productPhotos = getProductPhotos(academy, classYear)
 
   return (
     <div className="min-h-screen pt-20" style={{ "--academy-color": config.color, "--gold-color": config.gold } as any}>
+      {breadcrumbItems && (
+        <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
+          <SiteBreadcrumb items={breadcrumbItems} />
+          <Link
+            href={academyCollectionHref(academy)}
+            className="text-sm font-semibold hover:opacity-80 transition-opacity whitespace-nowrap"
+            style={{ color: config.gold }}
+          >
+            {`Explore all ${config.shortName} classes`}
+          </Link>
+        </div>
+      )}
       <div className="flex">
         {/* Left Sidebar */}
         <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6">

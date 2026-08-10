@@ -4,7 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import type { Academy } from "@/types"
-import { ACADEMY_TO_SLUG } from "@/lib/academies"
+import { academyCollectionHref } from "@/lib/academies"
 
 const academyData = {
   USNA: {
@@ -68,7 +68,7 @@ export function MainHero() {
             >
               <h2 className="text-base md:text-lg font-bold tracking-wide text-center" style={{ color: "#b8946a" }}>{academyData[academy].name}</h2>
 
-              <Link href={`/${ACADEMY_TO_SLUG[academy]}/2027`} className="block">
+              <Link href={academyCollectionHref(academy)} className="block">
               <Card
                 className="relative overflow-hidden border-2 hover:border-secondary transition-all duration-300 cursor-pointer group h-[350px] md:h-[500px]"
                 style={{ borderColor: academyData[academy].borderColor }}

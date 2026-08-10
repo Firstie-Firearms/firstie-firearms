@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next"
-import { ACADEMY_SLUGS, CLASS_YEARS } from "@/lib/academies"
+import { ACADEMY_COLLECTION_SLUGS, ACADEMY_SLUGS, CLASS_YEARS } from "@/lib/academies"
 
 const BASE_URL = "https://www.firstiefirearms.com"
 
@@ -25,6 +25,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  // Permanent academy evergreen pages — the parent page for every
+  // class-year product page beneath them, so they get the highest
+  // priority after the homepage.
+  const academyCollectionRoutes: MetadataRoute.Sitemap = Object.values(ACADEMY_COLLECTION_SLUGS).map((slug) => ({
+    url: `${BASE_URL}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }))
+
   const academyRoutes: MetadataRoute.Sitemap = Object.keys(ACADEMY_SLUGS).flatMap((slug) =>
     CLASS_YEARS.map((year) => ({
       url: `${BASE_URL}/${slug}/${year}`,
@@ -42,5 +52,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...staticRoutes, ...academyRoutes, ...reunionRoutes]
+  return [...staticRoutes, ...academyCollectionRoutes, ...academyRoutes, ...reunionRoutes]
 }
