@@ -229,7 +229,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               <p className="font-sans text-sm font-bold whitespace-nowrap" style={{ color: config.gold }}>
                 First Production Batch
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 whitespace-nowrap">
+              <div className="flex flex-col gap-0.5 whitespace-nowrap">
                 <div className="flex items-baseline justify-between sm:justify-start gap-2 whitespace-nowrap">
                   <span className="text-[10px] font-sans uppercase tracking-wider text-white/50 whitespace-nowrap">Order Deadline</span>
                   <span className="font-sans text-xs font-semibold text-white whitespace-nowrap">November 1, 2026</span>
@@ -245,7 +245,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               <p className="font-sans text-sm font-bold whitespace-nowrap" style={{ color: config.gold }}>
                 Commissioning Delivery Batch
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 whitespace-nowrap">
+              <div className="flex flex-col gap-0.5 whitespace-nowrap">
                 <div className="flex items-baseline justify-between sm:justify-start gap-2 whitespace-nowrap">
                   <span className="text-[10px] font-sans uppercase tracking-wider text-white/50 whitespace-nowrap">Order Deadline</span>
                   <span className="font-sans text-xs font-semibold text-white whitespace-nowrap">April 1, 2027</span>
