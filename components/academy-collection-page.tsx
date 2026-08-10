@@ -1,7 +1,7 @@
 import Link from "next/link"
 import type { Academy } from "@/types"
 import { academyNames } from "@/types"
-import { CURRENT_AVAILABLE_YEAR, academyCollectionHref, getComingSoonLabel, isClassAvailable } from "@/lib/academies"
+import { CURRENT_AVAILABLE_YEAR, academyCollectionHref, isClassAvailable } from "@/lib/academies"
 import { getAcademyClasses } from "@/lib/academy-collections"
 import { ACADEMY_PAGE_CONTENT } from "@/lib/academy-page-content"
 import { SiteBreadcrumb } from "@/components/site-breadcrumb"
@@ -51,20 +51,6 @@ export function AcademyCollectionPage({ academy }: { academy: Academy }) {
           />
         </div>
         <div className="container mx-auto px-4 py-12 md:py-20 relative z-10 max-w-3xl">
-          <div className="flex flex-col items-start gap-2 mb-4">
-            <span
-              className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60 whitespace-nowrap"
-              style={{ borderColor: GOLD, color: GOLD }}
-            >
-              {available ? "AVAILABLE NOW" : getComingSoonLabel(academy, CURRENT_AVAILABLE_YEAR)}
-            </span>
-            <span
-              className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60"
-              style={{ borderColor: GOLD, color: GOLD }}
-            >
-              {"LIMITED EDITION"}
-            </span>
-          </div>
           <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: GOLD }}>
             {academyName}
           </p>
