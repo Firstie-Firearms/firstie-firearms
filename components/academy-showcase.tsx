@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card"
 import { StickyOrderButton } from "@/components/sticky-order-button"
 import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
 import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-breadcrumb"
-import { academyCollectionHref, getComingSoonLabel, isClassAvailable } from "@/lib/academies"
+import { academyCollectionHref, getComingSoonLabel, isClassAvailable, isPreviewImageGrayedOut } from "@/lib/academies"
 import type { Academy } from "@/types"
 
 interface AcademyShowcaseProps {
@@ -126,6 +126,10 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
   // "coming soon" today, same as every other not-yet-released class/academy.
   const available = !pageTitle && isClassAvailable(academy, classYear)
   const comingSoonLabel = getComingSoonLabel(academy, classYear)
+  // Reunions pages (pageTitle set) always follow the standard grayed-out
+  // treatment; product pages defer to the shared exception (USNA Class of
+  // 2027 stays in full color even though it is still "coming soon").
+  const heroImageGrayedOut = pageTitle ? true : isPreviewImageGrayedOut(academy, classYear)
 
   return (
     <div className="min-h-screen pt-20" style={{ "--academy-color": config.color, "--gold-color": config.gold } as any}>
@@ -214,7 +218,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               src={`/custom-glock-pistol-.jpg?height=800&width=1600&query=custom glock pistol ${academy} military academy on tactical background`}
               alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
               className="w-full h-full object-cover opacity-40"
-              style={available ? undefined : { filter: "grayscale(100%) brightness(0.6)" }}
+              style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
             />
             <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 items-start">
               <div
