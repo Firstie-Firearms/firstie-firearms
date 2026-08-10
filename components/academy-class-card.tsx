@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Card } from "@/components/ui/card"
+import { isPreviewImageGrayedOut } from "@/lib/academies"
 import type { AcademyClassCollectionItem } from "@/lib/academy-collections"
 
 const GOLD = "#b8946a"
@@ -14,7 +15,7 @@ const GOLD = "#b8946a"
  * degrades to a non-interactive card in that case.
  */
 export function AcademyClassCard({ item }: { item: AcademyClassCollectionItem }) {
-  const isAvailable = item.status === "available"
+  const grayedOut = isPreviewImageGrayedOut(item.academy, item.classYear)
 
   const content = (
     <Card className="relative h-full overflow-hidden border-2 border-border transition-colors duration-300 group-hover:border-[--gold] py-0" style={{ "--gold": GOLD } as React.CSSProperties}>
@@ -26,7 +27,7 @@ export function AcademyClassCard({ item }: { item: AcademyClassCollectionItem })
           width={1200}
           height={900}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          style={isAvailable ? undefined : { filter: "grayscale(100%) brightness(0.6)" }}
+          style={grayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
         />
         <div className="absolute top-3 left-3 z-10 flex flex-col items-start gap-1.5">
           <span

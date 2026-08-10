@@ -4,7 +4,13 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import type { Academy } from "@/types"
-import { CURRENT_AVAILABLE_YEAR, academyCollectionHref, getComingSoonLabel, isClassAvailable } from "@/lib/academies"
+import {
+  CURRENT_AVAILABLE_YEAR,
+  academyCollectionHref,
+  getComingSoonLabel,
+  isClassAvailable,
+  isPreviewImageGrayedOut,
+} from "@/lib/academies"
 
 const academyData = {
   USNA: {
@@ -60,6 +66,7 @@ export function MainHero() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {(Object.keys(academyData) as Academy[]).map((academy, index) => {
             const available = isClassAvailable(academy, CURRENT_AVAILABLE_YEAR)
+            const grayedOut = isPreviewImageGrayedOut(academy, CURRENT_AVAILABLE_YEAR)
 
             return (
               <motion.div
@@ -82,7 +89,7 @@ export function MainHero() {
                     src={`/custom-glock-pistol-.jpg?height=800&width=600&query=custom glock pistol ${academy} military academy themed on tactical background`}
                     alt={`${academy} Custom GLOCK`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    style={available ? undefined : { filter: "grayscale(100%) brightness(0.5)" }}
+                    style={grayedOut ? { filter: "grayscale(100%) brightness(0.5)" } : undefined}
                   />
 
                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-20 flex flex-col gap-2 md:gap-3">

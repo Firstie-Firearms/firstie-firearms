@@ -62,6 +62,21 @@ export function isClassAvailable(_academy: Academy, _year: string) {
 }
 
 /**
+ * Whether a preview image (homepage academy tile, class library card, hero
+ * banner, etc.) should render with the grayscale "not yet available"
+ * treatment. This is independent from isClassAvailable / the status tag
+ * text: USNA's Class of 2027 is still labeled "COMING SOON," but its
+ * preview imagery on the homepage and the USNA class library is shown in
+ * full color as a featured exception. Every other academy/year pairing
+ * follows isClassAvailable as before.
+ */
+export function isPreviewImageGrayedOut(academy: Academy, year: string) {
+  const digits = year.replace(/\D/g, "")
+  if (academy === "USNA" && digits === "2027") return false
+  return !isClassAvailable(academy, year)
+}
+
+/**
  * Release month for a given academy/year's "coming soon" tag. USNA classes
  * always release in August. USMA/USAFA's Class of 2027 releases in October,
  * but Classes of 2028, 2029, and 2030 release in August.
