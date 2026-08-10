@@ -26,7 +26,7 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 glass border-b border-border/50">
+    <header className="site-header fixed top-0 left-0 right-0 z-40 glass border-b border-border/50">
       <nav className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo — links to home */}
         <Link href="/" className="flex items-center gap-3 focus:outline-none" aria-label="Go to home page">

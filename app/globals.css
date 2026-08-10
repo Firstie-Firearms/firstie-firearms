@@ -153,6 +153,15 @@
   border: 1px solid var(--glass-border);
 }
 
+/* Backdrop-filter elements (header, sticky order bar) render into their own
+   GPU compositing layer and can visually paint above other fixed-position
+   overlays regardless of z-index. Hide them outright while the product
+   photo lightbox is open so nothing bleeds through the full-screen viewer. */
+body.photo-lightbox-open .site-header,
+body.photo-lightbox-open .site-sticky-order-bar {
+  visibility: hidden;
+}
+
 /* Scanning animation */
 @keyframes scan {
   0%,

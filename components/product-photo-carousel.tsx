@@ -1,6 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -27,6 +28,18 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  // The site header and sticky order bar use backdrop-filter, which renders
+  // into its own GPU compositing layer and can paint above other fixed
+  // overlays regardless of z-index. Hide them via a body class while the
+  // full-screen lightbox is open so no chrome bleeds over the photo.
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    document.body.classList.add("photo-lightbox-open")
+    return () => {
+      document.body.classList.remove("photo-lightbox-open")
+    }
+  }, [lightboxIndex])
 
   const updateArrowState = useCallback(() => {
     const el = trackRef.current
@@ -152,16 +165,19 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
         </button>
       </div>
 
-      {lightboxIndex !== null && (
-        <Lightbox
-          images={images}
-          index={lightboxIndex}
-          accentColor={accentColor}
-          onClose={closeLightbox}
-          onPrev={showPrev}
-          onNext={showNext}
-        />
-      )}
+      {lightboxIndex !== null &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <Lightbox
+            images={images}
+            index={lightboxIndex}
+            accentColor={accentColor}
+            onClose={closeLightbox}
+            onPrev={showPrev}
+            onNext={showNext}
+          />,
+          document.body,
+        )}
     </div>
   )
 }
@@ -267,7 +283,7 @@ function Lightbox({ images, index, accentColor, onClose, onPrev, onNext }: Light
       onClick={handleBackgroundClick}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="fixed inset-0 z-50 flex flex-col bg-black/95"
+      className="fixed inset-0 z-[100] flex h-dvh w-dvw flex-col bg-black/95"
     >
       {/* Close button */}
       <button
@@ -292,7 +308,7 @@ function Lightbox({ images, index, accentColor, onClose, onPrev, onNext }: Light
       </div>
 
       {/* Main image area */}
-      <div className="relative flex-1 flex items-center justify-center px-4 py-16 md:px-20 pointer-events-none">
+      <div className="relative flex-1 flex items-center justify-center px-4 py-12 sm:py-16 md:px-20 pointer-events-none">
         <img
           key={image.src}
           src={image.src}
