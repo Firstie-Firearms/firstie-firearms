@@ -40,24 +40,25 @@ export function academyCollectionHref(academy: Academy) {
   return `/${ACADEMY_COLLECTION_SLUGS[academy]}`
 }
 
-// The single class currently orderable across the entire site. Every other
-// academy/year combination is "coming soon" and should render grayed-out
-// preview imagery — see isClassAvailable below. Update these two constants
-// when the next class becomes available; every page that calls
-// isClassAvailable / getComingSoonLabel will follow automatically.
+// The single class currently orderable across the entire site, used as the
+// reference year for pages (e.g. the homepage academy cards) that show a
+// coming-soon label without a specific class year in context. No class is
+// orderable today — see isClassAvailable below. Update these two constants
+// and isClassAvailable together when a class actually becomes available;
+// every page that calls isClassAvailable / getComingSoonLabel will follow
+// automatically.
 export const CURRENT_AVAILABLE_ACADEMY: Academy = "USNA"
 export const CURRENT_AVAILABLE_YEAR = "2027"
 
 /**
  * Whether a given academy + class year combination is actually orderable
- * today. Only USNA's Class of 2027 is available; every other academy/year
- * pairing (including USNA 2028-2030 and every USMA/USAFA class) is
- * "coming soon" and should be grayed out and tagged consistently wherever
- * its preview image appears (homepage, collection pages, product pages).
+ * today. Every academy/year pairing — including USNA's Class of 2027 — is
+ * currently "coming soon" and should be grayed out and tagged consistently
+ * wherever its preview image appears (homepage, collection pages, product
+ * pages).
  */
-export function isClassAvailable(academy: Academy, year: string) {
-  const digits = year.replace(/\D/g, "")
-  return academy === CURRENT_AVAILABLE_ACADEMY && digits === CURRENT_AVAILABLE_YEAR
+export function isClassAvailable(_academy: Academy, _year: string) {
+  return false
 }
 
 /**
