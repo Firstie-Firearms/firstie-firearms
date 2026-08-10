@@ -83,7 +83,28 @@ export function MainHero() {
                 />
 
                 <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-20 flex flex-col gap-2 md:gap-3">
-                  {(academy === "USMA" || academy === "USAFA") ? (
+                  <div className="flex flex-col gap-2 items-start">
+                    {(academy === "USMA" || academy === "USAFA") ? (
+                      <div
+                        className="inline-block self-start px-3 py-1 text-xs font-mono border rounded"
+                        style={{
+                          borderColor: academyData[academy].goldColor,
+                          color: academyData[academy].goldColor,
+                        }}
+                      >
+                        {"COMING SOON - OCTOBER '26"}
+                      </div>
+                    ) : (
+                      <div
+                        className="inline-block self-start px-3 py-1 text-xs font-mono border rounded"
+                        style={{
+                          borderColor: academyData[academy].goldColor,
+                          color: academyData[academy].goldColor,
+                        }}
+                      >
+                        {"COMING SOON - AUGUST '26"}
+                      </div>
+                    )}
                     <div
                       className="inline-block self-start px-3 py-1 text-xs font-mono border rounded"
                       style={{
@@ -91,19 +112,9 @@ export function MainHero() {
                         color: academyData[academy].goldColor,
                       }}
                     >
-                      {"COMING SOON - OCTOBER '26"}
+                      {"LIMITED EDITION"}
                     </div>
-                  ) : (
-                    <div
-                      className="inline-block self-start px-3 py-1 text-xs font-mono border rounded"
-                      style={{
-                        borderColor: academyData[academy].goldColor,
-                        color: academyData[academy].goldColor,
-                      }}
-                    >
-                      {"COMING SOON - AUGUST '26"}
-                    </div>
-                  )}
+                  </div>
 
                   <h3 className="text-2xl md:text-3xl font-bold" style={{ color: academyData[academy].goldColor }}>
                     {academyData[academy].shortName}

@@ -146,17 +146,25 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
               className="w-full h-full object-cover opacity-40"
             />
-            <div
-              className="absolute top-4 left-4 z-20 inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60"
-              style={{ borderColor: config.gold, color: config.gold }}
-            >
-              {pageTitle
-                ? "COMING SOON"
-                : classYear === "Class of 2027"
-                ? academy === "USNA"
-                  ? "COMING SOON - AUGUST '26"
-                  : "COMING SOON - OCTOBER '26"
-                : `COMING SOON - AUGUST '${String((Number.parseInt(classYear.replace(/\D/g, ""), 10) - 1) % 100).padStart(2, "0")}`}
+            <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 items-start">
+              <div
+                className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60"
+                style={{ borderColor: config.gold, color: config.gold }}
+              >
+                {pageTitle
+                  ? "COMING SOON"
+                  : classYear === "Class of 2027"
+                  ? academy === "USNA"
+                    ? "COMING SOON - AUGUST '26"
+                    : "COMING SOON - OCTOBER '26"
+                  : `COMING SOON - AUGUST '${String((Number.parseInt(classYear.replace(/\D/g, ""), 10) - 1) % 100).padStart(2, "0")}`}
+              </div>
+              <div
+                className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60"
+                style={{ borderColor: config.gold, color: config.gold }}
+              >
+                {"LIMITED EDITION"}
+              </div>
             </div>
           </section>
 

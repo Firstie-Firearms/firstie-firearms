@@ -7,6 +7,7 @@ export function ComingSoonMarquee() {
     <div className="py-16 overflow-hidden border-y border-border/50">
       <div className="space-y-4">
         <h3 className="text-center text-sm font-mono text-muted-foreground tracking-wider">{"COMING SOON"}</h3>
+        <h3 className="text-center text-sm font-mono text-muted-foreground tracking-wider">{"LIMITED EDITION"}</h3>
 
         <div className="relative flex overflow-x-hidden">
           <div className="flex animate-marquee whitespace-nowrap">
