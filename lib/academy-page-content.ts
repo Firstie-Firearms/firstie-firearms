@@ -89,7 +89,7 @@ export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
     ],
   },
   USMA: {
-    breadcrumbLabel: "West Point",
+    breadcrumbLabel: "United States Military Academy",
     heroHeading: "Commemorative Pistols for the Classes of the United States Military Academy",
     heroParagraphs: [
       "Firstie Firearms builds made-to-order commemorative pistols for graduates of the United States Military Academy at West Point, with each class receiving its own class-specific engraving, finish, and presentation case.",

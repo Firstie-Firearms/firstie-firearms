@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { AcademyShowcase } from "@/components/academy-showcase"
 import { ACADEMY_SLUGS, academyCollectionHref } from "@/lib/academies"
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb-schema"
+import { ACADEMY_PAGE_CONTENT } from "@/lib/academy-page-content"
 import { academyNames } from "@/types"
 
 const BASE_URL = "https://www.firstiefirearms.com"
@@ -66,16 +67,19 @@ export default async function ReunionsPage({ params }: ReunionsPageProps) {
   const canonicalUrl = `${BASE_URL}/${academy.toLowerCase()}/reunions`
   const h1 = `${academyName} Reunions Commemorative Pistol`
   const collectionHref = academyCollectionHref(academyKey)
+  // Short breadcrumb label ("Naval Academy") — kept in sync with the label
+  // shown on the academy's own collection page breadcrumb.
+  const breadcrumbAcademyLabel = ACADEMY_PAGE_CONTENT[academyKey].breadcrumbLabel
 
   const breadcrumbItems = [
     { label: "Home", href: "/" },
-    { label: `${academyName} Graduation Gifts`, href: collectionHref },
+    { label: breadcrumbAcademyLabel, href: collectionHref },
     { label: "Reunions" },
   ]
 
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: "Home", url: BASE_URL },
-    { name: `${academyName} Graduation Gifts`, url: `${BASE_URL}${collectionHref}` },
+    { name: breadcrumbAcademyLabel, url: `${BASE_URL}${collectionHref}` },
     { name: "Reunions", url: canonicalUrl },
   ])
 

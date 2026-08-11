@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { AcademyShowcase } from "@/components/academy-showcase"
 import { ACADEMY_SLUGS, CLASS_YEARS, academyCollectionHref, classYearLabel } from "@/lib/academies"
 import { buildBreadcrumbSchema } from "@/lib/breadcrumb-schema"
+import { ACADEMY_PAGE_CONTENT } from "@/lib/academy-page-content"
 import { academyNames } from "@/types"
 
 const BASE_URL = "https://www.firstiefirearms.com"
@@ -103,18 +104,23 @@ export default async function AcademyPage({ params }: AcademyPageProps) {
   const canonicalUrl = `${BASE_URL}/${academy.toLowerCase()}/${year}`
   const academyName = academyNames[academyKey]
   const collectionHref = academyCollectionHref(academyKey)
+  // Short breadcrumb label ("Naval Academy") — kept in sync with the label
+  // shown on the academy's own collection page breadcrumb, distinct from
+  // the longer SEO page <title>/<h1> copy used elsewhere on this page.
+  const breadcrumbAcademyLabel = ACADEMY_PAGE_CONTENT[academyKey].breadcrumbLabel
+  const classCrumbLabel = `${academy.toUpperCase()} ${label}`
 
   const breadcrumbItems = [
     { label: "Home", href: "/" },
-    { label: `${academyName} Graduation Gifts`, href: collectionHref },
-    { label },
+    { label: breadcrumbAcademyLabel, href: collectionHref },
+    { label: classCrumbLabel },
   ]
 
   // BreadcrumbList schema — always present, mirrors breadcrumbItems above
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: "Home", url: BASE_URL },
-    { name: `${academyName} Graduation Gifts`, url: `${BASE_URL}${collectionHref}` },
-    { name: label, url: canonicalUrl },
+    { name: breadcrumbAcademyLabel, url: `${BASE_URL}${collectionHref}` },
+    { name: classCrumbLabel, url: canonicalUrl },
   ])
 
   // Product schema only for USNA Class of 2027 (the only currently orderable product)

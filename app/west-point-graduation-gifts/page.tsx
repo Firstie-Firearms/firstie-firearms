@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 export default function WestPointGraduationGiftsPage() {
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: "Home", url: BASE_URL },
-    { name: "West Point", url: CANONICAL_URL },
+    { name: "United States Military Academy", url: CANONICAL_URL },
   ])
 
   return (
