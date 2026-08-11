@@ -16,7 +16,9 @@ export function OurHeritage() {
             {"About Firstie Firearms"}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground font-serif">
-            {"Forged in Tradition | Establishing a Legacy"}
+            <span>{"Forged in Tradition |"}</span>
+            <br className="md:hidden" />
+            <span className="md:before:content-['_']">{"Establishing a Legacy"}</span>
           </p>
         </div>
       </section>
