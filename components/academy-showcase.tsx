@@ -239,8 +239,12 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         </main>
       </div>
 
-      {/* Delivery Batch Banner — full viewport width, outside sidebar layout */}
-      {classYear === "Class of 2027" ? (
+      {/* Delivery Batch Banner — full viewport width, outside sidebar layout.
+          Only USNA's Class of 2027 is close enough to release to show
+          delivery batches; USMA/USAFA's Class of 2027 (and every other
+          not-yet-available class) shows the standard "Sign Up for Release
+          Update" ribbon instead. */}
+      {academy === "USNA" && classYear === "Class of 2027" ? (
         <div className="w-full border-y border-white/10 overflow-x-auto" style={{ backgroundColor: config.color }}>
           <div className="flex flex-col sm:flex-row items-stretch divide-y sm:divide-y-0 sm:divide-x divide-white/10">
             {/* Batch 1 */}
