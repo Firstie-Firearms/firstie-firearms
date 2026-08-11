@@ -99,18 +99,18 @@ export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
     collectionHeading: "West Point Class Collection",
     whyHeading: "Designed to Mark the Transition from Cadet to Officer",
     whyParagraphs: [
-      "Graduation and commissioning at West Point mark the end of four demanding years and the start of a career carrying forward the traditions of the Long Gray Line. Firstie Firearms builds a single commemorative piece for each class to mark that specific transition.",
-      "Rather than a single design shared across every class, each West Point edition is engraved with elements unique to that class — so the piece reflects the identity of the specific class it was built for, not West Point in general.",
+      "Graduation and commissioning from the United States Military Academy mark the end of four demanding years at West Point and the beginning of a career of service in the United States Army. The Firstie Firearms West Point Collection is built to commemorate that moment with a piece shaped by the traditions, character, and history of the Academy.",
+      "Each class receives a design created specifically for its own place in the Long Gray Line. The engraving, finishes, colors, and presentation are developed together so the finished piece reflects both West Point and the class it was created to honor. Rather than producing a single design for every graduate, each edition is intended to preserve the identity of a particular class and the moment its members transitioned from cadets to commissioned officers.",
     ],
-    craftsmanshipHeading: "Built to Carry the Story Forward",
+    craftsmanshipHeading: "Every Detail Chosen With Purpose",
     craftsmanshipParagraphs: [
-      "Every West Point commemorative piece begins as a factory-new GLOCK 19X V. The slide is transformed through deep, multi-layer laser engraving, then hand-finished and polished before being protected with a durable Cerakote finish designed to preserve the artwork for generations.",
-      "The completed pistol ships with three factory magazines and is housed in a custom two-level presentation case, with the upper level displaying the pistol and the lower level holding the included magazines in dense, closed-cell foam. As with every class-year piece Firstie Firearms builds, the completed firearm transfers to you through your local FFL dealer.",
+      "Each commemorative piece begins as a new GLOCK 19X V and is transformed through deep, multi-layer laser engraving, careful hand finishing, and deliberately selected Cerakote finishes. Every color is hand selected to complement the artwork while drawing from the military character and traditions associated with West Point and the Army.",
+      "The presentation case receives the same level of attention. Each case is detailed specifically for the West Point Collection, incorporating elements intended to reinforce the history, traditions, and significance of the Academy. Nothing is treated as an afterthought. The firearm, finishes, engraving, and case are designed as a complete presentation, with each decision made to honor the graduating and commissioning recipient.",
     ],
-    whoHeading: "Who the Collection Is For",
+    whoHeading: "Built to Honor the Achievement—and Carry It Forward",
     whoParagraphs: [
-      "Graduating cadets order their class's piece as a keepsake of commissioning into the Long Gray Line. Parents and family members purchase it as a gift to mark the milestone. West Point alumni have also used the collection to look back at the design built for their own graduating class, or to see what's coming next for the classes behind them.",
-      "Because each design is tied to a specific class, the collection gives sponsors, mentors, and classmates a way to give a gift tied directly to one graduate's own class year, rather than a general West Point keepsake.",
+      "The West Point Collection is created for graduating cadets, families celebrating commissioning, and alumni who want a lasting connection to their own class and Academy. Each piece is designed to live beyond the ceremony—as a functional firearm worthy of the range and a commemorative piece intended to be preserved for generations.",
+      "Tying every edition to a specific graduating class makes the collection personal. It is not simply a reminder of West Point. It represents the recipient's own class, their years as a cadet, and their place within the Long Gray Line.",
     ],
     faqHeading: "West Point Collection FAQ",
     faqs: [
