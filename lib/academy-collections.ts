@@ -45,7 +45,8 @@ export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[
       // (see isPreviewImageGrayedOut) even though isClassAvailable is false
       // for every academy/year today — its card link should read "View",
       // not "Preview", to match that featured treatment.
-      const useViewLabel = isAvailable || (academy === "USNA" && year === "2027")
+      const isFeaturedPreview = academy === "USNA" && year === "2027"
+      const useViewLabel = isAvailable || isFeaturedPreview
       const imageQuery = encodeURIComponent(
         `custom engraved GLOCK 19X V pistol ${shortName} ${label} commemorative with presentation case`,
       )
@@ -56,7 +57,9 @@ export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[
         title: `${shortName} ${label}`,
         description: isAvailable
           ? `The current commemorative edition for the ${academyName}, designed in collaboration with members of the ${label}.`
-          : `A future commemorative edition for the ${academyName} ${label}, released once class-specific artwork is finalized.`,
+          : isFeaturedPreview
+            ? "A fully customized GLOCK 19X V featuring Class of 2027 artwork, Naval heritage, Battleship Gray and Admiral Bronze finishes, and a custom two-level presentation case built specifically for the class."
+            : `A future commemorative edition for the ${academyName} ${label}, released once class-specific artwork is finalized.`,
         image: `/custom-glock-pistol-.jpg?height=900&width=1200&query=${imageQuery}`,
         imageAlt: `${shortName} ${label} commemorative GLOCK 19X V`,
         href: `/${slug}/${year}`,
