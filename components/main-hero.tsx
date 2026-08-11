@@ -50,11 +50,11 @@ export function MainHero() {
         </div>
 
         <div className="container mx-auto px-4 z-10 text-center space-y-4">
-          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }} className="space-y-3 max-w-3xl mx-auto">
-            <h1 className="text-lg sm:text-2xl md:text-3xl font-sans text-foreground leading-relaxed text-balance">
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }} className="space-y-3">
+            <h1 className="text-base sm:text-2xl md:text-3xl font-sans text-foreground leading-relaxed text-balance md:whitespace-nowrap">
               {"Service Academy Graduation Gifts & Commemorative Pistols"}
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-sans text-balance">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-sans text-balance max-w-3xl mx-auto">
               {"Forged in Tradition | Establishing a Legacy"}
             </p>
           </motion.div>
