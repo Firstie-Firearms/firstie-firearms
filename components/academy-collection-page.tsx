@@ -121,7 +121,7 @@ export function AcademyCollectionPage({ academy }: { academy: Academy }) {
           <h2 className="text-xl md:text-2xl font-bold mb-6" style={{ color: GOLD }}>
             {"Continue Exploring"}
           </h2>
-          <nav aria-label="Related pages" className="flex flex-wrap gap-x-8 gap-y-3 text-sm md:text-base">
+          <nav aria-label="Related pages" className="flex flex-col gap-y-3 text-sm md:text-base">
             {currentClass?.href && (
               <Link href={currentClass.href} className="font-semibold hover:opacity-80 transition-opacity" style={{ color: GOLD }}>
                 {`View the Current ${academyName} Class`}
