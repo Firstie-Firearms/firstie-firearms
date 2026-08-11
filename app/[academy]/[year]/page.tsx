@@ -24,10 +24,10 @@ function getPageSeo(academyKey: string, year: string): { title: string; descript
   }
   if (academyKey === "USMA" && year === "2027") {
     return {
-      title: "West Point Class of 2027 Graduation Gift | Firstie Firearms",
+      title: "United States Military Academy Class of 2027 Graduation Gift | Firstie Firearms",
       description:
-        "Get updates on the West Point Class of 2027 commemorative pistol, a made-to-order commissioning gift inspired by the traditions of the Long Gray Line.",
-      h1: "West Point Class of 2027 Commemorative Pistol",
+        "Get updates on the United States Military Academy Class of 2027 commemorative pistol, a made-to-order commissioning gift inspired by the traditions of the Long Gray Line.",
+      h1: "United States Military Academy Class of 2027 Commemorative Pistol",
     }
   }
   if (academyKey === "USAFA" && year === "2027") {

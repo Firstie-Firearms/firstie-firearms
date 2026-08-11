@@ -96,7 +96,7 @@ export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
       "This page is the permanent home for the West Point collection. As new classes are added over time, they will appear here alongside the classes before them, making this the lasting reference point for every West Point edition Firstie Firearms releases.",
     ],
     heroImageQuery: "custom engraved GLOCK 19X V pistol USMA West Point commemorative on dark tactical background",
-    collectionHeading: "West Point Class Collection",
+    collectionHeading: "United States Military Academy Class Collection",
     whyHeading: "Designed to Mark the Transition from Cadet to Officer",
     whyParagraphs: [
       "Graduation and commissioning from the United States Military Academy mark the end of four demanding years at West Point and the beginning of a career of service in the United States Army. The Firstie Firearms West Point Collection is built to commemorate that moment with a piece shaped by the traditions, character, and history of the Academy.",
@@ -112,7 +112,7 @@ export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
       "The West Point Collection is created for graduating cadets, families celebrating commissioning, and alumni who want a lasting connection to their own class and Academy. Each piece is designed to live beyond the ceremony—as a functional firearm worthy of the range and a commemorative piece intended to be preserved for generations.",
       "Tying every edition to a specific graduating class makes the collection personal. It is not simply a reminder of West Point. It represents the recipient's own class, their years as a cadet, and their place within the Long Gray Line.",
     ],
-    faqHeading: "West Point Collection FAQ",
+    faqHeading: "United States Military Academy Collection FAQ",
     faqs: [
       {
         question: "What classes are currently available in the West Point collection?",

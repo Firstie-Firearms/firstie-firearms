@@ -5,9 +5,9 @@ import { buildBreadcrumbSchema } from "@/lib/breadcrumb-schema"
 const BASE_URL = "https://www.firstiefirearms.com"
 const CANONICAL_URL = `${BASE_URL}/west-point-graduation-gifts`
 
-const TITLE = "West Point Graduation Gifts | Firstie Firearms"
+const TITLE = "United States Military Academy Graduation Gifts | Firstie Firearms"
 const DESCRIPTION =
-  "Explore the full collection of made-to-order West Point commemorative pistols, with class-specific engraving, custom Cerakote, and a two-level presentation case for every graduating class."
+  "Explore the full collection of made-to-order United States Military Academy commemorative pistols, with class-specific engraving, custom Cerakote, and a two-level presentation case for every graduating class."
 
 export const metadata: Metadata = {
   title: TITLE,
