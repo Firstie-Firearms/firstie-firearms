@@ -41,6 +41,11 @@ export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[
     .map((year) => {
       const label = classYearLabel(year)
       const isAvailable = isClassAvailable(academy, year)
+      // USNA's Class of 2027 is the featured exception shown in full color
+      // (see isPreviewImageGrayedOut) even though isClassAvailable is false
+      // for every academy/year today — its card link should read "View",
+      // not "Preview", to match that featured treatment.
+      const useViewLabel = isAvailable || (academy === "USNA" && year === "2027")
       const imageQuery = encodeURIComponent(
         `custom engraved GLOCK 19X V pistol ${shortName} ${label} commemorative with presentation case`,
       )
@@ -57,7 +62,7 @@ export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[
         href: `/${slug}/${year}`,
         status: isAvailable ? "available" : "coming-soon",
         statusLabel: isAvailable ? "AVAILABLE NOW" : getComingSoonLabel(academy, year),
-        ctaLabel: isAvailable ? `View ${label}` : `Preview ${label}`,
+        ctaLabel: useViewLabel ? `View ${label}` : `Preview ${label}`,
       } satisfies AcademyClassCollectionItem
     })
 }
