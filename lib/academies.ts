@@ -87,13 +87,18 @@ function getComingSoonMonth(academy: Academy, yearNum: number) {
 }
 
 /**
- * Single source of truth for the "COMING SOON - <MONTH> '<YY>" tag shown on
- * every not-yet-available pistol preview image (homepage cards, collection
- * page heroes, class library cards, and individual product pages). Keeping
- * this in one place ensures the date/format never drifts between pages.
+ * Single source of truth for the not-yet-available pistol preview image tag
+ * (homepage cards, collection page heroes, class library cards, and
+ * individual product pages). Keeping this in one place ensures the
+ * date/format never drifts between pages.
+ *
+ * Class of 2027 (every academy) still reads "COMING SOON - <MONTH> '<YY>".
+ * Classes of 2028 and beyond read "RELEASE DATE - <MONTH> '<YY>" using the
+ * same month/year already computed for that academy/year pairing.
  */
 export function getComingSoonLabel(academy: Academy, year: string) {
   const yearNum = Number.parseInt(year.replace(/\D/g, ""), 10)
   const labelYear = String((yearNum - 1) % 100).padStart(2, "0")
-  return `COMING SOON - ${getComingSoonMonth(academy, yearNum)} '${labelYear}`
+  const prefix = yearNum >= 2028 ? "RELEASE DATE" : "COMING SOON"
+  return `${prefix} - ${getComingSoonMonth(academy, yearNum)} '${labelYear}`
 }
