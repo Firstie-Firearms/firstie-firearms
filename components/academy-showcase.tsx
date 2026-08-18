@@ -5,6 +5,7 @@ import { StickyOrderButton } from "@/components/sticky-order-button"
 import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
 import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-breadcrumb"
 import { academyCollectionHref, getComingSoonLabel, isClassAvailable, isPreviewImageGrayedOut } from "@/lib/academies"
+import { commerceProductKey, isCommerceProductConfigured } from "@/lib/commerce-products"
 import type { Academy } from "@/types"
 
 interface AcademyShowcaseProps {
@@ -130,6 +131,8 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
   // treatment; product pages defer to the shared exception (USNA Class of
   // 2027 stays in full color even though it is still "coming soon").
   const heroImageGrayedOut = pageTitle ? true : isPreviewImageGrayedOut(academy, classYear)
+  const productKey = commerceProductKey(academy, classYear)
+  const productConfigured = isCommerceProductConfigured(productKey)
 
   return (
     <div className="min-h-screen pt-20" style={{ "--academy-color": config.color, "--gold-color": config.gold } as any}>
@@ -713,14 +716,14 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
 
       {/* Sticky / floating order CTA — hides until features section scrolls out of view */}
       {!pageTitle && (
-        <StickyOrderButton
-          label={`${
-            Number.parseInt(classYear.replace(/\D/g, ""), 10) >= 2028 ? "Preorder" : "Order"
-          } ${classYear} Pistol`}
-          gold={config.gold}
-          anchorSelector="#features-anchor"
-          price={Number.parseInt(classYear.replace(/\D/g, ""), 10) === 2027 ? "$2,395.00" : "$500.00"}
-        />
+          <StickyOrderButton
+            label={`${
+              Number.parseInt(classYear.replace(/\D/g, ""), 10) >= 2028 ? "Preorder" : "Order"
+            } ${classYear} Pistol`}
+            gold={config.gold}
+            productKey={productKey}
+            isConfigured={productConfigured}
+          />
       )}
     </div>
   )

@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AgeGateProvider } from "@/components/age-gate-provider"
+import { CartProvider } from "@/components/cart-provider"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { AGE_GATE_INLINE_SCRIPT } from "@/lib/age-gate"
 import "./globals.css"
@@ -116,7 +117,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <ScrollToTop />
-        <AgeGateProvider>{children}</AgeGateProvider>
+        <CartProvider>
+          <AgeGateProvider>{children}</AgeGateProvider>
+        </CartProvider>
         <Analytics />
       </body>
     </html>

@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X, ChevronDown, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useCart } from "@/components/cart-provider"
 import { motion, AnimatePresence } from "framer-motion"
 import type { Academy } from "@/types"
 import { ACADEMY_TO_SLUG, academyCollectionHref } from "@/lib/academies"
@@ -17,6 +18,7 @@ const NAV_ITEMS: { label: string; academy: Academy }[] = [
 ]
 
 export function Header() {
+  const { cart } = useCart()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<Academy | null>(null)
   const [openMobileAccordion, setOpenMobileAccordion] = useState<Academy | null>(null)
@@ -104,12 +106,33 @@ export function Header() {
           >
             {"Our Heritage"}
           </Link>
+          <Link
+            href="/cart"
+            className="flex items-center gap-2 text-sm font-bold hover:opacity-80 transition-opacity"
+            style={{ color: "#b8946a" }}
+            aria-label={`Cart with ${cart?.itemCount ?? 0} items`}
+          >
+            <ShoppingBag className="size-5" aria-hidden="true" />
+            {`Cart (${cart?.itemCount ?? 0})`}
+          </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </Button>
+        <div className="flex items-center gap-1 md:hidden">
+          <Button variant="ghost" size="icon" asChild>
+            <Link href="/cart" aria-label={`Cart with ${cart?.itemCount ?? 0} items`}>
+              <ShoppingBag />
+              {(cart?.itemCount ?? 0) > 0 && (
+                <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-primary text-[10px] text-primary-foreground">
+                  {cart?.itemCount}
+                </span>
+              )}
+            </Link>
+          </Button>
+          {/* Mobile Menu Button */}
+          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </Button>
+        </div>
       </nav>
 
       {/* Mobile Navigation */}
