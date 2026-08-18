@@ -31,7 +31,9 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ it
       return NextResponse.json({ message: `Quantity cannot exceed ${MAX_QUANTITY}.` }, { status: 400 })
     }
 
-    return NextResponse.json({ cart: await updateCartItem(id, itemId, quantity) })
+    return NextResponse.json({
+      cart: await updateCartItem(id, itemId, target.productId, target.variantId, quantity),
+    })
   } catch (error) {
     return NextResponse.json(
       { message: "We couldn't update your cart. Please try again." },

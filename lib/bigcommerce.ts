@@ -134,10 +134,18 @@ export async function addCartItem(cartId: string, productId: number, variantId: 
   return normalizeCart(cart)
 }
 
-export async function updateCartItem(cartId: string, itemId: string, quantity: number) {
+export async function updateCartItem(
+  cartId: string,
+  itemId: string,
+  productId: number,
+  variantId: number,
+  quantity: number,
+) {
   const cart = await request<BigCommerceCart>(`/carts/${encodeURIComponent(cartId)}/items/${encodeURIComponent(itemId)}?include=redirect_urls`, {
     method: "PUT",
-    body: JSON.stringify({ line_item: { quantity } }),
+    body: JSON.stringify({
+      line_item: { product_id: productId, variant_id: variantId, quantity },
+    }),
   })
   return normalizeCart(cart)
 }
