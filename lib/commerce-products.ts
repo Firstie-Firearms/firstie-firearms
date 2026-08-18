@@ -19,7 +19,7 @@ export const COMMERCE_PRODUCTS: Record<string, CommerceProductMapping> = {
     academy: "USNA",
     year: "2027",
     // TODO: Replace with the real BigCommerce IDs before enabling ordering.
-    productId: null,
+    productId: 112,
     variantId: null,
   },
 }
