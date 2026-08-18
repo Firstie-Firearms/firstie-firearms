@@ -20,7 +20,7 @@ export const COMMERCE_PRODUCTS: Record<string, CommerceProductMapping> = {
     year: "2027",
     // TODO: Replace with the real BigCommerce IDs before enabling ordering.
     productId: 112,
-    variantId: null,
+    variantId: 77,
   },
 }
 
