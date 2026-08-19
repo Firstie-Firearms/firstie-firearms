@@ -45,17 +45,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [actionError, setActionError] = useState<string | null>(null)
   const mutationInFlight = useRef(false)
 
-  const runMutation = async (operation: () => Promise<CartResponse>) => {
-    if (mutationInFlight.current) return
+  const runMutation = async (operation: () => Promise<CartResponse>): Promise<boolean> => {
+    if (mutationInFlight.current) return false
     mutationInFlight.current = true
     setIsMutating(true)
     setActionError(null)
     try {
       const result = await operation()
       await mutate(result, { revalidate: false })
+      return true
     } catch (error) {
+      // Errors are surfaced to the UI via `actionError` below. Callers that fire and
+      // forget this promise (e.g. `void updateItem(...)`) must not see an unhandled
+      // rejection, so we intentionally swallow it here instead of re-throwing.
       setActionError(error instanceof Error ? error.message : "We couldn't update your cart.")
-      throw error
+      return false
     } finally {
       mutationInFlight.current = false
       setIsMutating(false)
@@ -68,28 +72,24 @@ export function CartProvider({ children }: { children: ReactNode }) {
       isLoading,
       isMutating,
       error: actionError ?? (loadError instanceof Error ? loadError.message : null),
-      addItem: async (productKey, quantity = 1) => {
-        try {
-          await runMutation(() =>
-            cartRequest("/api/cart/items", {
-              method: "POST",
-              body: JSON.stringify({ productKey, quantity }),
-            }),
-          )
-          return true
-        } catch {
-          return false
-        }
-      },
-      updateItem: (itemId, quantity) =>
+      addItem: (productKey, quantity = 1) =>
         runMutation(() =>
+          cartRequest("/api/cart/items", {
+            method: "POST",
+            body: JSON.stringify({ productKey, quantity }),
+          }),
+        ),
+      updateItem: async (itemId, quantity) => {
+        await runMutation(() =>
           cartRequest(`/api/cart/items/${encodeURIComponent(itemId)}`, {
             method: "PATCH",
             body: JSON.stringify({ quantity }),
           }),
-        ),
-      removeItem: (itemId) =>
-        runMutation(() => cartRequest(`/api/cart/items/${encodeURIComponent(itemId)}`, { method: "DELETE" })),
+        )
+      },
+      removeItem: async (itemId) => {
+        await runMutation(() => cartRequest(`/api/cart/items/${encodeURIComponent(itemId)}`, { method: "DELETE" }))
+      },
       checkout: async () => {
         setIsMutating(true)
         setActionError(null)
@@ -99,8 +99,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
           if (window.self !== window.top) window.open(result.checkoutUrl, "_blank", "noopener,noreferrer")
           else window.location.assign(result.checkoutUrl)
         } catch (error) {
+          // Swallowed intentionally: the error is surfaced via `actionError`, and
+          // `checkout` is invoked as `void checkout()` from the UI, so re-throwing
+          // here would only produce an unhandled promise rejection.
           setActionError(error instanceof Error ? error.message : "Secure checkout is temporarily unavailable.")
-          throw error
         } finally {
           setIsMutating(false)
         }
