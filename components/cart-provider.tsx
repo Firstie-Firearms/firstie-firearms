@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react"
+import { createContext, useContext, useMemo, useRef, useState, type ReactNode } from "react"
 import useSWR from "swr"
 import type { CartResponse, CommerceCart } from "@/lib/cart-types"
 
@@ -43,8 +43,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
   })
   const [isMutating, setIsMutating] = useState(false)
   const [actionError, setActionError] = useState<string | null>(null)
+  const mutationInFlight = useRef(false)
 
   const runMutation = async (operation: () => Promise<CartResponse>) => {
+    if (mutationInFlight.current) return
+    mutationInFlight.current = true
     setIsMutating(true)
     setActionError(null)
     try {
@@ -54,6 +57,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       setActionError(error instanceof Error ? error.message : "We couldn't update your cart.")
       throw error
     } finally {
+      mutationInFlight.current = false
       setIsMutating(false)
     }
   }
