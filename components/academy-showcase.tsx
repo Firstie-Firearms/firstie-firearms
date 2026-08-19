@@ -228,13 +228,13 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60 whitespace-nowrap"
                 style={{ borderColor: config.gold, color: config.gold }}
               >
-                {available ? "AVAILABLE NOW" : comingSoonLabel}
+                {pageTitle ? "FORGE YOUR CLASS NOW" : available ? "AVAILABLE NOW" : comingSoonLabel}
               </div>
               <div
                 className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60"
                 style={{ borderColor: config.gold, color: config.gold }}
               >
-                {"LIMITED EDITION"}
+                {pageTitle ? "LIMITED EDITIONS" : "LIMITED EDITION"}
               </div>
             </div>
           </section>
