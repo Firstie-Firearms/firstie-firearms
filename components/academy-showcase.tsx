@@ -287,21 +287,21 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       ) : (
         <div className="w-full border-y border-white/10 flex items-center justify-center py-1.5 px-4 overflow-x-auto" style={{ backgroundColor: config.color }}>
           {pageTitle ? (
-            <a
-              href="mailto:info@firstiefirearms.com"
+            <Link
+              href={`/reunion-inquiry?academy=${academy}`}
               className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
               style={{ borderColor: config.gold, color: config.gold }}
             >
-              Contact Firstie Firearms
-            </a>
+              Contact Firstie Firearms Now
+            </Link>
           ) : (
-            <button
-              type="button"
+            <Link
+              href="#release-notification"
               className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
               style={{ borderColor: config.gold, color: config.gold }}
             >
-              Sign Up for Release Update
-            </button>
+              Sign Up for Release Notification
+            </Link>
           )}
         </div>
       )}
@@ -331,13 +331,13 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             </p>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
               {"If you're interested in creating a custom reunion edition for your class, we'd love to hear from you. "}
-              <a
-                href="mailto:info@firstiefirearms.com"
+              <Link
+                href={`/reunion-inquiry?academy=${academy}`}
                 className="font-semibold transition-opacity hover:opacity-75"
                 style={{ color: config.gold }}
               >
-                {"Contact Firstie Firearms"}
-              </a>
+                {"Contact Firstie Firearms Now"}
+              </Link>
               {" to begin the design process and bring your class's vision to life."}
             </p>
           </div>
@@ -714,17 +714,17 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         </div>
       )}
 
-      {/* Sticky / floating order CTA — hides until features section scrolls out of view */}
-      {!pageTitle && (
-          <StickyOrderButton
-            label={`${
-              Number.parseInt(classYear.replace(/\D/g, ""), 10) >= 2028 ? "Preorder" : "Order"
-            } ${classYear} Pistol`}
-            gold={config.gold}
-            productKey={productKey}
-            isConfigured={productConfigured}
-          />
-      )}
+      {/* Sticky action: commerce for USNA 2027, release signup for all other classes, contact for reunions. */}
+      <StickyOrderButton
+        label={`Order ${classYear} Pistol`}
+        gold={config.gold}
+        academy={config.name}
+        classYear={classYear}
+        mode={pageTitle ? "contact" : productConfigured ? "commerce" : "release"}
+        contactHref={pageTitle ? `/reunion-inquiry?academy=${academy}` : undefined}
+        productKey={productKey}
+        isConfigured={productConfigured}
+      />
     </div>
   )
 }
