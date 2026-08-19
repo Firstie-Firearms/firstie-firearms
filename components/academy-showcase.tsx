@@ -244,20 +244,12 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           {/* Hero Section */}
           <section className="relative h-[32vh] md:h-[62vh] overflow-hidden">
             {h1 && <h1 className="sr-only">{h1}</h1>}
-            {academy === "USNA" && classYear === "Class of 2027" ? (
-              <img
-                src="/usna-2027/hero-presentation-case-in-vehicle.jpg"
-                alt="USNA Class of 2027 commemorative GLOCK 19X V in its engraved presentation case, resting inside a military vehicle"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <img
-                src={`/custom-glock-pistol-.jpg?height=800&width=1600&query=custom glock pistol ${academy} military academy on tactical background`}
-                alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
-                className="w-full h-full object-cover opacity-40"
-                style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
-              />
-            )}
+            <img
+              src={`/custom-glock-pistol-.jpg?height=800&width=1600&query=custom glock pistol ${academy} military academy on tactical background`}
+              alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
+              className="w-full h-full object-cover opacity-40"
+              style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
+            />
             <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 items-start">
               <div
                 className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60 whitespace-nowrap"
