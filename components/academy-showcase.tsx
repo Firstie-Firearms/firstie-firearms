@@ -88,7 +88,34 @@ const weaponFeatures = [
  * smaller/optimized version for the carousel strip; `src` is used for the
  * full-screen viewer and should be the highest-resolution version.
  */
+// Real photography for the USNA Class of 2027 pistol — the only build that
+// currently has actual product photos. Every other academy/year still falls
+// back to the AI-generated placeholder query below until real photos exist.
+const USNA_2027_PHOTOS: ProductPhoto[] = [
+  { src: "/usna-2027/slide-engraving-class-of-2027.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 slide engraving detail with class banner" },
+  { src: "/usna-2027/left-profile-super-heavy.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 left side profile" },
+  { src: "/usna-2027/slide-detail-dont-give-up-the-ship.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 slide detail, \u201cDon't Give Up the Ship\u201d" },
+  { src: "/usna-2027/full-slide-engraving-panorama.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 full slide engraving panorama" },
+  { src: "/usna-2027/slide-crest-and-serial-detail.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 slide crest and serial number detail" },
+  { src: "/usna-2027/front-slide-serrations-detail.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 front slide serrations and engraving detail" },
+  { src: "/usna-2027/muzzle-end-engraving-detail.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 muzzle end engraving detail" },
+  { src: "/usna-2027/slide-detail-trident-and-eagle.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 slide detail, trident and eagle motif" },
+  { src: "/usna-2027/right-profile-battleship-gray.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 right side profile, Battleship Gray finish" },
+  { src: "/usna-2027/right-profile-teal-background.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 right side profile" },
+  { src: "/usna-2027/with-dress-uniform-cover.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 with Marine Corps dress uniform cover" },
+  { src: "/usna-2027/with-marine-officer-cover.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 with officer's cover" },
+  { src: "/usna-2027/leaning-on-vehicle-with-marine-cover.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 leaning on vehicle with Marine Corps cover" },
+  { src: "/usna-2027/leaning-against-vehicle-door.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 leaning against vehicle door" },
+  { src: "/usna-2027/on-military-vehicle-with-marine-cover.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 on military vehicle with Marine Corps cover" },
+  { src: "/usna-2027/leaning-on-vehicle-with-officer-cap.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 leaning on vehicle with officer's cap" },
+  { src: "/usna-2027/presentation-case-open-in-vehicle.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 presentation case open, \u201cUnited States Naval Academy\u201d" },
+]
+
 function getProductPhotos(academy: Academy, classYear: string): ProductPhoto[] {
+  if (academy === "USNA" && classYear === "Class of 2027") {
+    return USNA_2027_PHOTOS
+  }
+
   const shortName = academyConfig[academy].shortName
   const views = [
     "complete left side profile",
