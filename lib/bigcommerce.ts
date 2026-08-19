@@ -265,12 +265,10 @@ export async function updateCartItem(
   variantId: number,
   quantity: number,
 ) {
-  // productId and variantId are intentionally retained in the
-  // function signature so existing callers do not need to change.
-  // BigCommerce only needs the new quantity for this update.
-  void productId
-  void variantId
-
+  // BigCommerce's Update Cart Line Item endpoint requires `product_id` (and
+  // `variant_id` for products with variants) in the request body, not just
+  // `quantity`. Omitting them causes BigCommerce to reject the request with
+  // a 400, so we must pass them through.
   const cart = await request<BigCommerceCart>(
     `/carts/${encodeURIComponent(
       cartId,
@@ -281,6 +279,8 @@ export async function updateCartItem(
       method: "PUT",
       body: JSON.stringify({
         line_item: {
+          product_id: productId,
+          variant_id: variantId,
           quantity,
         },
       }),
