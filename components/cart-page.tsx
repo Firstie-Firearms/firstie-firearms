@@ -2,8 +2,6 @@
 
 import Link from "next/link"
 import { Loader2, Minus, Plus, ShieldCheck, ShoppingBag, Trash2 } from "lucide-react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { SiteBreadcrumb } from "@/components/site-breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -17,8 +15,7 @@ export function CartPage() {
   const { cart, isLoading, isMutating, error, updateItem, removeItem, checkout } = useCart()
 
   return (
-    <div id="site-content" className="min-h-screen bg-background text-foreground">
-      <Header />
+    <div className="min-h-screen bg-background text-foreground">
       <main className="container mx-auto px-4 pb-20 pt-28 md:px-6">
         <SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Cart" }]} />
         <div className="flex flex-col gap-2 py-8">
@@ -108,7 +105,6 @@ export function CartPage() {
           </div>
         )}
       </main>
-      <Footer />
     </div>
   )
 }
