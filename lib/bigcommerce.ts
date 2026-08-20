@@ -56,16 +56,14 @@ class BigCommerceError extends Error {
 function config() {
   const storeHash = process.env.BIGCOMMERCE_STORE_HASH
   const accessToken = process.env.BIGCOMMERCE_ACCESS_TOKEN
-  const storefrontUrl = process.env.BIGCOMMERCE_STOREFRONT_URL
 
-  if (!storeHash || !accessToken || !storefrontUrl) {
+  if (!storeHash || !accessToken) {
     throw new BigCommerceError("Commerce is not configured.", 503)
   }
 
   return {
     storeHash,
     accessToken,
-    storefrontUrl,
   }
 }
 
@@ -333,13 +331,7 @@ export async function getCheckoutUrl(
     )
   }
 
-  const expectedOrigin =
-    new URL(config().storefrontUrl).origin
-
-  const checkoutOrigin =
-    new URL(checkoutUrl).origin
-
-  if (checkoutOrigin !== expectedOrigin) {
+  if (new URL(checkoutUrl).protocol !== "https:") {
     throw new BigCommerceError(
       "Invalid checkout destination.",
       502,
