@@ -176,6 +176,13 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
   const heroImageGrayedOut = pageTitle ? true : isPreviewImageGrayedOut(academy, classYear)
   const productKey = commerceProductKey(academy, classYear)
   const productConfigured = isCommerceProductConfigured(productKey)
+  // USNA's Class of 2027 hero uses a real product photo (open presentation
+  // case with the "Don't Give Up the Ship" flag and engraved pistol) instead
+  // of the generic placeholder used by every other academy/year.
+  const isUsna2027Hero = !pageTitle && academy === "USNA" && classYear === "Class of 2027"
+  const heroImageSrc = isUsna2027Hero
+    ? "/usna-2027/hero-presentation-case.jpg"
+    : `/custom-glock-pistol-.jpg?height=800&width=1600&query=custom glock pistol ${academy} military academy on tactical background`
 
   return (
     <div className="min-h-screen pt-20" style={{ "--academy-color": config.color, "--gold-color": config.gold } as any}>
@@ -258,14 +265,36 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           </section>
 
           {/* Hero Section */}
-          <section className="relative h-[32vh] md:h-[62vh] overflow-hidden">
+          <section className="relative h-[32vh] md:h-[62vh] overflow-hidden bg-background">
             {h1 && <h1 className="sr-only">{h1}</h1>}
-            <img
-              src={`/custom-glock-pistol-.jpg?height=800&width=1600&query=custom glock pistol ${academy} military academy on tactical background`}
-              alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
-              className="w-full h-full object-cover opacity-40"
-              style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
-            />
+            {isUsna2027Hero ? (
+              <>
+                {/* Blurred cover layer fills the full-bleed hero so there is
+                    no hard letterboxing, while the sharp layer below is
+                    object-contain so the entire open case — flag and pistol
+                    included — always stays fully visible on every screen
+                    size. */}
+                <img
+                  src={heroImageSrc || "/placeholder.svg"}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-30"
+                />
+                <img
+                  src={heroImageSrc || "/placeholder.svg"}
+                  alt={`${config.shortName} Class of 2027 commemorative presentation case with engraved pistol and "Don't Give Up the Ship" flag`}
+                  className="absolute inset-0 w-full h-full object-contain"
+                  style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
+                />
+              </>
+            ) : (
+              <img
+                src={heroImageSrc || "/placeholder.svg"}
+                alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
+                className="w-full h-full object-cover opacity-40"
+                style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
+              />
+            )}
             <div className="absolute top-4 left-4 z-20 flex flex-col gap-2 items-start">
               <div
                 className="inline-block px-3 py-1 text-xs font-mono border rounded bg-background/60 whitespace-nowrap"
