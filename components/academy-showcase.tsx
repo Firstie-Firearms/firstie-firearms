@@ -268,18 +268,25 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           <section className="relative h-[32vh] md:h-[62vh] overflow-hidden bg-background">
             {h1 && <h1 className="sr-only">{h1}</h1>}
             {isUsna2027Hero ? (
-              // The source photo is a tall portrait shot, but the engraved
-              // pistol itself runs edge-to-edge as a wide diagonal band
-              // through the vertical center of the frame. object-cover with
-              // a centered position fills the entire hero (no letterboxing)
-              // while only trimming the case/crate above and below the
-              // pistol, so the full weapon stays in view on every screen size.
-              <img
-                src={heroImageSrc || "/placeholder.svg"}
-                alt={`${config.shortName} Class of 2027 commemorative engraved pistol`}
-                className="absolute inset-0 w-full h-full object-cover object-center"
-                style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
-              />
+              <>
+                {/* Blurred cover layer fills the full-bleed hero so there is
+                    no hard letterboxing, while the sharp layer below is
+                    object-contain so the entire open case — flag and pistol
+                    included — always stays fully visible on every screen
+                    size. */}
+                <img
+                  src={heroImageSrc || "/placeholder.svg"}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-30"
+                />
+                <img
+                  src={heroImageSrc || "/placeholder.svg"}
+                  alt={`${config.shortName} Class of 2027 commemorative presentation case with engraved pistol and "Don't Give Up the Ship" flag`}
+                  className="absolute inset-0 w-full h-full object-contain"
+                  style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
+                />
+              </>
             ) : (
               <img
                 src={heroImageSrc || "/placeholder.svg"}
