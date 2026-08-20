@@ -43,7 +43,7 @@ export function MainHero() {
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/custom-tactical-glock-pistol-close-up-on-dark-back.jpg"
+            src="/usna-2027/usna-collection-hero-pistol.jpg"
             alt="Custom commemorative GLOCK pistol for service academy graduation"
             className="w-full h-full object-cover opacity-30"
           />
@@ -86,7 +86,11 @@ export function MainHero() {
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10" />
 
                   <img
-                    src={`/custom-glock-pistol-.jpg?height=800&width=600&query=custom glock pistol ${academy} military academy themed on tactical background`}
+                    src={
+                      academy === "USNA"
+                        ? "/usna-2027/usna-collection-hero-pistol.jpg"
+                        : `/custom-glock-pistol-.jpg?height=800&width=600&query=custom glock pistol ${academy} military academy themed on tactical background`
+                    }
                     alt={`${academy} Custom GLOCK`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     style={grayedOut ? { filter: "grayscale(100%) brightness(0.5)" } : undefined}
