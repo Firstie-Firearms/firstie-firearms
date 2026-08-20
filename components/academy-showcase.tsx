@@ -265,23 +265,19 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           </section>
 
           {/* Hero Section */}
-          <section
-            className={`relative overflow-hidden bg-background ${
-              isUsna2027Hero ? "aspect-[3/2] max-h-[70vh]" : "h-[32vh] md:h-[62vh]"
-            }`}
-          >
+          <section className="relative h-[32vh] md:h-[62vh] overflow-hidden bg-background">
             {h1 && <h1 className="sr-only">{h1}</h1>}
             {isUsna2027Hero ? (
-              // The source photo is pre-cropped to the same 3:2 aspect ratio
-              // as this container (see public/usna-2027/hero-presentation-case.jpg),
-              // with generous margin around the pistol. Matching the container
-              // and image aspect ratios means object-cover fills the space
-              // edge-to-edge with virtually no further cropping, so the full
-              // pistol — grip to muzzle — stays in view on every screen size.
+              // The source photo is a tall portrait shot, but the engraved
+              // pistol itself runs edge-to-edge as a wide diagonal band
+              // through the vertical center of the frame. object-cover with
+              // a centered position fills the entire hero (no letterboxing)
+              // while only trimming the case/crate above and below the
+              // pistol, so the full weapon stays in view on every screen size.
               <img
                 src={heroImageSrc || "/placeholder.svg"}
                 alt={`${config.shortName} Class of 2027 commemorative engraved pistol`}
-                className="w-full h-full object-cover object-center"
+                className="absolute inset-0 w-full h-full object-cover object-center"
                 style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
               />
             ) : (
