@@ -10,6 +10,13 @@ export interface AcademyPageContent {
   heroHeading: string
   heroParagraphs: string[]
   heroImageQuery: string
+  /**
+   * Optional real product photo to use for the collection-page hero instead
+   * of the generic placeholder built from heroImageQuery. Only USNA sets
+   * this today; USMA/USAFA keep using the placeholder until they have their
+   * own real photography.
+   */
+  heroImageSrc?: string
   collectionHeading: string
   whyHeading: string
   whyParagraphs: string[]
@@ -38,6 +45,7 @@ export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
       "This page is the permanent home for the Naval Academy collection. As new classes are added, they will appear here alongside the classes that came before them, so this is always the place to see every Naval Academy edition Firstie Firearms has released.",
     ],
     heroImageQuery: "custom engraved GLOCK 19X V pistol USNA Naval Academy commemorative on dark tactical background",
+    heroImageSrc: "/usna-2027/usna-collection-hero-pistol.jpg",
     collectionHeading: "Naval Academy Class Collection",
     whyHeading: "Designed to Mark the Transition from Midshipman to Officer",
     whyParagraphs: [

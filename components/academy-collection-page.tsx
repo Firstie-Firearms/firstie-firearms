@@ -44,7 +44,10 @@ export function AcademyCollectionPage({ academy }: { academy: Academy }) {
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 z-0">
           <img
-            src={`/custom-glock-pistol-.jpg?height=800&width=1600&query=${encodeURIComponent(content.heroImageQuery)}`}
+            src={
+              content.heroImageSrc ||
+              `/custom-glock-pistol-.jpg?height=800&width=1600&query=${encodeURIComponent(content.heroImageQuery)}`
+            }
             alt={`${academyName} commemorative GLOCK pistol collection`}
             className="h-full w-full object-cover opacity-30"
             style={available ? undefined : { filter: "grayscale(100%) brightness(0.6)" }}

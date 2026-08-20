@@ -50,6 +50,12 @@ export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[
       const imageQuery = encodeURIComponent(
         `custom engraved GLOCK 19X V pistol ${shortName} ${label} commemorative with presentation case`,
       )
+      // USNA's Class of 2027 is the featured exception — its class-library
+      // card uses the real product photo instead of the generic placeholder
+      // every other academy/year still uses.
+      const image = isFeaturedPreview
+        ? "/usna-2027/usna-collection-hero-pistol.jpg"
+        : `/custom-glock-pistol-.jpg?height=900&width=1200&query=${imageQuery}`
 
       return {
         academy,
@@ -60,7 +66,7 @@ export function getAcademyClasses(academy: Academy): AcademyClassCollectionItem[
           : isFeaturedPreview
             ? "A fully customized GLOCK 19X V featuring Class of 2027 artwork, Naval heritage, Battleship Gray and Admiral Bronze finishes, and a custom two-level presentation case built specifically for the class."
             : `A future commemorative edition for the ${academyName} ${label}, released once class-specific artwork is finalized.`,
-        image: `/custom-glock-pistol-.jpg?height=900&width=1200&query=${imageQuery}`,
+        image,
         imageAlt: `${shortName} ${label} commemorative GLOCK 19X V`,
         href: `/${slug}/${year}`,
         status: isAvailable ? "available" : "coming-soon",
