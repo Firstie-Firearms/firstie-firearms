@@ -112,6 +112,19 @@ const USNA_2027_PHOTOS: ProductPhoto[] = [
   { src: "/usna-2027/photo-18.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 beside Marine Corps officer's cover, backlit vehicle interior" },
   { src: "/usna-2027/photo-19.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 macro detail, \u201cClass of 2027\u201d and \u201cDon't Give Up the Ship\u201d engraving" },
   { src: "/usna-2027/photo-20.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 macro slide engraving detail" },
+  { src: "/usna-2027/photo-21.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 vertical slide engraving detail, \u201cClass of 2027\u201d banner and cross" },
+  { src: "/usna-2027/photo-22.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 resting against vehicle door, \u201cDon't Give Up the Ship\u201d engraving" },
+  { src: "/usna-2027/photo-23.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 presentation case open, \u201cClass of 2027, United States Naval Academy\u201d" },
+  { src: "/usna-2027/photo-24.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 muzzle end engraving detail" },
+  { src: "/usna-2027/photo-25.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 macro slide engraving detail with cross motif" },
+  { src: "/usna-2027/photo-26.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 macro slide engraving detail, front sight" },
+  { src: "/usna-2027/photo-27.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 leaning against vehicle equipment" },
+  { src: "/usna-2027/photo-28.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 slide engraving detail, \u201cDe Profundis Ad Caelos Vincimus\u201d motto" },
+  { src: "/usna-2027/photo-29.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 beside officer's dress cover and ceremonial sword" },
+  { src: "/usna-2027/photo-30.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 presentation case open, \u201cClass of 2027, United States Naval Academy\u201d, angled view" },
+  { src: "/usna-2027/photo-31.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 leaning against weathered blue and yellow surface" },
+  { src: "/usna-2027/photo-32.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 \u201cDon't Give Up the Ship\u201d and \u201cDe Profundis Ad Caelos Vincinus\u201d slide engraving detail" },
+  { src: "/usna-2027/photo-33.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 \u201cDon't Give Up the Ship\u201d slide engraving close-up" },
 ]
 
 function getProductPhotos(academy: Academy, classYear: string): ProductPhoto[] {
