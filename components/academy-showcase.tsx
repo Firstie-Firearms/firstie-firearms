@@ -546,6 +546,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </p>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/class-side-engraving.jpg"
+                    alt="Left side of the USNA Class of 2027 GLOCK 19X V slide, deeply engraved with Atlas, the class motto 'De Profundis Ad Caelos Vincimus' on a ribbon, an age-of-sail warship, Zeus and Poseidon, and the USNA inscription"
+                    className="w-full rounded-lg border border-border"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Honoring the Class of 2027"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"The left side of the slide is dedicated to the Class of 2027 and incorporates the elements of the class crest. Atlas stands at the muzzle, carrying the world on his shoulders while looking toward the future. Flowing behind him is the class motto, \u201CDe Profundis Ad Caelos Vincimus\u201D (\u201CFrom the Depths to the Skies, We Conquer\u201D), framed within a ribbon. A historic age-of-sail warship pays tribute to the Navy's rich heritage, while Zeus and Poseidon symbolize strength, leadership, and mastery of sea and sky. The design concludes with the proud inscription USNA framing the rear."}
