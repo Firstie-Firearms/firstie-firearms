@@ -582,6 +582,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/link-in-chain-slide.jpg"
+                    alt="Engraved USNA Class of 2027 slide artwork representing the link between generations"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"The Link in the Chain"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"Running between both sides of the slide is an engraved chain inspired by the Fifth Law of the Navy:"}
