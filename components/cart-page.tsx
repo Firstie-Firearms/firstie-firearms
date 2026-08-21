@@ -93,7 +93,7 @@ export function CartPage() {
                 </div>
                 <Separator />
                 <div className="flex items-baseline justify-between gap-4"><span className="font-semibold">Estimated total</span><span className="text-xl font-bold">{money(cart.total, cart.currency)}</span></div>
-                <Button size="lg" disabled={isMutating} onClick={() => void checkout()}>
+                <Button size="lg" disabled={isMutating || !cart || cart.items.length === 0} onClick={() => void checkout()}>
                   {isMutating ? <Loader2 className="animate-spin" data-icon="inline-start" /> : <ShieldCheck data-icon="inline-start" />}
                   {isMutating ? "Preparing checkout…" : "Proceed to Secure Checkout"}
                 </Button>

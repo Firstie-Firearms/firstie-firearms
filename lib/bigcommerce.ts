@@ -321,6 +321,18 @@ export async function getCheckoutUrl(
     )}?include=redirect_urls`,
   )
 
+  const itemCount =
+    (cart.line_items?.physical_items?.length ?? 0) +
+    (cart.line_items?.digital_items?.length ?? 0) +
+    (cart.line_items?.gift_certificates?.length ?? 0)
+
+  if (itemCount === 0) {
+    throw new BigCommerceError(
+      "Your cart is empty.",
+      400,
+    )
+  }
+
   const checkoutUrl =
     cart.redirect_urls?.checkout_url
 
