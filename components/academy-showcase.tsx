@@ -558,6 +558,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/future-fleet-slide.jpg"
+                    alt="Engraved USNA Class of 2027 slide artwork honoring the Navy's future fleet"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"The Future Fleet"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"The right side of the slide honors the warfare communities that many members of the Class of 2027 will enter upon graduation. A United States Marine leads from the front, representing the Corps' warrior ethos. Behind him are symbols of the Navy's modern fighting force: an Arleigh Burke-class destroyer for the Surface Navy, a Virginia-class fast attack submarine for the Submarine Force, and an F-35 Lightning II representing Naval Aviation."}
