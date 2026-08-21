@@ -177,4 +177,32 @@ describe("Cart page — checkout guardrails & resilience", () => {
 
     await waitFor(() => expect(assignSpy).toHaveBeenCalledWith("https://secure.bigcommerce.example/checkout"))
   })
+
+  it("TEST: a completed purchase (cart invalidated server-side) shows the empty-cart view on return, not stale items", async () => {
+    // Simulates a fresh page load after BigCommerce consumed the cart on order
+    // completion — app/api/cart/route.ts already turns the resulting 404 into
+    // { cart: null } and clears the cookie server-side before this ever runs.
+    fetchMock.mockImplementationOnce(async () => jsonResponse({ cart: null })) // initial load, cart already invalidated
+
+    renderCartPage()
+    await waitForInitialLoad()
+
+    expect(screen.getByText(/your cart is empty/i)).toBeInTheDocument()
+    expect(screen.queryByText(item.name)).not.toBeInTheDocument()
+    expect(screen.queryByRole("button", { name: /proceed to secure checkout/i })).not.toBeInTheDocument()
+  })
+
+  it("TEST: a declined payment leaves the cart intact on return, with items and checkout available to retry", async () => {
+    // Simulates a fresh page load after a decline — BigCommerce left the cart
+    // untouched, so /api/cart returns the same cart with items, same as any
+    // ordinary fresh load.
+    fetchMock.mockImplementationOnce(async () => jsonResponse({ cart: cartWithItem })) // initial load, cart untouched by decline
+
+    renderCartPage()
+    await waitForInitialLoad()
+
+    expect(screen.getByText(item.name)).toBeInTheDocument()
+    const button = screen.getByRole("button", { name: /proceed to secure checkout/i })
+    expect(button).toBeEnabled()
+  })
 })
