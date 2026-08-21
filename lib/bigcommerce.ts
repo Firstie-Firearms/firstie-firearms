@@ -56,16 +56,14 @@ class BigCommerceError extends Error {
 function config() {
   const storeHash = process.env.BIGCOMMERCE_STORE_HASH
   const accessToken = process.env.BIGCOMMERCE_ACCESS_TOKEN
-  const storefrontUrl = process.env.BIGCOMMERCE_STOREFRONT_URL
 
-  if (!storeHash || !accessToken || !storefrontUrl) {
+  if (!storeHash || !accessToken) {
     throw new BigCommerceError("Commerce is not configured.", 503)
   }
 
   return {
     storeHash,
     accessToken,
-    storefrontUrl,
   }
 }
 
@@ -323,6 +321,18 @@ export async function getCheckoutUrl(
     )}?include=redirect_urls`,
   )
 
+  const itemCount =
+    (cart.line_items?.physical_items?.length ?? 0) +
+    (cart.line_items?.digital_items?.length ?? 0) +
+    (cart.line_items?.gift_certificates?.length ?? 0)
+
+  if (itemCount === 0) {
+    throw new BigCommerceError(
+      "Your cart is empty.",
+      400,
+    )
+  }
+
   const checkoutUrl =
     cart.redirect_urls?.checkout_url
 
@@ -333,13 +343,7 @@ export async function getCheckoutUrl(
     )
   }
 
-  const expectedOrigin =
-    new URL(config().storefrontUrl).origin
-
-  const checkoutOrigin =
-    new URL(checkoutUrl).origin
-
-  if (checkoutOrigin !== expectedOrigin) {
+  if (new URL(checkoutUrl).protocol !== "https:") {
     throw new BigCommerceError(
       "Invalid checkout destination.",
       502,

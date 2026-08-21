@@ -91,9 +91,22 @@ export function CartProvider({ children }: { children: ReactNode }) {
         await runMutation(() => cartRequest(`/api/cart/items/${encodeURIComponent(itemId)}`, { method: "DELETE" }))
       },
       checkout: async () => {
+        // Synchronous re-entrancy guard (mirrors `runMutation`): `isMutating` is
+        // React state and doesn't update until the next render, so a rapid
+        // double-click/double-Enter could otherwise slip a second checkout
+        // request through before the button disables.
+        if (mutationInFlight.current) return
+        mutationInFlight.current = true
         setIsMutating(true)
         setActionError(null)
         try {
+          // Revalidate against the server before creating a checkout session so
+          // we never act on a stale client-side snapshot (e.g. the cart was
+          // emptied in another tab since this page last fetched it).
+          const fresh = await mutate()
+          if (!fresh?.cart || fresh.cart.items.length === 0) {
+            throw new Error("Your cart is empty.")
+          }
           const result = await cartRequest("/api/cart/checkout", { method: "POST" })
           if (!result.checkoutUrl) throw new Error("Secure checkout is temporarily unavailable.")
           if (window.self !== window.top) window.open(result.checkoutUrl, "_blank", "noopener,noreferrer")
@@ -104,6 +117,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           // here would only produce an unhandled promise rejection.
           setActionError(error instanceof Error ? error.message : "Secure checkout is temporarily unavailable.")
         } finally {
+          mutationInFlight.current = false
           setIsMutating(false)
         }
       },
