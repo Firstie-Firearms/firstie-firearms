@@ -549,7 +549,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                   <img
                     src="/usna-2027/class-side-engraving.jpg"
                     alt="Left side of the USNA Class of 2027 GLOCK 19X V slide, deeply engraved with Atlas, the class motto 'De Profundis Ad Caelos Vincimus' on a ribbon, an age-of-sail warship, Zeus and Poseidon, and the USNA inscription"
-                    className="w-full rounded-lg border border-border"
+                    className="w-full rounded-lg"
                   />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Honoring the Class of 2027"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
