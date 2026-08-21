@@ -603,6 +603,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/custom-finishes-slide.jpg"
+                    alt="Engraved USNA Class of 2027 slide artwork featuring the Don't Give Up the Ship motto"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Custom Finishes and Upgrades"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"The frame is finished in Battleship Gray accented by Admiral Bronze, creating a distinctive appearance inspired by the Navy's fleet. Performance upgrades include an Overwatch Precision PolyDAT trigger and an SLR Rifleworks GLOCK 19X V magwell, both custom finished to complement the pistol's commemorative design."}
