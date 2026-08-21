@@ -211,20 +211,6 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
 
           {/* Class Year Section */}
           <div className="space-y-4 pt-6 border-t border-border">
-            {isUsna2027Hero && (
-              <div className="flex w-full gap-0 overflow-hidden" aria-label="USNA Class of 2027 pistol details">
-                <img
-                  src="/usna-2027/full-pistol-left.jpg"
-                  alt="USNA Class of 2027 custom GLOCK 19X V, left-facing view"
-                  className="block h-auto w-1/2 min-w-0 object-cover"
-                />
-                <img
-                  src="/usna-2027/full-pistol-right.jpg"
-                  alt="USNA Class of 2027 custom GLOCK 19X V, right-facing view"
-                  className="block h-auto w-1/2 min-w-0 object-cover"
-                />
-              </div>
-            )}
             <p className="text-sm font-bold text-center leading-relaxed" style={{ color: config.gold }}>
               {pageTitle
                 ? `Designed in Collaboration with Members of Reunion Classes`
@@ -254,20 +240,6 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         <main className="flex-1">
           {/* Mobile Info Section - shown only on mobile */}
           <section className="lg:hidden container mx-auto px-4 py-6 space-y-4">
-            {isUsna2027Hero && (
-              <div className="flex w-full gap-0 overflow-hidden" aria-label="USNA Class of 2027 pistol details">
-                <img
-                  src="/usna-2027/full-pistol-left.jpg"
-                  alt="USNA Class of 2027 custom GLOCK 19X V, left-facing view"
-                  className="block h-auto w-1/2 min-w-0 object-cover"
-                />
-                <img
-                  src="/usna-2027/full-pistol-right.jpg"
-                  alt="USNA Class of 2027 custom GLOCK 19X V, right-facing view"
-                  className="block h-auto w-1/2 min-w-0 object-cover"
-                />
-              </div>
-            )}
             <div className="flex items-center justify-center h-32">
               <span className="text-6xl font-bold tracking-widest text-center" style={{ color: config.gold }}>
                 {config.shortName}
