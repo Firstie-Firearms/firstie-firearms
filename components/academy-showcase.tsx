@@ -570,6 +570,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/academy-tribute-slide.jpg"
+                    alt="Engraved USNA Class of 2027 slide artwork honoring the Naval Academy"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"A Tribute to the Academy"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"The top of the slide celebrates the United States Naval Academy and the institution that shaped the Class of 2027 into future naval leaders. A trident symbolizes sea power, maritime leadership, and the Academy\u2019s enduring mission to prepare officers for service at sea. Incorporated directly from the Class of 2027 crest are the dove of peace and Polaris, the North Star. The dove represents the commitment to pursue peace through strength, while Polaris has long guided mariners across the world\u2019s oceans, symbolizing steadfast leadership, purpose, and an unwavering moral compass. Together, these elements unite the identity of the Class of 2027 with the Academy that forged it, reflecting the values, character, and sense of duty that will guide its graduates throughout their careers. Completing the design, a banner proudly bearing CLASS OF 2027 commemorates the class\u2019s transition from midshipmen to commissioned officers and marks the beginning of a lifetime of service to the nation."}
