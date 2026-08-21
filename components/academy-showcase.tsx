@@ -530,6 +530,18 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           {/* GLOCK 19X V Section */}
           {academy === "USNA" && classYear === "Class of 2027" ? (
             <section className="container mx-auto px-4 py-8 md:py-16 border-t border-border">
+              <div className="max-w-4xl mx-auto mb-6 md:mb-8 flex items-center justify-center">
+                <img
+                  src="/usna-2027/full-pistol-left.jpg"
+                  alt="USNA Class of 2027 custom GLOCK 19X V, left-facing view with muzzle pointing left"
+                  className="block h-auto w-1/2 min-w-0 object-contain"
+                />
+                <img
+                  src="/usna-2027/full-pistol-right.jpg"
+                  alt="USNA Class of 2027 custom GLOCK 19X V, right-facing view with muzzle pointing right"
+                  className="block h-auto w-1/2 min-w-0 object-contain"
+                />
+              </div>
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 md:mb-4" style={{ color: config.gold }}>
                 {"USNA Class of 2027\u2019s Custom GLOCK 19X V"}
               </h2>
