@@ -1,7 +1,7 @@
 import { upsertReleaseSignupProfile } from "@/lib/klaviyo-profile"
 import {
-  isValidE164Phone,
   isValidEmail,
+  normalizePhoneToE164,
   sanitizeReleaseSignupContext,
 } from "@/lib/klaviyo-release-signup"
 

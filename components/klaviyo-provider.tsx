@@ -78,10 +78,9 @@ export function KlaviyoProvider() {
       const email = isValidEmail(rawEmail) ? rawEmail : undefined
       const phoneNumber = normalizePhoneToE164(pickString(metaData, PHONE_KEYS))
 
-      if (!email && !phoneNumber) {
-        console.log("[v0] klaviyo submit had no usable email or phone; skipping enrichment")
-        return
-      }
+      // Nothing to identify the profile by — the popup still handled the
+      // signup itself, so there is nothing to recover from here.
+      if (!email && !phoneNumber) return
 
       const context = resolveReleaseSignupContext()
       if (!context) return

@@ -64,6 +64,9 @@ const E164_PATTERN = /^\+[1-9]\d{7,14}$/
 /** Upper bound on any single string we forward to Klaviyo. */
 const MAX_FIELD_LENGTH = 512
 
+/** Canonical public origin, matching `metadataBase` in `app/layout.tsx`. */
+const CANONICAL_ORIGIN = "https://www.firstiefirearms.com"
+
 /**
  * Extracts the academy and class year from a `/academy/classyear` pathname.
  *
@@ -127,7 +130,10 @@ export function captureReleaseSignupContext(): ReleaseSignupContext | null {
 
   return buildReleaseSignupContext({
     pathname: window.location.pathname,
-    origin: window.location.origin,
+    // Deliberately the canonical production origin rather than
+    // `window.location.origin`, so ProductURL in Klaviyo flows and emails
+    // always points at the live site instead of a preview or sandbox URL.
+    origin: CANONICAL_ORIGIN,
     referrer: document.referrer,
     timestamp: new Date().toISOString(),
   })

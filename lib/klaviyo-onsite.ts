@@ -16,6 +16,10 @@ import {
 declare global {
   interface Window {
     _klOnsite?: unknown[]
+    klaviyo?: {
+      openForm?: (formId: string) => void
+      push?: (args: unknown[]) => void
+    }
   }
 }
 
@@ -29,17 +33,19 @@ declare global {
  */
 let pendingContext: ReleaseSignupContext | null = null
 
-/** True once the Klaviyo onsite script has reported itself as loaded. */
+/** True once the Klaviyo onsite script has installed its real API. */
 export function isKlaviyoOnsiteReady(): boolean {
-  return typeof window !== "undefined" && Array.isArray(window._klOnsite)
+  return typeof window !== "undefined" && typeof window.klaviyo?.openForm === "function"
 }
 
 /**
  * Opens the existing Klaviyo release-notification popup.
  *
- * Uses the exact `_klOnsite` push documented by Klaviyo. Pushing onto the
- * queue works whether or not `klaviyo.js` has finished loading, so this is
- * safe to call immediately after hydration and never triggers a page reload.
+ * Uses the `_klOnsite` command queue, which is correct in both states:
+ * before `klaviyo.js` loads it is a plain array that the script drains on
+ * init, and after loading the script replaces `push` with a dispatcher that
+ * invokes the command immediately. Either way the popup opens without a
+ * page reload, so no readiness check or branching is needed here.
  */
 export function openReleaseNotificationForm(): void {
   if (typeof window === "undefined") return
