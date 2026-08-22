@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AgeGateProvider } from "@/components/age-gate-provider"
 import { CartProvider } from "@/components/cart-provider"
+import { KlaviyoProvider } from "@/components/klaviyo-provider"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { AGE_GATE_INLINE_SCRIPT } from "@/lib/age-gate"
 import "./globals.css"
@@ -120,6 +121,7 @@ export default function RootLayout({
         <CartProvider>
           <AgeGateProvider>{children}</AgeGateProvider>
         </CartProvider>
+        <KlaviyoProvider />
         <Analytics />
       </body>
     </html>

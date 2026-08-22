@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Target, Crosshair, Shield, Gauge, Flame, Briefcase } from "lucide-react"
 import { Card } from "@/components/ui/card"
+import { ReleaseNotificationRibbonButton } from "@/components/release-notification-button"
 import { StickyOrderButton } from "@/components/sticky-order-button"
 import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
 import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-breadcrumb"
@@ -355,13 +356,12 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               Contact Firstie Firearms Now
             </Link>
           ) : (
-            <Link
-              href="#release-notification"
+            <ReleaseNotificationRibbonButton
               className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
-              style={{ borderColor: config.gold, color: config.gold }}
+              gold={config.gold}
             >
               Sign Up for Release Notification
-            </Link>
+            </ReleaseNotificationRibbonButton>
           )}
         </div>
       )}
