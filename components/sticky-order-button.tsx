@@ -4,13 +4,18 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import { useCart } from "@/components/cart-provider"
-import { ReleaseNotificationDialog } from "@/components/release-notification-dialog"
+import { ReleaseNotificationButton } from "@/components/release-notification-button"
 
 interface StickyOrderButtonProps {
   label: string
   gold: string
-  academy: string
-  classYear: string
+  /**
+   * Kept for caller ergonomics and future use. Release-notification metadata
+   * is derived from the URL, not from these props, so the Klaviyo integration
+   * keeps working for academy pages that do not exist yet.
+   */
+  academy?: string
+  classYear?: string
   mode?: "commerce" | "release" | "contact"
   contactHref?: string
   productKey?: string
@@ -20,8 +25,6 @@ interface StickyOrderButtonProps {
 export function StickyOrderButton({
   label,
   gold,
-  academy,
-  classYear,
   mode = "commerce",
   contactHref,
   productKey,
@@ -41,13 +44,12 @@ export function StickyOrderButton({
   let action: React.ReactNode
 
   if (mode === "release") {
+    // Academy + class year are intentionally not passed through: the URL is
+    // the single source of truth for the Klaviyo profile metadata.
     action = (
-      <ReleaseNotificationDialog
-        academy={academy}
-        classYear={classYear}
-        gold={gold}
-        triggerClassName={buttonClass}
-      />
+      <ReleaseNotificationButton className={buttonClass} gold={gold}>
+        <span className="text-center text-xs sm:text-sm">SIGN UP FOR RELEASE NOTIFICATION</span>
+      </ReleaseNotificationButton>
     )
   } else if (mode === "contact" && contactHref) {
     action = (
