@@ -31,6 +31,12 @@ export function Footer() {
               >
                 {"Frequently Asked Questions"}
               </Link>
+              <Link
+                href="/privacy-policy"
+                className="block text-sm text-muted-foreground hover:text-foreground transition-colors underline"
+              >
+                {"Privacy Policy"}
+              </Link>
             </div>
           </div>
 

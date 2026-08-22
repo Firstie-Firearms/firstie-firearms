@@ -530,6 +530,18 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           {/* GLOCK 19X V Section */}
           {academy === "USNA" && classYear === "Class of 2027" ? (
             <section className="container mx-auto px-4 py-8 md:py-16 border-t border-border">
+              <div className="max-w-4xl mx-auto mb-6 md:mb-8 flex items-center justify-center">
+                <img
+                  src="/usna-2027/full-pistol-left.jpg"
+                  alt="USNA Class of 2027 custom GLOCK 19X V, left-facing view with muzzle pointing left"
+                  className="block h-auto w-1/2 min-w-0 object-contain"
+                />
+                <img
+                  src="/usna-2027/full-pistol-right.jpg"
+                  alt="USNA Class of 2027 custom GLOCK 19X V, right-facing view with muzzle pointing right"
+                  className="block h-auto w-1/2 min-w-0 object-contain"
+                />
+              </div>
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 md:mb-4" style={{ color: config.gold }}>
                 {"USNA Class of 2027\u2019s Custom GLOCK 19X V"}
               </h2>
@@ -546,6 +558,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </p>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/class-side-engraving.jpg"
+                    alt="Left side of the USNA Class of 2027 GLOCK 19X V slide, deeply engraved with Atlas, the class motto 'De Profundis Ad Caelos Vincimus' on a ribbon, an age-of-sail warship, Zeus and Poseidon, and the USNA inscription"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Honoring the Class of 2027"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"The left side of the slide is dedicated to the Class of 2027 and incorporates the elements of the class crest. Atlas stands at the muzzle, carrying the world on his shoulders while looking toward the future. Flowing behind him is the class motto, \u201CDe Profundis Ad Caelos Vincimus\u201D (\u201CFrom the Depths to the Skies, We Conquer\u201D), framed within a ribbon. A historic age-of-sail warship pays tribute to the Navy's rich heritage, while Zeus and Poseidon symbolize strength, leadership, and mastery of sea and sky. The design concludes with the proud inscription USNA framing the rear."}
@@ -553,6 +570,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/future-fleet-slide.jpg"
+                    alt="Engraved USNA Class of 2027 slide artwork honoring the Navy's future fleet"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"The Future Fleet"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"The right side of the slide honors the warfare communities that many members of the Class of 2027 will enter upon graduation. A United States Marine leads from the front, representing the Corps' warrior ethos. Behind him are symbols of the Navy's modern fighting force: an Arleigh Burke-class destroyer for the Surface Navy, a Virginia-class fast attack submarine for the Submarine Force, and an F-35 Lightning II representing Naval Aviation."}
@@ -560,6 +582,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/academy-tribute-slide.jpg"
+                    alt="Engraved USNA Class of 2027 slide artwork honoring the Naval Academy"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"A Tribute to the Academy"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"The top of the slide celebrates the United States Naval Academy and the institution that shaped the Class of 2027 into future naval leaders. A trident symbolizes sea power, maritime leadership, and the Academy\u2019s enduring mission to prepare officers for service at sea. Incorporated directly from the Class of 2027 crest are the dove of peace and Polaris, the North Star. The dove represents the commitment to pursue peace through strength, while Polaris has long guided mariners across the world\u2019s oceans, symbolizing steadfast leadership, purpose, and an unwavering moral compass. Together, these elements unite the identity of the Class of 2027 with the Academy that forged it, reflecting the values, character, and sense of duty that will guide its graduates throughout their careers. Completing the design, a banner proudly bearing CLASS OF 2027 commemorates the class\u2019s transition from midshipmen to commissioned officers and marks the beginning of a lifetime of service to the nation."}
@@ -567,6 +594,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/link-in-chain-slide.jpg"
+                    alt="Engraved USNA Class of 2027 slide artwork representing the link between generations"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"The Link in the Chain"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"Running between both sides of the slide is an engraved chain inspired by the Fifth Law of the Navy:"}
@@ -583,6 +615,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
+                  <img
+                    src="/usna-2027/custom-finishes-slide.jpg"
+                    alt="Engraved USNA Class of 2027 slide artwork featuring the Don't Give Up the Ship motto"
+                    className="w-full rounded-lg"
+                  />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Custom Finishes and Upgrades"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
                     {"The frame is finished in Battleship Gray accented by Admiral Bronze, creating a distinctive appearance inspired by the Navy's fleet. Performance upgrades include an Overwatch Precision PolyDAT trigger and an SLR Rifleworks GLOCK 19X V magwell, both custom finished to complement the pistol's commemorative design."}
