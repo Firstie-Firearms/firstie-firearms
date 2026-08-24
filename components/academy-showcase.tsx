@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card"
 import { ReleaseNotificationRibbonButton } from "@/components/release-notification-button"
 import { StickyOrderButton } from "@/components/sticky-order-button"
 import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
+import { ExpandableImage } from "@/components/expandable-image"
 import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-breadcrumb"
 import { academyCollectionHref, getComingSoonLabel, isClassAvailable, isPreviewImageGrayedOut } from "@/lib/academies"
 import { commerceProductKey, isCommerceProductConfigured } from "@/lib/commerce-products"
@@ -126,6 +127,48 @@ const USNA_2027_PHOTOS: ProductPhoto[] = [
   { src: "/usna-2027/photo-31.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 leaning against weathered blue and yellow surface" },
   { src: "/usna-2027/photo-32.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 \u201cDon't Give Up the Ship\u201d and \u201cDe Profundis Ad Caelos Vincinus\u201d slide engraving detail" },
   { src: "/usna-2027/photo-33.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 \u201cDon't Give Up the Ship\u201d slide engraving close-up" },
+]
+
+/**
+ * Images embedded in the USNA Class of 2027 description copy, in the order
+ * they appear on the page: the two full-pistol profiles, then the five slide
+ * engraving details. They share one array so the full-screen viewer can page
+ * through all seven, letting a visitor open any one and browse the rest.
+ */
+const USNA_2027_DESCRIPTION_IMAGES: ProductPhoto[] = [
+  {
+    src: "/usna-2027/full-pistol-left.jpg",
+    alt: "USNA Class of 2027 custom GLOCK 19X V, left-facing view with muzzle pointing left",
+  },
+  {
+    src: "/usna-2027/full-pistol-right.jpg",
+    alt: "USNA Class of 2027 custom GLOCK 19X V, right-facing view with muzzle pointing right",
+  },
+  {
+    src: "/usna-2027/class-side-engraving.jpg",
+    alt: "Left side of the USNA Class of 2027 GLOCK 19X V slide, deeply engraved with Atlas, the class motto 'De Profundis Ad Caelos Vincimus' on a ribbon, an age-of-sail warship, Zeus and Poseidon, and the USNA inscription",
+    caption: "Honoring the Class of 2027",
+  },
+  {
+    src: "/usna-2027/future-fleet-slide.jpg",
+    alt: "Engraved USNA Class of 2027 slide artwork honoring the Navy's future fleet",
+    caption: "The Future Fleet",
+  },
+  {
+    src: "/usna-2027/academy-tribute-slide.jpg",
+    alt: "Engraved USNA Class of 2027 slide artwork honoring the Naval Academy",
+    caption: "A Tribute to the Academy",
+  },
+  {
+    src: "/usna-2027/link-in-chain-slide.jpg",
+    alt: "Engraved USNA Class of 2027 slide artwork representing the link between generations",
+    caption: "The Link in the Chain",
+  },
+  {
+    src: "/usna-2027/custom-finishes-slide.jpg",
+    alt: "Engraved USNA Class of 2027 slide artwork featuring the Don't Give Up the Ship motto",
+    caption: "Custom Finishes and Upgrades",
+  },
 ]
 
 function getProductPhotos(academy: Academy, classYear: string): ProductPhoto[] {
@@ -531,15 +574,17 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           {academy === "USNA" && classYear === "Class of 2027" ? (
             <section className="container mx-auto px-4 py-8 md:py-16 border-t border-border">
               <div className="max-w-4xl mx-auto mb-6 md:mb-8 flex items-center justify-center">
-                <img
-                  src="/usna-2027/full-pistol-left.jpg"
-                  alt="USNA Class of 2027 custom GLOCK 19X V, left-facing view with muzzle pointing left"
-                  className="block h-auto w-1/2 min-w-0 object-contain"
+                <ExpandableImage
+                  images={USNA_2027_DESCRIPTION_IMAGES}
+                  index={0}
+                  accentColor={config.gold}
+                  className="w-1/2 min-w-0"
                 />
-                <img
-                  src="/usna-2027/full-pistol-right.jpg"
-                  alt="USNA Class of 2027 custom GLOCK 19X V, right-facing view with muzzle pointing right"
-                  className="block h-auto w-1/2 min-w-0 object-contain"
+                <ExpandableImage
+                  images={USNA_2027_DESCRIPTION_IMAGES}
+                  index={1}
+                  accentColor={config.gold}
+                  className="w-1/2 min-w-0"
                 />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 md:mb-4" style={{ color: config.gold }}>
@@ -558,10 +603,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </p>
 
                 <div className="space-y-3">
-                  <img
-                    src="/usna-2027/class-side-engraving.jpg"
-                    alt="Left side of the USNA Class of 2027 GLOCK 19X V slide, deeply engraved with Atlas, the class motto 'De Profundis Ad Caelos Vincimus' on a ribbon, an age-of-sail warship, Zeus and Poseidon, and the USNA inscription"
-                    className="w-full rounded-lg"
+                  <ExpandableImage
+                    images={USNA_2027_DESCRIPTION_IMAGES}
+                    index={2}
+                    accentColor={config.gold}
+                    className="rounded-lg"
                   />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Honoring the Class of 2027"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
@@ -570,10 +616,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
-                  <img
-                    src="/usna-2027/future-fleet-slide.jpg"
-                    alt="Engraved USNA Class of 2027 slide artwork honoring the Navy's future fleet"
-                    className="w-full rounded-lg"
+                  <ExpandableImage
+                    images={USNA_2027_DESCRIPTION_IMAGES}
+                    index={3}
+                    accentColor={config.gold}
+                    className="rounded-lg"
                   />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"The Future Fleet"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
@@ -582,10 +629,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
-                  <img
-                    src="/usna-2027/academy-tribute-slide.jpg"
-                    alt="Engraved USNA Class of 2027 slide artwork honoring the Naval Academy"
-                    className="w-full rounded-lg"
+                  <ExpandableImage
+                    images={USNA_2027_DESCRIPTION_IMAGES}
+                    index={4}
+                    accentColor={config.gold}
+                    className="rounded-lg"
                   />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"A Tribute to the Academy"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
@@ -594,10 +642,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
-                  <img
-                    src="/usna-2027/link-in-chain-slide.jpg"
-                    alt="Engraved USNA Class of 2027 slide artwork representing the link between generations"
-                    className="w-full rounded-lg"
+                  <ExpandableImage
+                    images={USNA_2027_DESCRIPTION_IMAGES}
+                    index={5}
+                    accentColor={config.gold}
+                    className="rounded-lg"
                   />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"The Link in the Chain"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
@@ -615,10 +664,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </div>
 
                 <div className="space-y-3">
-                  <img
-                    src="/usna-2027/custom-finishes-slide.jpg"
-                    alt="Engraved USNA Class of 2027 slide artwork featuring the Don't Give Up the Ship motto"
-                    className="w-full rounded-lg"
+                  <ExpandableImage
+                    images={USNA_2027_DESCRIPTION_IMAGES}
+                    index={6}
+                    accentColor={config.gold}
+                    className="rounded-lg"
                   />
                   <h3 className="text-lg md:text-xl font-bold" style={{ color: config.gold }}>{"Custom Finishes and Upgrades"}</h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-serif">
