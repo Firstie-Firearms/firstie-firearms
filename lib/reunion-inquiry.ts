@@ -3,8 +3,12 @@ import { academyNames, type Academy } from "@/types"
 /** Where completed inquiries are delivered. */
 export const INQUIRY_RECIPIENT = "info@firstiefirearms.com"
 
-/** Verified sending identity on the firstiefirearms.com domain. */
-export const INQUIRY_SENDER = "Firstie Firearms <reunion@firstiefirearms.com>"
+/**
+ * Verified sending identity on the firstiefirearms.com domain. Same mailbox
+ * as the recipient, so the inquiry arrives as a self-addressed message;
+ * `replyTo` on the send is what points replies back at the customer.
+ */
+export const INQUIRY_SENDER = "Firstie Firearms <info@firstiefirearms.com>"
 
 /** Upper bound on any single submitted field, to keep payloads sane. */
 const MAX_FIELD_LENGTH = 200
