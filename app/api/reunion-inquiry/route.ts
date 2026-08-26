@@ -2,9 +2,12 @@ import { Resend } from "resend"
 import {
   INQUIRY_RECIPIENT,
   INQUIRY_SENDER,
+  buildCustomerConfirmationHtml,
+  buildCustomerConfirmationText,
   buildInquiryHtml,
   buildInquirySubject,
   buildInquiryText,
+  CUSTOMER_CONFIRMATION_SUBJECT,
   validateReunionInquiry,
 } from "@/lib/reunion-inquiry"
 
@@ -44,19 +47,31 @@ export async function POST(request: Request) {
 
   try {
     const resend = new Resend(apiKey)
-    const { error } = await resend.emails.send({
-      from: INQUIRY_SENDER,
-      to: INQUIRY_RECIPIENT,
-      // Lets the team reply straight to the customer from their inbox.
-      replyTo: inquiry.email,
-      subject: buildInquirySubject(inquiry),
-      text: buildInquiryText(inquiry),
-      html: buildInquiryHtml(inquiry),
-    })
+    const [internalResult, customerResult] = await Promise.all([
+      resend.emails.send({
+        from: INQUIRY_SENDER,
+        to: INQUIRY_RECIPIENT,
+        replyTo: inquiry.email,
+        subject: buildInquirySubject(inquiry),
+        text: buildInquiryText(inquiry),
+        html: buildInquiryHtml(inquiry),
+      }),
+      resend.emails.send({
+        from: INQUIRY_SENDER,
+        to: inquiry.email,
+        replyTo: INQUIRY_RECIPIENT,
+        subject: CUSTOMER_CONFIRMATION_SUBJECT,
+        text: buildCustomerConfirmationText(inquiry),
+        html: buildCustomerConfirmationHtml(inquiry),
+      }),
+    ])
 
-    if (error) {
-      // Log the provider's reason, but never surface it to the client.
-      console.error("[v0] Resend rejected the reunion inquiry:", error)
+    if (internalResult.error || customerResult.error) {
+      // Do not report success unless both messages were accepted by Resend.
+      console.error("[v0] Resend rejected reunion email(s):", {
+        internal: internalResult.error,
+        customer: customerResult.error,
+      })
       return Response.json({ error: "Could not send inquiry." }, { status: 502 })
     }
 

@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest"
 import {
+  buildCustomerConfirmationHtml,
+  buildCustomerConfirmationText,
   buildInquiryHtml,
   buildInquirySubject,
   buildInquiryText,
@@ -108,7 +110,16 @@ describe("email rendering", () => {
   const inquiry = (validateReunionInquiry(validBody) as { ok: true; inquiry: never }).inquiry
 
   it("builds the requested subject line", () => {
-    expect(buildInquirySubject(inquiry)).toBe("New Reunion Inquiry - USNA Class of 1996")
+    expect(buildInquirySubject(inquiry)).toBe("New Reunion Inquiry — USNA Class of 1996")
+  })
+
+  it("builds the customer confirmation with the requested details", () => {
+    expect(buildCustomerConfirmationText(inquiry)).toContain("Thank you for contacting Firstie Firearms.")
+    expect(buildCustomerConfirmationText(inquiry)).toContain("United States Naval Academy")
+    expect(buildCustomerConfirmationText(inquiry)).toContain("1996")
+    expect(buildCustomerConfirmationText(inquiry)).toContain("June 5, 2026")
+    expect(buildCustomerConfirmationText(inquiry)).toContain("A member of the Firstie Firearms team will follow up with you.")
+    expect(buildCustomerConfirmationHtml(inquiry)).toContain("United States Naval Academy")
   })
 
   it("includes every collected field in the text body", () => {

@@ -3,13 +3,6 @@ import { academyNames, type Academy } from "@/types"
 /** Where completed inquiries are delivered. */
 export const INQUIRY_RECIPIENT = "info@firstiefirearms.com"
 
-/**
- * Verified sending identity on the firstiefirearms.com domain. Same mailbox
- * as the recipient, so the inquiry arrives as a self-addressed message;
- * `replyTo` on the send is what points replies back at the customer.
- */
-export const INQUIRY_SENDER = "Firstie Firearms <info@firstiefirearms.com>"
-
 /** Upper bound on any single submitted field, to keep payloads sane. */
 const MAX_FIELD_LENGTH = 200
 
@@ -109,10 +102,16 @@ export function validateReunionInquiry(body: unknown): ValidationResult {
   }
 }
 
+/** Verified transactional sender on the Resend notify subdomain. */
+export const INQUIRY_SENDER = "Firstie Firearms <reunions@notify.firstiefirearms.com>"
+
 /** Subject line, e.g. "New Reunion Inquiry - USNA Class of 1996". */
 export function buildInquirySubject(inquiry: ReunionInquiry): string {
-  return `New Reunion Inquiry - ${inquiry.academy} Class of ${inquiry.classYear}`
+  return `New Reunion Inquiry — ${inquiry.academy} Class of ${inquiry.classYear}`
 }
+
+/** Subject shown on the customer confirmation email. */
+export const CUSTOMER_CONFIRMATION_SUBJECT = "We received your Firstie Firearms reunion inquiry"
 
 /** Renders the reunion date as "June 5, 2026" for readability in the email. */
 function formatReunionDate(value: string): string {
@@ -150,6 +149,34 @@ function inquiryRows(inquiry: ReunionInquiry): Array<[string, string]> {
 export function buildInquiryText(inquiry: ReunionInquiry): string {
   const lines = inquiryRows(inquiry).map(([label, value]) => `${label}: ${value}`)
   return [buildInquirySubject(inquiry), "", ...lines].join("\n")
+}
+
+/** Customer-facing plain-text confirmation body. */
+export function buildCustomerConfirmationText(inquiry: ReunionInquiry): string {
+  return [
+    "Thank you for contacting Firstie Firearms.",
+    "",
+    "We received your reunion inquiry and recorded the following details:",
+    `Academy: ${academyNames[inquiry.academy]}`,
+    `Class Year: ${inquiry.classYear}`,
+    `Reunion Date: ${formatReunionDate(inquiry.reunionDate)}`,
+    "",
+    "A member of the Firstie Firearms team will follow up with you.",
+  ].join("\\n")
+}
+
+/** Customer-facing HTML confirmation body. */
+export function buildCustomerConfirmationHtml(inquiry: ReunionInquiry): string {
+  return (
+    `<div style="font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#111111;line-height:1.5;">` +
+    `<h2 style="margin:0 0 16px;font-size:18px;">Thank you for contacting Firstie Firearms</h2>` +
+    `<p>We received your reunion inquiry.</p>` +
+    `<p><strong>Academy:</strong> ${escapeHtml(academyNames[inquiry.academy])}<br>` +
+    `<strong>Class Year:</strong> ${escapeHtml(inquiry.classYear)}<br>` +
+    `<strong>Reunion Date:</strong> ${escapeHtml(formatReunionDate(inquiry.reunionDate))}</p>` +
+    `<p>A member of the Firstie Firearms team will follow up with you.</p>` +
+    `</div>`
+  )
 }
 
 /** HTML email body — a simple definition table, safe for every mail client. */
