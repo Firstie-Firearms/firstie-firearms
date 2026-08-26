@@ -162,7 +162,7 @@ export function buildCustomerConfirmationText(inquiry: ReunionInquiry): string {
     `Reunion Date: ${formatReunionDate(inquiry.reunionDate)}`,
     "",
     "A member of the Firstie Firearms team will follow up with you.",
-  ].join("\\n")
+  ].join("\n")
 }
 
 /** Customer-facing HTML confirmation body. */
