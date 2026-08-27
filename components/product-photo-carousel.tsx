@@ -52,10 +52,22 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
   const scrollByGroup = useCallback((direction: "left" | "right") => {
     const el = trackRef.current
     if (!el) return
-    // Advance by ~90% of the visible width so it feels like a "group" move
-    // rather than a single item nudge, while still overlapping slightly so
-    // visitors keep context of where they are.
     const amount = el.clientWidth * 0.9
+    const maxScroll = el.scrollWidth - el.clientWidth
+    const atStart = el.scrollLeft <= 4
+    const atEnd = el.scrollLeft >= maxScroll - 4
+
+    // Wrap at either edge so the carousel remains continuous. The photo
+    // number is still derived from the stable ordered `images` array.
+    if (direction === "left" && atStart) {
+      el.scrollTo({ left: maxScroll, behavior: "smooth" })
+      return
+    }
+    if (direction === "right" && atEnd) {
+      el.scrollTo({ left: 0, behavior: "smooth" })
+      return
+    }
+
     el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" })
   }, [])
 
@@ -117,15 +129,14 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
         <button
           type="button"
           onClick={() => scrollByGroup("left")}
-          disabled={!canScrollLeft}
-          aria-label="Scroll product photos left"
+          aria-label={canScrollLeft ? "Scroll product photos left" : "Loop to last product photo"}
           className={cn(
             "absolute left-1 top-1/2 -translate-y-1/2 z-10",
             "flex h-11 w-11 items-center justify-center rounded-full",
             "bg-background/80 border backdrop-blur-sm",
             "transition-opacity duration-200",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-            canScrollLeft ? "opacity-100 hover:bg-background" : "opacity-30 pointer-events-none",
+            "opacity-100 hover:bg-background",
           )}
           style={{ borderColor: accentColor, "--tw-ring-color": accentColor } as React.CSSProperties}
         >
@@ -136,15 +147,14 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
         <button
           type="button"
           onClick={() => scrollByGroup("right")}
-          disabled={!canScrollRight}
-          aria-label="Scroll product photos right"
+          aria-label={canScrollRight ? "Scroll product photos right" : "Loop to first product photo"}
           className={cn(
             "absolute right-1 top-1/2 -translate-y-1/2 z-10",
             "flex h-11 w-11 items-center justify-center rounded-full",
             "bg-background/80 border backdrop-blur-sm",
             "transition-opacity duration-200",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-            canScrollRight ? "opacity-100 hover:bg-background" : "opacity-30 pointer-events-none",
+            "opacity-100 hover:bg-background",
           )}
           style={{ borderColor: accentColor, "--tw-ring-color": accentColor } as React.CSSProperties}
         >
