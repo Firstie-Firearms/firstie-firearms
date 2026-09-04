@@ -31,12 +31,6 @@ export function Footer() {
               >
                 {"Frequently Asked Questions"}
               </Link>
-              <Link
-                href="/privacy-policy"
-                className="block text-sm text-muted-foreground hover:text-foreground transition-colors underline"
-              >
-                {"Privacy Policy"}
-              </Link>
             </div>
           </div>
 
@@ -47,7 +41,6 @@ export function Footer() {
               <Link href="/refund-policy" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Refund Policy</Link>
               <Link href="/terms-and-conditions" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Terms &amp; Conditions</Link>
               <Link href="/shipping-policy" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Shipping Policy</Link>
-              <Link href="/privacy-policy" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Privacy Policy</Link>
               <Link href="/delivery-timeframe" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Delivery Timeframe</Link>
             </div>
           </div>
