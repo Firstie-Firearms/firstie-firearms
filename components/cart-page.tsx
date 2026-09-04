@@ -93,6 +93,14 @@ export function CartPage() {
                 </div>
                 <Separator />
                 <div className="flex items-baseline justify-between gap-4"><span className="font-semibold">Estimated total</span><span className="text-xl font-bold">{money(cart.total, cart.currency)}</span></div>
+                <p className="text-pretty text-xs leading-relaxed text-muted-foreground">
+                  By proceeding to checkout, you acknowledge that you have reviewed and agree to our{" "}
+                  <Link href="/terms-and-conditions" className="underline underline-offset-4 hover:text-foreground">Terms &amp; Conditions</Link>{" "}
+                  and <Link href="/refund-policy" className="underline underline-offset-4 hover:text-foreground">Refund Policy</Link>.
+                </p>
+                <p className="text-pretty text-xs leading-relaxed text-muted-foreground">
+                  Custom firearm orders may be cancelled within 48 hours of purchase. After 48 hours, custom firearm orders are non-refundable.
+                </p>
                 <Button size="lg" disabled={isMutating || !cart || cart.items.length === 0} onClick={() => void checkout()}>
                   {isMutating ? <Loader2 className="animate-spin" data-icon="inline-start" /> : <ShieldCheck data-icon="inline-start" />}
                   {isMutating ? "Preparing checkout…" : "Proceed to Secure Checkout"}
