@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="border-t border-border">
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Three Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto text-center md:text-left">
+        <div className="grid grid-cols-1 gap-6 text-center md:grid-cols-4 md:gap-8 md:text-left">
           {/* Firstie Firearms Column */}
           <div className="space-y-3">
             <h3 className="text-sm font-bold tracking-wide" style={{ color: "#b8946a" }}>
@@ -31,12 +31,17 @@ export function Footer() {
               >
                 {"Frequently Asked Questions"}
               </Link>
-              <Link
-                href="/privacy-policy"
-                className="block text-sm text-muted-foreground hover:text-foreground transition-colors underline"
-              >
-                {"Privacy Policy"}
-              </Link>
+            </div>
+          </div>
+
+          {/* Policies Column */}
+          <div className="space-y-3">
+            <h3 className="text-sm font-bold tracking-wide" style={{ color: "#b8946a" }}>Policies</h3>
+            <div className="space-y-2">
+              <Link href="/refund-policy" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Refund Policy</Link>
+              <Link href="/terms-and-conditions" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Terms &amp; Conditions</Link>
+              <Link href="/shipping-policy" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Shipping Policy</Link>
+              <Link href="/delivery-timeframe" className="block text-sm text-muted-foreground underline transition-colors hover:text-foreground">Delivery Timeframe</Link>
             </div>
           </div>
 
