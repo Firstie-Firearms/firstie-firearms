@@ -98,6 +98,11 @@ function getComingSoonMonth(academy: Academy, yearNum: number) {
  */
 export function getComingSoonLabel(academy: Academy, year: string) {
   const yearNum = Number.parseInt(year.replace(/\D/g, ""), 10)
+  // USNA's Class of 2027 is the current commemorative edition and its gold
+  // status box reads "AVAILABLE NOW" everywhere its preview appears
+  // (homepage cards, collection cards, and the product/collection hero),
+  // even though the shared order flow still treats it as coming soon.
+  if (academy === "USNA" && yearNum === 2027) return "AVAILABLE NOW"
   const labelYear = String((yearNum - 1) % 100).padStart(2, "0")
   const prefix = yearNum >= 2028 ? "RELEASE DATE" : "COMING SOON"
   return `${prefix} - ${getComingSoonMonth(academy, yearNum)} '${labelYear}`
