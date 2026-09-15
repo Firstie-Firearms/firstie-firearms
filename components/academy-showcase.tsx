@@ -375,7 +375,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               <img
                 src={heroImageSrc || "/placeholder.svg"}
                 alt={`${config.shortName} Class of 2027 commemorative engraved GLOCK pistol`}
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                className="absolute inset-0 w-full h-full object-cover object-[center_25%] md:object-[center_15%]"
                 style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
               />
             ) : (
