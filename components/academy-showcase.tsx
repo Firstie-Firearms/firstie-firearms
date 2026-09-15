@@ -248,11 +248,8 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         </div>
       )}
       <div className="flex items-stretch">
-        {/* Left Sidebar — a flex column that stretches to the full hero row
-            height (shared with the hero image via the items-stretch row
-            below) and distributes its content groups across that height
-            with justify-between, instead of leaving one large empty gap. */}
-        <aside className="hidden lg:flex lg:flex-col lg:justify-between w-80 border-r border-border px-6 py-10">
+        {/* Left Sidebar */}
+        <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6">
           {/* Academy Name */}
           <div className="flex items-center justify-center">
             <span className="text-7xl font-bold tracking-widest text-center" style={{ color: config.gold }}>
@@ -260,7 +257,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             </span>
           </div>
 
-          {/* Collaboration text + Class Year */}
+          {/* Class Year Section */}
           <div className="space-y-4 pt-6 border-t border-border">
             <p className="text-sm font-bold text-center leading-relaxed" style={{ color: config.gold }}>
               {pageTitle
@@ -280,12 +277,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 {pageTitle ?? classYear.replace(/\D/g, "")}
               </span>
             </div>
-          </div>
 
-          {/* Product details + CTA */}
-          <div>
             {isUsna2027Hero && (
-              <div>
+              <div className="pt-1">
                 <h2 className="whitespace-pre-line text-lg font-semibold leading-[1.15]" style={{ color: config.gold }}>
                   {"Commemorative GLOCK\n19X V"}
                 </h2>
@@ -296,12 +290,12 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                   gold={config.gold}
                   productKey={productKey}
                   isConfigured={productConfigured}
-                  className="mt-6 flex w-full items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-4 flex w-full items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                 />
               </div>
             )}
             {!pageTitle && !isUsna2027Hero && (
-              <div>
+              <div className="pt-1">
                 <ReleaseNotificationRibbonButton
                   className="flex w-full items-center justify-center rounded-sm border px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest transition-all hover:opacity-80 active:scale-[0.98]"
                   gold={config.gold}
@@ -310,12 +304,10 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </ReleaseNotificationRibbonButton>
               </div>
             )}
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
+            </p>
           </div>
-
-          {/* Founding statement */}
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
-          </p>
         </aside>
 
         {/* Main Content */}
