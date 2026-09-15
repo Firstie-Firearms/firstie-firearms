@@ -286,7 +286,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <h2 className="whitespace-pre-line text-lg font-semibold leading-[1.15]" style={{ color: config.gold }}>
                   {"Commemorative GLOCK\n19X V"}
                 </h2>
-                <p className="mt-1 text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
+                <p className="mt-1 text-2xl font-bold" style={{ color: config.gold }}>$2,395.00</p>
                 <p className="mt-0.5 text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
                 <CommerceOrderButton
                   label="ORDER NOW"
@@ -348,7 +348,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <h2 className="whitespace-pre-line text-lg font-semibold leading-[1.15]" style={{ color: config.gold }}>
                   {"Commemorative GLOCK\n19X V"}
                 </h2>
-                <p className="mt-1 text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
+                <p className="mt-1 text-2xl font-bold" style={{ color: config.gold }}>$2,395.00</p>
                 <p className="mt-0.5 text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
                 <CommerceOrderButton
                   label="ORDER NOW"
