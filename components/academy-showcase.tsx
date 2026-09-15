@@ -294,6 +294,16 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 />
               </div>
             )}
+            {!pageTitle && !isUsna2027Hero && (
+              <div className="pt-1">
+                <ReleaseNotificationRibbonButton
+                  className="flex w-full items-center justify-center rounded-sm border px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest transition-all hover:opacity-80 active:scale-[0.98]"
+                  gold={config.gold}
+                >
+                  Sign Up for Release Notification
+                </ReleaseNotificationRibbonButton>
+              </div>
+            )}
             <p className="text-sm text-muted-foreground leading-relaxed">
               {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
             </p>
@@ -344,6 +354,16 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 <p className="pt-2 text-left text-sm text-muted-foreground leading-relaxed">
                   {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
                 </p>
+              </div>
+            )}
+            {!pageTitle && !isUsna2027Hero && (
+              <div className="pt-1">
+                <ReleaseNotificationRibbonButton
+                  className="mx-auto flex w-full max-w-xs items-center justify-center rounded-sm border px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest transition-all hover:opacity-80 active:scale-[0.98]"
+                  gold={config.gold}
+                >
+                  Sign Up for Release Notification
+                </ReleaseNotificationRibbonButton>
               </div>
             )}
           </section>
@@ -427,26 +447,17 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             </div>
           </div>
         </div>
-      ) : (
+      ) : pageTitle ? (
         <div className="w-full border-y border-white/10 flex items-center justify-center py-1.5 px-4 overflow-x-auto" style={{ backgroundColor: config.color }}>
-          {pageTitle ? (
-            <Link
-              href={`/reunion-inquiry?academy=${academy}`}
-              className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
-              style={{ borderColor: config.gold, color: config.gold }}
-            >
-              Contact Firstie Firearms Now
-            </Link>
-          ) : (
-            <ReleaseNotificationRibbonButton
-              className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
-              gold={config.gold}
-            >
-              Sign Up for Release Notification
-            </ReleaseNotificationRibbonButton>
-          )}
+          <Link
+            href={`/reunion-inquiry?academy=${academy}`}
+            className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
+            style={{ borderColor: config.gold, color: config.gold }}
+          >
+            Contact Firstie Firearms Now
+          </Link>
         </div>
-      )}
+      ) : null}
 
       {/* Product Photo Carousel */}
       <section className="w-full px-4 py-6 md:py-8">
