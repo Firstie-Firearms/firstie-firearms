@@ -249,7 +249,10 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       )}
       <div className="flex items-stretch">
         {/* Left Sidebar */}
-        <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6">
+        {/* lg:min-h matches the USNA Class of 2027 page's natural content
+            height so every product page's sidebar (and, via items-stretch,
+            the hero image beside it) renders at the same fixed height. */}
+        <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6 lg:min-h-[554px]">
           {/* Academy Name */}
           <div className="flex items-center justify-center">
             <span className="text-7xl font-bold tracking-widest text-center" style={{ color: config.gold }}>
@@ -292,6 +295,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                   isConfigured={productConfigured}
                   className="mt-4 flex w-full items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                 />
+                <p className="pt-2 text-sm text-muted-foreground leading-relaxed">
+                  {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
+                </p>
               </div>
             )}
             {!pageTitle && !isUsna2027Hero && (
@@ -302,11 +308,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 >
                   Sign Up for Release Notification
                 </ReleaseNotificationRibbonButton>
+                <p className="pt-2 text-sm text-muted-foreground leading-relaxed">
+                  {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
+                </p>
               </div>
             )}
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
-            </p>
           </div>
         </aside>
 
@@ -382,7 +388,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               <img
                 src={heroImageSrc || "/placeholder.svg"}
                 alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
-                className="w-full h-full object-cover opacity-40"
+                className="absolute inset-0 w-full h-full object-cover opacity-40"
                 style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
               />
             )}
