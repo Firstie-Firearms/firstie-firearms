@@ -247,7 +247,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           </Link>
         </div>
       )}
-      <div className="flex items-start">
+      <div className="flex items-stretch">
         {/* Left Sidebar */}
         <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6">
           {/* Academy Name */}
@@ -369,7 +369,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           </section>
 
           {/* Hero Section */}
-          <section className="relative h-[32vh] md:h-[62vh] overflow-hidden bg-background">
+          <section className="relative h-[32vh] md:h-[62vh] lg:h-full overflow-hidden bg-background">
             {h1 && <h1 className="sr-only">{h1}</h1>}
             {isUsna2027Hero ? (
               <img
