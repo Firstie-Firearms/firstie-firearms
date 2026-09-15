@@ -279,18 +279,18 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             </div>
 
             {isUsna2027Hero && (
-              <div className="space-y-2 pt-2">
-                <h2 className="text-xl font-semibold leading-tight" style={{ color: config.gold }}>
-                  Commemorative GLOCK 19X V
+              <div className="pt-1">
+                <h2 className="whitespace-pre-line text-lg font-semibold leading-[1.15]" style={{ color: config.gold }}>
+                  {"Commemorative GLOCK\n19X V"}
                 </h2>
-                <p className="text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
-                <p className="text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
+                <p className="mt-1 text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
                 <CommerceOrderButton
                   label="ORDER NOW"
                   gold={config.gold}
                   productKey={productKey}
                   isConfigured={productConfigured}
-                  className="mt-2 flex w-full items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-4 flex w-full items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                 />
               </div>
             )}
@@ -328,18 +328,18 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               </span>
             </div>
             {isUsna2027Hero && (
-              <div className="space-y-2 text-center">
-                <h2 className="text-xl font-semibold leading-tight" style={{ color: config.gold }}>
-                  Commemorative GLOCK 19X V
+              <div className="pt-1 text-center">
+                <h2 className="whitespace-pre-line text-lg font-semibold leading-[1.15]" style={{ color: config.gold }}>
+                  {"Commemorative GLOCK\n19X V"}
                 </h2>
-                <p className="text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
-                <p className="text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
+                <p className="mt-1 text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
                 <CommerceOrderButton
                   label="ORDER NOW"
                   gold={config.gold}
                   productKey={productKey}
                   isConfigured={productConfigured}
-                  className="mx-auto mt-2 flex w-full max-w-xs items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mx-auto mt-4 flex w-full max-w-xs items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                 />
                 <p className="pt-2 text-left text-sm text-muted-foreground leading-relaxed">
                   {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
