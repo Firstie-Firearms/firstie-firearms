@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Target, Crosshair, Shield, Gauge, Flame, Briefcase } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { ReleaseNotificationRibbonButton } from "@/components/release-notification-button"
-import { StickyOrderButton } from "@/components/sticky-order-button"
+import { CommerceOrderButton, StickyOrderButton } from "@/components/sticky-order-button"
 import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
 import { ExpandableImage } from "@/components/expandable-image"
 import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-breadcrumb"
@@ -278,6 +278,22 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               </span>
             </div>
 
+            {isUsna2027Hero && (
+              <div className="space-y-2 pt-2">
+                <h2 className="text-xl font-semibold leading-tight" style={{ color: config.gold }}>
+                  Commemorative GLOCK 19X V
+                </h2>
+                <p className="text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
+                <p className="text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
+                <CommerceOrderButton
+                  label="ORDER NOW"
+                  gold={config.gold}
+                  productKey={productKey}
+                  isConfigured={productConfigured}
+                  className="mt-2 flex w-full items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </div>
+            )}
             <p className="text-sm text-muted-foreground leading-relaxed">
               {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
             </p>
@@ -311,6 +327,25 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 {pageTitle ?? classYear.replace(/\D/g, "")}
               </span>
             </div>
+            {isUsna2027Hero && (
+              <div className="space-y-2 text-center">
+                <h2 className="text-xl font-semibold leading-tight" style={{ color: config.gold }}>
+                  Commemorative GLOCK 19X V
+                </h2>
+                <p className="text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
+                <p className="text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
+                <CommerceOrderButton
+                  label="ORDER NOW"
+                  gold={config.gold}
+                  productKey={productKey}
+                  isConfigured={productConfigured}
+                  className="mx-auto mt-2 flex w-full max-w-xs items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                />
+                <p className="pt-2 text-left text-sm text-muted-foreground leading-relaxed">
+                  {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
+                </p>
+              </div>
+            )}
           </section>
 
           {/* Hero Section */}
