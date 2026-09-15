@@ -447,17 +447,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             </div>
           </div>
         </div>
-      ) : pageTitle ? (
-        <div className="w-full border-y border-white/10 flex items-center justify-center py-1.5 px-4 overflow-x-auto" style={{ backgroundColor: config.color }}>
-          <Link
-            href={`/reunion-inquiry?academy=${academy}`}
-            className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
-            style={{ borderColor: config.gold, color: config.gold }}
-          >
-            Contact Firstie Firearms Now
-          </Link>
-        </div>
-      ) : null}
+      ) : (
+        <div className="h-3 w-full border-y border-white/10" style={{ backgroundColor: config.color }} aria-hidden="true" />
+      )}
 
       {/* Product Photo Carousel */}
       <section className="w-full px-4 py-6 md:py-8">
