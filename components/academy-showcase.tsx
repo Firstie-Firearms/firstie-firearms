@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Target, Crosshair, Shield, Gauge, Flame, Briefcase } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { ReleaseNotificationRibbonButton } from "@/components/release-notification-button"
-import { StickyOrderButton } from "@/components/sticky-order-button"
+import { CommerceOrderButton, StickyOrderButton } from "@/components/sticky-order-button"
 import { ProductPhotoCarousel, type ProductPhoto } from "@/components/product-photo-carousel"
 import { ExpandableImage } from "@/components/expandable-image"
 import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-breadcrumb"
@@ -278,6 +278,32 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               </span>
             </div>
 
+            {isUsna2027Hero && (
+              <div className="pt-1">
+                <h2 className="whitespace-pre-line text-lg font-semibold leading-[1.15]" style={{ color: config.gold }}>
+                  {"Commemorative GLOCK\n19X V"}
+                </h2>
+                <p className="mt-1 text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
+                <CommerceOrderButton
+                  label="ORDER NOW"
+                  gold={config.gold}
+                  productKey={productKey}
+                  isConfigured={productConfigured}
+                  className="mt-4 flex w-full items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </div>
+            )}
+            {!pageTitle && !isUsna2027Hero && (
+              <div className="pt-1">
+                <ReleaseNotificationRibbonButton
+                  className="flex w-full items-center justify-center rounded-sm border px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest transition-all hover:opacity-80 active:scale-[0.98]"
+                  gold={config.gold}
+                >
+                  Sign Up for Release Notification
+                </ReleaseNotificationRibbonButton>
+              </div>
+            )}
             <p className="text-sm text-muted-foreground leading-relaxed">
               {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
             </p>
@@ -311,6 +337,35 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 {pageTitle ?? classYear.replace(/\D/g, "")}
               </span>
             </div>
+            {isUsna2027Hero && (
+              <div className="pt-1 text-center">
+                <h2 className="whitespace-pre-line text-lg font-semibold leading-[1.15]" style={{ color: config.gold }}>
+                  {"Commemorative GLOCK\n19X V"}
+                </h2>
+                <p className="mt-1 text-2xl font-bold" style={{ color: config.gold }}>$2,395</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">Custom pistol &amp; presentation case</p>
+                <CommerceOrderButton
+                  label="ORDER NOW"
+                  gold={config.gold}
+                  productKey={productKey}
+                  isConfigured={productConfigured}
+                  className="mx-auto mt-4 flex w-full max-w-xs items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                />
+                <p className="pt-2 text-left text-sm text-muted-foreground leading-relaxed">
+                  {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
+                </p>
+              </div>
+            )}
+            {!pageTitle && !isUsna2027Hero && (
+              <div className="pt-1">
+                <ReleaseNotificationRibbonButton
+                  className="mx-auto flex w-full max-w-xs items-center justify-center rounded-sm border px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest transition-all hover:opacity-80 active:scale-[0.98]"
+                  gold={config.gold}
+                >
+                  Sign Up for Release Notification
+                </ReleaseNotificationRibbonButton>
+              </div>
+            )}
           </section>
 
           {/* Hero Section */}
@@ -393,24 +448,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           </div>
         </div>
       ) : (
-        <div className="w-full border-y border-white/10 flex items-center justify-center py-1.5 px-4 overflow-x-auto" style={{ backgroundColor: config.color }}>
-          {pageTitle ? (
-            <Link
-              href={`/reunion-inquiry?academy=${academy}`}
-              className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
-              style={{ borderColor: config.gold, color: config.gold }}
-            >
-              Contact Firstie Firearms Now
-            </Link>
-          ) : (
-            <ReleaseNotificationRibbonButton
-              className="font-sans text-xs font-semibold uppercase tracking-widest px-6 py-1 border transition-opacity hover:opacity-80 whitespace-nowrap"
-              gold={config.gold}
-            >
-              Sign Up for Release Notification
-            </ReleaseNotificationRibbonButton>
-          )}
-        </div>
+        <div className="h-6 w-full border-y border-white/10" style={{ backgroundColor: config.color }} aria-hidden="true" />
       )}
 
       {/* Product Photo Carousel */}

@@ -6,6 +6,45 @@ import { Loader2 } from "lucide-react"
 import { useCart } from "@/components/cart-provider"
 import { ReleaseNotificationButton } from "@/components/release-notification-button"
 
+interface CommerceOrderButtonProps {
+  label: string
+  gold: string
+  productKey?: string
+  isConfigured?: boolean
+  className?: string
+}
+
+export function CommerceOrderButton({
+  label,
+  gold,
+  productKey,
+  isConfigured = false,
+  className = "",
+}: CommerceOrderButtonProps) {
+  const router = useRouter()
+  const { addItem, isMutating } = useCart()
+
+  const handleOrder = async () => {
+    if (!productKey || !isConfigured || isMutating) return
+    const added = await addItem(productKey, 1)
+    if (added) router.push("/cart")
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleOrder}
+      disabled={!isConfigured || isMutating}
+      className={`${className} disabled:cursor-not-allowed disabled:opacity-60`}
+      style={{ backgroundColor: gold }}
+      title={!isConfigured ? "BigCommerce product identifiers still need to be configured." : undefined}
+    >
+      {isMutating && <Loader2 className="mr-2 size-4 animate-spin" aria-hidden="true" />}
+      {isMutating ? "Adding to cart…" : label}
+    </button>
+  )
+}
+
 interface StickyOrderButtonProps {
   label: string
   gold: string
@@ -30,16 +69,8 @@ export function StickyOrderButton({
   productKey,
   isConfigured = false,
 }: StickyOrderButtonProps) {
-  const router = useRouter()
-  const { addItem, isMutating } = useCart()
   const buttonClass =
     "flex w-full items-center justify-center rounded-sm px-8 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] sm:w-auto sm:text-sm"
-
-  const handleOrder = async () => {
-    if (!productKey || !isConfigured || isMutating) return
-    const added = await addItem(productKey, 1)
-    if (added) router.push("/cart")
-  }
 
   let action: React.ReactNode
 
@@ -59,17 +90,13 @@ export function StickyOrderButton({
     )
   } else {
     action = (
-      <button
-        type="button"
-        onClick={handleOrder}
-        disabled={!isConfigured || isMutating}
-        className={`${buttonClass} disabled:cursor-not-allowed disabled:opacity-60`}
-        style={{ backgroundColor: gold }}
-        title={!isConfigured ? "BigCommerce product identifiers still need to be configured." : undefined}
-      >
-        {isMutating && <Loader2 className="mr-2 size-4 animate-spin" aria-hidden="true" />}
-        {isMutating ? "Adding to cart…" : label}
-      </button>
+      <CommerceOrderButton
+        label={label}
+        gold={gold}
+        productKey={productKey}
+        isConfigured={isConfigured}
+        className={buttonClass}
+      />
     )
   }
 
