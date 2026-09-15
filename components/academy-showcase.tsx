@@ -247,7 +247,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           </Link>
         </div>
       )}
-      <div className="flex">
+      <div className="flex items-start">
         {/* Left Sidebar */}
         <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6">
           {/* Academy Name */}
