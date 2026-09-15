@@ -249,7 +249,10 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
       )}
       <div className="flex items-stretch">
         {/* Left Sidebar */}
-        <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6">
+        {/* lg:min-h matches the USNA Class of 2027 page's natural content
+            height so every product page's sidebar (and, via items-stretch,
+            the hero image beside it) renders at the same fixed height. */}
+        <aside className="hidden lg:block w-80 border-r border-border p-6 space-y-6 lg:min-h-[554px]">
           {/* Academy Name */}
           <div className="flex items-center justify-center">
             <span className="text-7xl font-bold tracking-widest text-center" style={{ color: config.gold }}>
@@ -385,7 +388,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               <img
                 src={heroImageSrc || "/placeholder.svg"}
                 alt={`${config.shortName} commemorative GLOCK pistol for graduation`}
-                className="w-full h-full object-cover opacity-40"
+                className="absolute inset-0 w-full h-full object-cover opacity-40"
                 style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
               />
             )}
