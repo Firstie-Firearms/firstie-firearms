@@ -448,7 +448,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           </div>
         </div>
       ) : (
-        <div className="h-3 w-full border-y border-white/10" style={{ backgroundColor: config.color }} aria-hidden="true" />
+        <div className="h-6 w-full border-y border-white/10" style={{ backgroundColor: config.color }} aria-hidden="true" />
       )}
 
       {/* Product Photo Carousel */}
