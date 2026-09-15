@@ -292,6 +292,9 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                   isConfigured={productConfigured}
                   className="mt-4 flex w-full items-center justify-center rounded-sm px-6 py-3 font-sans text-xs font-bold uppercase tracking-widest text-background shadow-lg transition-all hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                 />
+                <p className="pt-2 text-sm text-muted-foreground leading-relaxed">
+                  {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
+                </p>
               </div>
             )}
             {!pageTitle && !isUsna2027Hero && (
@@ -302,11 +305,11 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 >
                   Sign Up for Release Notification
                 </ReleaseNotificationRibbonButton>
+                <p className="pt-2 text-sm text-muted-foreground leading-relaxed">
+                  {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
+                </p>
               </div>
             )}
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {"Founded by Academy Graduates, Firstie Firearms creates custom firearms rooted in honor, service, and tradition."}
-            </p>
           </div>
         </aside>
 
