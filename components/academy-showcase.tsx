@@ -611,6 +611,22 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                 </ul>
               </div>
 
+              {academy === "USNA" && classYear === "Class of 2027" && (
+                /* Purchase Restrictions */
+                <div className="space-y-2 pt-4 border-t border-border">
+                  <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Purchase Restrictions</h3>
+                  <p className="text-sm text-muted-foreground">This firearm is not available for sale or shipment to:</p>
+                  <ul className="space-y-1.5">
+                    {["California", "District of Columbia"].map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
             </div>
           </aside>
         )}
@@ -906,6 +922,22 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               ))}
             </ul>
           </div>
+
+          {academy === "USNA" && classYear === "Class of 2027" && (
+            /* Purchase Restrictions */
+            <div className="space-y-2 pt-4 border-t border-border">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Purchase Restrictions</h3>
+              <p className="text-sm text-muted-foreground">This firearm is not available for sale or shipment to:</p>
+              <ul className="space-y-1.5">
+                {["California", "District of Columbia"].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
 
