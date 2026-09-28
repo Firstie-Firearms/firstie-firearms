@@ -67,7 +67,7 @@ const categories: FaqCategory[] = [
               <div className="px-4 py-3 space-y-0.5">
                 <p className="font-semibold text-foreground">{"Commissioning Delivery Batch"}</p>
                 <p>{"Order by April 1, 2027 to be included in the batch scheduled for delivery before Commissioning Week."}</p>
-                <p>{"Estimated delivery: May 15, 2027"}</p>
+                <p>{"Estimated delivery: May 1, 2027"}</p>
               </div>
             </div>
           </div>

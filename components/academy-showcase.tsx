@@ -428,7 +428,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-[10px] font-sans uppercase tracking-wider text-white/50">Est. Delivery</span>
-              <span className="font-sans text-xs font-semibold text-white">May 15, 2027</span>
+              <span className="font-sans text-xs font-semibold text-white">May 1, 2027</span>
             </div>
           </div>
         </div>
