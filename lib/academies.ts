@@ -78,12 +78,12 @@ export function isPreviewImageGrayedOut(academy: Academy, year: string) {
 
 /**
  * Release month for a given academy/year's "coming soon" tag. USNA classes
- * always release in August. USMA/USAFA's Class of 2027 releases in October,
+ * always release in August. USMA/USAFA's Class of 2027 releases in December,
  * but Classes of 2028, 2029, and 2030 release in August.
  */
 function getComingSoonMonth(academy: Academy, yearNum: number) {
   if (academy === "USNA") return "AUGUST"
-  return yearNum === 2027 ? "OCTOBER" : "AUGUST"
+  return yearNum === 2027 ? "DECEMBER" : "AUGUST"
 }
 
 /**
