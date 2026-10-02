@@ -106,7 +106,7 @@ const categories: FaqCategory[] = [
       {
         question: "Can a parent buy the pistol as a gift for their midshipman or cadet?",
         answer:
-          "Yes. A parent or family member may purchase the pistol as a gift. The firearm will transfer to the recipient through the receiving FFL, who will complete the required background check and paperwork with the person taking possession. The recipient must be legally eligible to receive a firearm in the state where the transfer takes place.",
+          "Yes. A parent or family member may purchase the pistol as a gift. Firstie Firearms will ship the firearm to a licensed gun dealer (FFL) that can legally complete the transfer to the intended recipient. The recipient will complete the required background check and paperwork with the dealer and must be legally eligible to receive the firearm under applicable federal, state, and local laws.",
       },
     ],
   },
