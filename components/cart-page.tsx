@@ -99,7 +99,7 @@ export function CartPage() {
                   and <Link href="/refund-policy" className="underline underline-offset-4 hover:text-foreground">Refund Policy</Link>.
                 </p>
                 <p className="text-pretty text-xs leading-relaxed text-muted-foreground">
-                  Custom firearm orders may be cancelled within 48 hours of purchase. After 48 hours, custom firearm orders are non-refundable.
+                  Custom firearm orders may be cancelled within 24 hours of purchase. After 24 hours, custom firearm orders are non-refundable.
                 </p>
                 <Button size="lg" disabled={isMutating || !cart || cart.items.length === 0} onClick={() => void checkout()}>
                   {isMutating ? <Loader2 className="animate-spin" data-icon="inline-start" /> : <ShieldCheck data-icon="inline-start" />}
