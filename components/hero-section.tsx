@@ -40,7 +40,7 @@ export function HeroSection({ selectedAcademy }: HeroSectionProps) {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            {"Exclusive custom GLOCK firearms crafted for military academy graduates. Each individually numbered and engraved."}
+            {"Exclusive custom GLOCK firearms crafted for military academy graduates. Each engraved with class-year-specific designs."}
           </p>
         </motion.div>
       </div>
