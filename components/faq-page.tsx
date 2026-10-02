@@ -16,7 +16,7 @@ const categories: FaqCategory[] = [
       {
         question: "When do USNA Class of 2027 orders open?",
         answer:
-          "Orders for the USNA Class of 2027 commemorative pistol are open now. Two scheduled production batches are planned — order by November 1, 2026 for the First Production Batch, or by April 1, 2027 for the Commissioning Delivery Batch.",
+          "Orders for the USNA Class of 2027 commemorative pistol are open now. Orders received before April 1, 2027 have a planned delivery date of May 1, 2027.",
       },
       {
         question: "What does the product cost?",
@@ -41,7 +41,7 @@ const categories: FaqCategory[] = [
       {
         question: "Can I order after graduation?",
         answer:
-          "Yes. The Class of 2027 design will remain available after graduation. Orders placed outside the scheduled production batches have an estimated three-month production timeline.",
+          "Yes. The Class of 2027 design will remain available after graduation. Orders placed outside the scheduled production batch have an estimated three-month production timeline.",
       },
     ],
   },
@@ -57,13 +57,8 @@ const categories: FaqCategory[] = [
         question: "What are the scheduled batch deadlines?",
         answer: (
           <div className="space-y-3">
-            <p>{"The Class of 2027 production schedule includes two batches:"}</p>
+            <p>{"The Class of 2027 production schedule includes one batch:"}</p>
             <div className="border border-border rounded-sm divide-y divide-border">
-              <div className="px-4 py-3 space-y-0.5">
-                <p className="font-semibold text-foreground">{"First Production Batch"}</p>
-                <p>{"Order deadline: November 1, 2026"}</p>
-                <p>{"Estimated delivery: December 15, 2026"}</p>
-              </div>
               <div className="px-4 py-3 space-y-0.5">
                 <p className="font-semibold text-foreground">{"Commissioning Delivery Batch"}</p>
                 <p>{"Order by April 1, 2027 to be included in the batch scheduled for delivery before Commissioning Week."}</p>
@@ -79,9 +74,9 @@ const categories: FaqCategory[] = [
           "Delivery dates are estimates and are not guaranteed. Production schedules are planned around the academy calendar, and we will communicate updates if timelines change.",
       },
       {
-        question: "What is the normal lead time after the scheduled batches?",
+        question: "What is the normal lead time after the scheduled batch?",
         answer:
-          "Orders placed outside the scheduled production batches have an estimated three-month production timeline from the date of order.",
+          "Orders placed outside the scheduled production batch have an estimated three-month production timeline from the date of order.",
       },
     ],
   },
