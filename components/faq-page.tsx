@@ -81,27 +81,27 @@ const categories: FaqCategory[] = [
     ],
   },
   {
-    title: "FFL Delivery",
+    title: "Gun Dealer (FFL) Delivery",
     items: [
       {
         question: "Why can't the pistol ship directly to my home?",
         answer:
-          "Federal law requires that serialized firearms be transferred through a licensed dealer (FFL). The pistol ships from Firstie Firearms to an FFL dealer of your choosing, who then completes the transfer to you in compliance with all applicable federal and state requirements.",
+          "Federal law requires that serialized firearms be transferred through a licensed gun dealer (FFL). The pistol ships from Firstie Firearms to a gun dealer of your choosing, who then completes the transfer to you in compliance with all applicable federal and state requirements.",
       },
       {
-        question: "How do I find a receiving FFL?",
+        question: "How do I find a receiving gun dealer (FFL)?",
         answer:
-          "Any federally licensed firearms dealer can serve as your receiving FFL. Most gun stores, sporting goods stores, and pawnshops with a firearms license will accept transfers. Contact dealers in your area to confirm they accept incoming transfers and to ask about their transfer fee before placing your order.",
+          "Any federally licensed gun dealer (FFL) can receive your pistol. Most gun stores, sporting goods stores, and pawnshops with a firearms license will accept transfers. Contact dealers in your area to confirm they accept incoming transfers and to ask about their transfer fee before placing your order.",
       },
       {
         question: "Where should the dealer send its license?",
         answer:
-          "Following your purchase, you will receive an email from Firstie Firearms with instructions for submitting your receiving dealer's FFL license. We must have a copy of the dealer's license on file before the pistol can ship.",
+          "Following your purchase, you will receive an email from Firstie Firearms with instructions for submitting a copy of your receiving gun dealer's Federal Firearms License (FFL). We must have a copy of the dealer's license on file before the pistol can ship.",
       },
       {
         question: "Who pays the dealer transfer fee?",
         answer:
-          "The transfer fee charged by your receiving FFL is separate from the purchase price and is paid directly to that dealer. Transfer fees vary by dealer.",
+          "The transfer fee charged by your receiving gun dealer (FFL) is separate from the purchase price and is paid directly to that dealer. Transfer fees vary by dealer.",
       },
       {
         question: "Can a parent buy the pistol as a gift for their midshipman or cadet?",
@@ -124,7 +124,7 @@ const categories: FaqCategory[] = [
               {[
                 "Supplying compliant-capacity magazines.",
                 "Shipping the firearm without magazines when required by law.",
-                "Coordinating with your receiving FFL to ensure your order is transferred in accordance with state regulations.",
+                "Coordinating with your receiving gun dealer (FFL) to ensure your order is transferred in accordance with state regulations.",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: GOLD }} />
@@ -133,7 +133,7 @@ const categories: FaqCategory[] = [
               ))}
             </ul>
             <p>{"Our goal is to provide the same premium commemorative firearm to customers nationwide while ensuring every shipment complies with the laws of the destination state."}</p>
-            <p>{"If you have questions about your state's requirements, please contact us before placing your order. We're happy to help coordinate with your local FFL."}</p>
+            <p>{"If you have questions about your state's requirements, please contact us before placing your order. We're happy to help coordinate with your local gun dealer (FFL)."}</p>
           </div>
         ),
       },
@@ -157,7 +157,7 @@ const categories: FaqCategory[] = [
                 </li>
               ))}
             </ul>
-            <p>{"Because firearm laws change and individual circumstances vary, Firstie Firearms recommends reviewing current federal and state laws or consulting your local FFL or qualified attorney if you have questions about transporting firearms into Maryland."}</p>
+            <p>{"Because firearm laws change and individual circumstances vary, Firstie Firearms recommends reviewing current federal and state laws or consulting your local gun dealer (FFL) or a qualified attorney if you have questions about transporting firearms into Maryland."}</p>
           </div>
         ),
       },

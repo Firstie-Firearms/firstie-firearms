@@ -106,7 +106,7 @@ export function CartPage() {
                   {isMutating ? "Preparing checkout…" : "Proceed to Secure Checkout"}
                 </Button>
                 <p className="text-pretty text-xs leading-relaxed text-muted-foreground">
-                  Firearms are transferred through a licensed FFL where required. Final transfer and state-compliant magazine requirements are handled as part of purchase and fulfillment.
+                  Firearms are transferred through a licensed gun dealer (FFL) where required. Final transfer and state-compliant magazine requirements are handled as part of purchase and fulfillment.
                 </p>
               </div>
             </aside>
