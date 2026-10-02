@@ -420,7 +420,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         <div className="w-full border-y border-white/10 overflow-x-auto" style={{ backgroundColor: config.color }}>
           <div className="flex items-baseline justify-center gap-4 sm:gap-6 px-6 sm:px-8 py-2.5 whitespace-nowrap w-max min-w-full">
             <p className="font-sans text-sm font-bold" style={{ color: config.gold }}>
-              Commissioning Delivery Batch
+              Graduation and Commissioning Delivery Batch
             </p>
             <div className="flex items-baseline gap-2">
               <span className="text-[10px] font-sans uppercase tracking-wider text-white/50">Order Deadline</span>
