@@ -41,7 +41,7 @@ const categories: FaqCategory[] = [
       {
         question: "Can I order after graduation?",
         answer:
-          "Yes. The Class of 2027 design will remain available after graduation. Orders placed outside the scheduled production batch have an estimated three-month production timeline.",
+          "Yes. The Class of 2027 design will remain available after graduation. Orders placed outside the scheduled production batch have an estimated six-month production timeline.",
       },
     ],
   },
@@ -76,7 +76,7 @@ const categories: FaqCategory[] = [
       {
         question: "What is the normal lead time after the scheduled batch?",
         answer:
-          "Orders placed outside the scheduled production batch have an estimated three-month production timeline from the date of order.",
+          "Orders placed outside the scheduled production batch have an estimated six-month production timeline from the date of order.",
       },
     ],
   },
