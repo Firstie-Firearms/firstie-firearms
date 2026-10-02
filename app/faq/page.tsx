@@ -4,12 +4,12 @@ import { FaqPage } from "@/components/faq-page"
 export const metadata: Metadata = {
   title: "FAQ | Firstie Firearms",
   description:
-    "Answers to common questions about ordering, production timelines, and FFL delivery for Firstie Firearms commemorative pistols.",
+    "Answers to common questions about ordering, production timelines, and gun dealer (FFL) delivery for Firstie Firearms commemorative pistols.",
   alternates: { canonical: "https://www.firstiefirearms.com/faq" },
   openGraph: {
     title: "FAQ | Firstie Firearms",
     description:
-      "Answers to common questions about ordering, production timelines, and FFL delivery for Firstie Firearms commemorative pistols.",
+      "Answers to common questions about ordering, production timelines, and gun dealer (FFL) delivery for Firstie Firearms commemorative pistols.",
     url: "https://www.firstiefirearms.com/faq",
     images: [
       {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FAQ | Firstie Firearms",
     description:
-      "Answers to common questions about ordering, production timelines, and FFL delivery for Firstie Firearms commemorative pistols.",
+      "Answers to common questions about ordering, production timelines, and gun dealer (FFL) delivery for Firstie Firearms commemorative pistols.",
     images: ["https://www.firstiefirearms.com/opengraph-image"],
   },
 }

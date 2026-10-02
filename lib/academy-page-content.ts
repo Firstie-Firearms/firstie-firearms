@@ -92,7 +92,7 @@ export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
       {
         question: "Does Firstie Firearms ship the pistol directly to my home?",
         answer:
-          "No. As with every Firstie Firearms product, the completed pistol ships to a licensed FFL dealer of your choosing, who completes the transfer to you in compliance with federal and state law.",
+          "No. As with every Firstie Firearms product, the completed pistol ships to a licensed gun dealer (FFL) of your choosing, who completes the transfer to you in compliance with federal and state law.",
       },
     ],
   },
@@ -150,7 +150,7 @@ export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
       {
         question: "Does Firstie Firearms ship the pistol directly to my home?",
         answer:
-          "No. As with every Firstie Firearms product, the completed pistol ships to a licensed FFL dealer of your choosing, who completes the transfer to you in compliance with federal and state law.",
+          "No. As with every Firstie Firearms product, the completed pistol ships to a licensed gun dealer (FFL) of your choosing, who completes the transfer to you in compliance with federal and state law.",
       },
     ],
   },
@@ -208,7 +208,7 @@ export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
       {
         question: "Does Firstie Firearms ship the pistol directly to my home?",
         answer:
-          "No. As with every Firstie Firearms product, the completed pistol ships to a licensed FFL dealer of your choosing, who completes the transfer to you in compliance with federal and state law.",
+          "No. As with every Firstie Firearms product, the completed pistol ships to a licensed gun dealer (FFL) of your choosing, who completes the transfer to you in compliance with federal and state law.",
       },
     ],
   },
