@@ -203,7 +203,7 @@ const categories: FaqCategory[] = [
       {
         question: "Are reduced-capacity magazines available?",
         answer:
-          "No. Firstie Firearms does not substitute reduced-capacity magazines. The product ships with the factory magazine configuration described above. The product cannot be shipped or transferred in jurisdictions where the included configuration is prohibited.",
+          "Yes. For customers in states with magazine-capacity restrictions, Firstie Firearms will provide compliant-capacity magazines whenever possible. Where required by law, the firearm may instead ship without magazines. We coordinate with your receiving gun dealer (FFL) so your order is transferred in accordance with your state's regulations. If you have questions about your state's requirements, please contact us before placing your order.",
       },
       {
         question: "Does Firstie Firearms test-fire the completed pistol?",
