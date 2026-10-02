@@ -13,6 +13,9 @@ import { cn } from "@/lib/utils"
  */
 export type ProductPhoto = LightboxImage
 
+const AUTO_SCROLL_START_DELAY_MS = 3000
+const AUTO_SCROLL_SPEED_PX_PER_SEC = 24
+
 interface ProductPhotoCarouselProps {
   images: ProductPhoto[]
   /** Accent color (e.g. academy gold) used for arrow rings/focus states. */
@@ -83,6 +86,114 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
     }
   }, [recenter])
 
+  const hoverPausedRef = useRef(false)
+  const focusPausedRef = useRef(false)
+  const touchPausedRef = useRef(false)
+  const lightboxOpenRef = useRef(false)
+  const touchResumeTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+
+  useEffect(() => {
+    lightboxOpenRef.current = lightboxIndex !== null
+  }, [lightboxIndex])
+
+  // Ambient auto-scroll: a slow, continuous drift that moves the photos left
+  // to right. Snap is disabled while drifting so the strip glides instead of
+  // jumping between slides; it is restored whenever the carousel pauses so the
+  // arrow buttons still land on whole photos.
+  useEffect(() => {
+    const el = trackRef.current
+    if (!el || count === 0) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    let frame = 0
+    let lastTime = 0
+    let position: number | null = null
+    let drifting = false
+
+    const restoreScrollStyles = () => {
+      el.style.scrollSnapType = ""
+      el.style.scrollBehavior = ""
+    }
+
+    const step = (now: number) => {
+      frame = requestAnimationFrame(step)
+      const paused =
+        hoverPausedRef.current ||
+        focusPausedRef.current ||
+        touchPausedRef.current ||
+        lightboxOpenRef.current ||
+        document.hidden
+      if (paused) {
+        if (drifting) {
+          drifting = false
+          restoreScrollStyles()
+        }
+        lastTime = 0
+        position = null
+        return
+      }
+      if (!drifting) {
+        drifting = true
+        el.style.scrollSnapType = "none"
+        el.style.scrollBehavior = "auto"
+      }
+      if (lastTime === 0 || position === null) {
+        lastTime = now
+        position = el.scrollLeft
+        return
+      }
+      const elapsed = Math.min(now - lastTime, 100)
+      lastTime = now
+      const setWidth = getSetWidth()
+      if (setWidth === 0) return
+      position += (AUTO_SCROLL_SPEED_PX_PER_SEC * elapsed) / 1000
+      while (position < setWidth) position += setWidth
+      while (position >= setWidth * 2) position -= setWidth
+      el.scrollLeft = position
+    }
+
+    const startTimer = setTimeout(() => {
+      frame = requestAnimationFrame(step)
+    }, AUTO_SCROLL_START_DELAY_MS)
+
+    return () => {
+      clearTimeout(startTimer)
+      cancelAnimationFrame(frame)
+      clearTimeout(touchResumeTimerRef.current)
+      restoreScrollStyles()
+    }
+  }, [count, getSetWidth])
+
+  const handlePointerEnter = useCallback((event: React.PointerEvent) => {
+    if (event.pointerType === "mouse") hoverPausedRef.current = true
+  }, [])
+
+  const handlePointerLeave = useCallback((event: React.PointerEvent) => {
+    if (event.pointerType === "mouse") hoverPausedRef.current = false
+  }, [])
+
+  const handlePointerDown = useCallback((event: React.PointerEvent) => {
+    if (event.pointerType === "mouse") return
+    clearTimeout(touchResumeTimerRef.current)
+    touchPausedRef.current = true
+  }, [])
+
+  const handlePointerRelease = useCallback((event: React.PointerEvent) => {
+    if (event.pointerType === "mouse") return
+    clearTimeout(touchResumeTimerRef.current)
+    touchResumeTimerRef.current = setTimeout(() => {
+      touchPausedRef.current = false
+    }, AUTO_SCROLL_START_DELAY_MS)
+  }, [])
+
+  const handleFocus = useCallback((event: React.FocusEvent) => {
+    focusPausedRef.current = event.target instanceof HTMLElement && event.target.matches(":focus-visible")
+  }, [])
+
+  const handleBlur = useCallback((event: React.FocusEvent) => {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) focusPausedRef.current = false
+  }, [])
+
   const scrollByGroup = useCallback((direction: "left" | "right") => {
     const el = trackRef.current
     if (!el) return
@@ -113,7 +224,16 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
   return (
     <div className={cn("relative w-full", className)}>
       {/* Horizontal carousel strip */}
-      <div className="relative">
+      <div
+        className="relative"
+        onPointerEnter={handlePointerEnter}
+        onPointerLeave={handlePointerLeave}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerRelease}
+        onPointerCancel={handlePointerRelease}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      >
         <div
           ref={trackRef}
           className="flex gap-3 md:gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-1 py-1 [&::-webkit-scrollbar]:hidden"
