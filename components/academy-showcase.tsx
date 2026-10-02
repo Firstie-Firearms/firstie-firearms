@@ -93,7 +93,7 @@ const weaponFeatures = [
 // Real photography for the USNA Class of 2027 pistol — the only build that
 // currently has actual product photos. Every other academy/year still falls
 // back to the AI-generated placeholder query below until real photos exist.
-const USNA_2027_PHOTO_ORDER = [1, 5, 2, 9, 30, 31, 3, 23, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 4, 24, 25, 26, 27, 28, 29, 32, 33, 6] as const
+const USNA_2027_PHOTO_ORDER = [5, 2, 9, 30, 31, 3, 23, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 4, 24, 25, 26, 27, 28, 29, 32, 33, 6, 1] as const
 
 const USNA_2027_PHOTOS_BY_NUMBER: ProductPhoto[] = [
   { src: "/usna-2027/photo-01.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 engraved slide detail in vehicle interior" },
