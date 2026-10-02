@@ -50,12 +50,14 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
     while (next < setWidth) next += setWidth
     while (next >= setWidth * 2) next -= setWidth
     if (next === el.scrollLeft) return
+    const previousBehavior = el.style.scrollBehavior
+    const previousSnapType = el.style.scrollSnapType
     el.style.scrollBehavior = "auto"
     el.style.scrollSnapType = "none"
     el.scrollLeft = next
     requestAnimationFrame(() => {
-      el.style.scrollBehavior = ""
-      el.style.scrollSnapType = ""
+      el.style.scrollBehavior = previousBehavior
+      el.style.scrollSnapType = previousSnapType
     })
   }, [getSetWidth])
 
@@ -124,7 +126,10 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
         lightboxOpenRef.current ||
         document.hidden
       if (paused) {
-        if (drifting) {
+        // Re-enabling snap would yank the strip to the nearest photo, so hover,
+        // focus, and lightbox pauses keep snap off and freeze in place. Only a
+        // touch interaction restores snap, so swipes still settle on a photo.
+        if (drifting && touchPausedRef.current) {
           drifting = false
           restoreScrollStyles()
         }
