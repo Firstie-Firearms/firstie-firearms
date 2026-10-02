@@ -93,7 +93,7 @@ const weaponFeatures = [
 // Real photography for the USNA Class of 2027 pistol — the only build that
 // currently has actual product photos. Every other academy/year still falls
 // back to the AI-generated placeholder query below until real photos exist.
-const USNA_2027_PHOTO_ORDER = [36, 5, 34, 2, 9, 30, 35, 31, 3, 23, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 4, 24, 25, 26, 27, 28, 29, 32, 33, 6, 1] as const
+const USNA_2027_PHOTO_ORDER = [36, 5, 34, 2, 9, 30, 35, 31, 37, 3, 23, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 4, 24, 25, 26, 27, 28, 29, 32, 33, 6, 1] as const
 
 const USNA_2027_PHOTOS_BY_NUMBER: ProductPhoto[] = [
   { src: "/usna-2027/photo-01.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 engraved slide detail in vehicle interior" },
@@ -132,6 +132,7 @@ const USNA_2027_PHOTOS_BY_NUMBER: ProductPhoto[] = [
   { src: "/usna-2027/photo-34.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 full presentation case layout with \u201cDon't Give Up the Ship\u201d lid panel, magazines, and \u201cClass of 2027, United States Naval Academy\u201d pistol tray" },
   { src: "/usna-2027/photo-35.jpg", alt: "USNA Class of 2027 presentation case \u2014 \u201cDon't Give Up the Ship\u201d lid panel with the engraved \u201cMission of USNA\u201d foam insert lifted above the magazines" },
   { src: "/usna-2027/photo-36.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 angled view of the open presentation case with the \u201cClass of 2027, United States Naval Academy\u201d pistol tray lifted beneath the \u201cDon't Give Up the Ship\u201d lid panel" },
+  { src: "/usna-2027/photo-37.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 engraved USNA slide resting on the closed black presentation case with the Firstie Firearms badge" },
 ]
 
 const USNA_2027_PHOTOS = USNA_2027_PHOTO_ORDER.map((number) => USNA_2027_PHOTOS_BY_NUMBER[number - 1])
