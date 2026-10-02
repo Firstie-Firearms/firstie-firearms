@@ -16,7 +16,7 @@ const categories: FaqCategory[] = [
       {
         question: "When do USNA Class of 2027 orders open?",
         answer:
-          "Orders for the USNA Class of 2027 commemorative pistol are open now. Orders received before April 1, 2027 have a planned delivery date of May 1, 2027.",
+          "Orders for the USNA Class of 2027 commemorative pistol are open now. Orders received before April 1, 2027 have a planned delivery date of May 1, 2027, so the pistol and presentation case are received in time for graduation and commissioning.",
       },
       {
         question: "What does the product cost?",
