@@ -164,8 +164,8 @@ const USNA_2027_DESCRIPTION_IMAGES: ProductPhoto[] = [
     caption: "The Future Fleet",
   },
   {
-    src: "/usna-2027/academy-tribute-slide.jpg",
-    alt: "Engraved USNA Class of 2027 slide artwork honoring the Naval Academy",
+  src: "/usna-2027/academy-tribute-slide-top.png",
+  alt: "Top view of the engraved USNA Class of 2027 slide showing the trident, \u201cClass of 2027\u201d banner, dove, and fist with compass star honoring the Naval Academy",
     caption: "A Tribute to the Academy",
   },
   {
