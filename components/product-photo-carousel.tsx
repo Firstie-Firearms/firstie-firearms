@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { ImageLightbox, useLightboxChromeHidden, type LightboxImage } from "@/components/image-lightbox"
@@ -22,54 +22,75 @@ interface ProductPhotoCarouselProps {
 
 export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", className }: ProductPhotoCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const count = images.length
 
   useLightboxChromeHidden(lightboxIndex !== null)
 
-  const updateArrowState = useCallback(() => {
+  // The strip renders three identical copies of the photos. The user always
+  // browses the middle copy; when scrolling settles inside the first or third
+  // copy we instantly shift by one copy's width, which is visually identical,
+  // so the loop never appears to reach an end or rewind.
+  const getSetWidth = useCallback(() => {
     const el = trackRef.current
-    if (!el) return
-    const maxScroll = el.scrollWidth - el.clientWidth
-    setCanScrollLeft(el.scrollLeft > 4)
-    setCanScrollRight(el.scrollLeft < maxScroll - 4)
-  }, [])
+    if (!el || count === 0) return 0
+    const items = el.children as HTMLCollectionOf<HTMLElement>
+    if (items.length < count * 2) return 0
+    return items[count].offsetLeft - items[0].offsetLeft
+  }, [count])
+
+  const recenter = useCallback(() => {
+    const el = trackRef.current
+    const setWidth = getSetWidth()
+    if (!el || setWidth === 0) return
+    let next = el.scrollLeft
+    while (next < setWidth) next += setWidth
+    while (next >= setWidth * 2) next -= setWidth
+    if (next === el.scrollLeft) return
+    el.style.scrollBehavior = "auto"
+    el.style.scrollSnapType = "none"
+    el.scrollLeft = next
+    requestAnimationFrame(() => {
+      el.style.scrollBehavior = ""
+      el.style.scrollSnapType = ""
+    })
+  }, [getSetWidth])
+
+  useLayoutEffect(() => {
+    const el = trackRef.current
+    const setWidth = getSetWidth()
+    if (!el || setWidth === 0) return
+    el.style.scrollBehavior = "auto"
+    el.scrollLeft = setWidth
+    el.style.scrollBehavior = ""
+  }, [getSetWidth])
 
   useEffect(() => {
-    updateArrowState()
     const el = trackRef.current
     if (!el) return
-    el.addEventListener("scroll", updateArrowState, { passive: true })
-    const resizeObserver = new ResizeObserver(updateArrowState)
+    let settleTimer: ReturnType<typeof setTimeout> | undefined
+    const handleScroll = () => {
+      clearTimeout(settleTimer)
+      settleTimer = setTimeout(recenter, 140)
+    }
+    el.addEventListener("scroll", handleScroll, { passive: true })
+    const resizeObserver = new ResizeObserver(recenter)
     resizeObserver.observe(el)
     return () => {
-      el.removeEventListener("scroll", updateArrowState)
+      clearTimeout(settleTimer)
+      el.removeEventListener("scroll", handleScroll)
       resizeObserver.disconnect()
     }
-  }, [updateArrowState, images.length])
+  }, [recenter])
 
   const scrollByGroup = useCallback((direction: "left" | "right") => {
     const el = trackRef.current
     if (!el) return
     const amount = el.clientWidth * 0.9
-    const maxScroll = el.scrollWidth - el.clientWidth
-    const atStart = el.scrollLeft <= 4
-    const atEnd = el.scrollLeft >= maxScroll - 4
-
-    // Wrap at either edge so the carousel remains continuous. The photo
-    // number is still derived from the stable ordered `images` array.
-    if (direction === "left" && atStart) {
-      el.scrollTo({ left: maxScroll, behavior: "smooth" })
-      return
-    }
-    if (direction === "right" && atEnd) {
-      el.scrollTo({ left: 0, behavior: "smooth" })
-      return
-    }
-
     el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" })
   }, [])
+
+  const loopedImages = count > 0 ? [...images, ...images, ...images] : []
 
   const openLightbox = useCallback((index: number) => {
     setLightboxIndex(index)
@@ -80,12 +101,12 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
   }, [])
 
   const showPrev = useCallback(() => {
-    setLightboxIndex((prev) => (prev === null ? prev : Math.max(0, prev - 1)))
-  }, [])
+    setLightboxIndex((prev) => (prev === null ? prev : (prev - 1 + count) % count))
+  }, [count])
 
   const showNext = useCallback(() => {
-    setLightboxIndex((prev) => (prev === null ? prev : Math.min(images.length - 1, prev + 1)))
-  }, [images.length])
+    setLightboxIndex((prev) => (prev === null ? prev : (prev + 1) % count))
+  }, [count])
 
   if (images.length === 0) return null
 
@@ -98,12 +119,17 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
           className="flex gap-3 md:gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-1 py-1 [&::-webkit-scrollbar]:hidden"
           style={{ scrollbarWidth: "none" }}
         >
-          {images.map((image, index) => (
+          {loopedImages.map((image, loopIndex) => {
+            const index = loopIndex % count
+            const isClone = loopIndex < count || loopIndex >= count * 2
+            return (
             <button
-              key={index}
+              key={loopIndex}
               type="button"
               onClick={() => openLightbox(index)}
               aria-label={`Open full screen: ${image.alt}`}
+              aria-hidden={isClone || undefined}
+              tabIndex={isClone ? -1 : undefined}
               className={cn(
                 "group relative shrink-0 snap-start overflow-hidden rounded-md border border-border bg-card",
                 "w-[42vw] sm:w-[30vw] md:w-[19%] lg:w-[16%]",
@@ -122,14 +148,15 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
                 draggable={false}
               />
             </button>
-          ))}
+            )
+          })}
         </div>
 
         {/* Left arrow */}
         <button
           type="button"
           onClick={() => scrollByGroup("left")}
-          aria-label={canScrollLeft ? "Scroll product photos left" : "Loop to last product photo"}
+          aria-label="Scroll product photos left"
           className={cn(
             "absolute left-1 top-1/2 -translate-y-1/2 z-10",
             "flex h-11 w-11 items-center justify-center rounded-full",
@@ -147,7 +174,7 @@ export function ProductPhotoCarousel({ images, accentColor = "#b99a6a", classNam
         <button
           type="button"
           onClick={() => scrollByGroup("right")}
-          aria-label={canScrollRight ? "Scroll product photos right" : "Loop to first product photo"}
+          aria-label="Scroll product photos right"
           className={cn(
             "absolute right-1 top-1/2 -translate-y-1/2 z-10",
             "flex h-11 w-11 items-center justify-center rounded-full",
