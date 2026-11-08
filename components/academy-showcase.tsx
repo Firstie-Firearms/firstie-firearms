@@ -94,6 +94,8 @@ const weaponFeatures = [
 // currently has actual product photos. Every other academy/year still falls
 // back to the AI-generated placeholder query below until real photos exist.
 const USNA_2027_PHOTO_ORDER = [36, 5, 34, 2, 9, 30, 35, 31, 37, 3, 23, 7, 8, 10, 38, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 4, 24, 25, 26, 27, 28, 29, 32, 33, 6, 1] as const
+const USNA_2027_HERO_VIDEO_SRC =
+  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Final%20Video-9qTfN1nqNy8bfKxmERpMf28uYld2Cw.mp4"
 
 const USNA_2027_PHOTOS_BY_NUMBER: ProductPhoto[] = [
   { src: "/usna-2027/photo-01.jpg", alt: "USNA Class of 2027 GLOCK 19X V \u2014 engraved slide detail in vehicle interior" },
@@ -383,12 +385,18 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           <section className="relative h-[32vh] md:h-[62vh] lg:h-full overflow-hidden bg-background">
             {h1 && <h1 className="sr-only">{h1}</h1>}
             {isUsna2027Hero ? (
-              <img
-                src={heroImageSrc || "/placeholder.svg"}
-                alt={`${config.shortName} Class of 2027 commemorative engraved GLOCK pistol`}
-                className="absolute inset-0 w-full h-full object-cover object-[center_25%] md:object-[center_15%]"
-                style={heroImageGrayedOut ? { filter: "grayscale(100%) brightness(0.6)" } : undefined}
-              />
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={heroImageSrc}
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              >
+                <source src={USNA_2027_HERO_VIDEO_SRC} type="video/mp4" />
+              </video>
             ) : (
               <img
                 src={heroImageSrc || "/placeholder.svg"}
