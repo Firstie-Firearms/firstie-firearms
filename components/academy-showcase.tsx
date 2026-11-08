@@ -430,16 +430,16 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
           not-yet-available class) shows the standard "Sign Up for Release
           Update" ribbon instead. */}
       {academy === "USNA" && classYear === "Class of 2027" ? (
-        <div className="w-full border-y border-white/10 overflow-x-auto" style={{ backgroundColor: config.color }}>
-          <div className="flex items-baseline justify-center gap-4 sm:gap-6 px-6 sm:px-8 py-2.5 whitespace-nowrap w-max min-w-full">
-            <p className="font-sans text-sm font-bold" style={{ color: config.gold }}>
+        <div className="w-full border-y border-white/10" style={{ backgroundColor: config.color }}>
+          <div className="flex flex-col items-center justify-center gap-2 px-4 py-3 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:px-8 sm:py-2.5">
+            <p className="w-full text-center font-sans text-sm font-bold sm:w-auto" style={{ color: config.gold }}>
               Graduation and Commissioning Delivery Batch
             </p>
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-baseline gap-2 whitespace-nowrap">
               <span className="text-[10px] font-sans uppercase tracking-wider text-white/50">Order Deadline</span>
               <span className="font-sans text-xs font-semibold text-white">April 1, 2027</span>
             </div>
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-baseline gap-2 whitespace-nowrap">
               <span className="text-[10px] font-sans uppercase tracking-wider text-white/50">Est. Delivery</span>
               <span className="font-sans text-xs font-semibold text-white">May 1, 2027</span>
             </div>
