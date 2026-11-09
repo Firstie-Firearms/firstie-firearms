@@ -178,7 +178,7 @@ const categories: FaqCategory[] = [
             <p>{"The following components are installed on every USNA Class of 2027 pistol:"}</p>
             <ul className="space-y-1.5 pl-1">
               {[
-                "Overwatch Precision PolyDAT trigger shoe",
+                "Overwatch Precision DAT trigger shoe",
                 "SLR Rifleworks magwell",
                 "Deep multi-layer laser engraving",
                 "Hand-finishing and polishing",
