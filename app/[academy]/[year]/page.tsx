@@ -131,7 +131,7 @@ export default async function AcademyPage({ params }: AcademyPageProps) {
           "@type": "Product",
           name: "USNA Class of 2027 Commemorative GLOCK 19X V",
           description:
-            "Made-to-order USNA Class of 2027 commemorative GLOCK 19X V featuring class-inspired engraving, Tungsten and Burnt Bronze Cerakote, Overwatch Precision PolyDAT trigger, SLR Rifleworks magwell, and a custom two-level presentation case.",
+            "Made-to-order USNA Class of 2027 commemorative GLOCK 19X V featuring class-inspired engraving, Tungsten and Burnt Bronze Cerakote, Overwatch Precision DAT trigger shoe, SLR Rifleworks magwell, and a custom two-level presentation case.",
           brand: { "@type": "Brand", name: "Firstie Firearms" },
           category: "Commemorative Firearms",
           url: canonicalUrl,
