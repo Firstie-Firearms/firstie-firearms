@@ -107,7 +107,7 @@ export function MainHero() {
                       <h3 className="text-2xl md:text-3xl font-bold" style={{ color: academyData[academy].goldColor }}>
                         {academyData[academy].shortName}
                       </h3>
-                      <p className="text-sm text-muted-foreground font-serif">{academyData[academy].tagline}</p>
+                      <p className="text-sm text-white font-serif">{academyData[academy].tagline}</p>
                     </div>
 
                     <div className="flex max-w-[55%] shrink-0 flex-col items-end gap-2 text-right">
@@ -116,6 +116,7 @@ export function MainHero() {
                         style={{
                           borderColor: academyData[academy].goldColor,
                           color: academyData[academy].goldColor,
+                          backgroundColor: academy === "USNA" ? "rgba(0, 0, 0, 0.72)" : undefined,
                         }}
                       >
                         {available ? "AVAILABLE NOW" : getComingSoonLabel(academy, CURRENT_AVAILABLE_YEAR)}
@@ -125,6 +126,7 @@ export function MainHero() {
                         style={{
                           borderColor: academyData[academy].goldColor,
                           color: academyData[academy].goldColor,
+                          backgroundColor: academy === "USNA" ? "rgba(0, 0, 0, 0.72)" : undefined,
                         }}
                       >
                         {"LIMITED EDITION"}
