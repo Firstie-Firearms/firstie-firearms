@@ -102,33 +102,36 @@ export function MainHero() {
                     style={academy !== "USNA" && grayedOut ? { filter: "grayscale(100%) brightness(0.5)" } : undefined}
                   />
 
-                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-20 flex flex-col gap-2 md:gap-3">
-                    <div className="flex flex-col gap-2 items-start">
+                  <div className="absolute bottom-0 left-0 right-0 z-20 flex items-start justify-between gap-3 p-4 md:gap-4 md:p-6">
+                    <div className="flex min-w-0 flex-col gap-2 md:gap-3">
+                      <h3 className="text-2xl md:text-3xl font-bold" style={{ color: academyData[academy].goldColor }}>
+                        {academyData[academy].shortName}
+                      </h3>
+                      <p className="text-sm text-white font-serif">{academyData[academy].tagline}</p>
+                    </div>
+
+                    <div className="flex max-w-[55%] shrink-0 flex-col items-end gap-2 text-right">
                       <div
-                        className="inline-block self-start px-3 py-1 text-xs font-mono border rounded whitespace-nowrap"
+                        className="inline-block max-w-full self-end break-words px-3 py-1 text-right text-xs font-mono border rounded"
                         style={{
                           borderColor: academyData[academy].goldColor,
                           color: academyData[academy].goldColor,
+                          backgroundColor: academy === "USNA" ? "rgba(0, 0, 0, 0.72)" : undefined,
                         }}
                       >
                         {available ? "AVAILABLE NOW" : getComingSoonLabel(academy, CURRENT_AVAILABLE_YEAR)}
                       </div>
                       <div
-                        className="inline-block self-start px-3 py-1 text-xs font-mono border rounded"
+                        className="inline-block max-w-full self-end break-words px-3 py-1 text-right text-xs font-mono border rounded"
                         style={{
                           borderColor: academyData[academy].goldColor,
                           color: academyData[academy].goldColor,
+                          backgroundColor: academy === "USNA" ? "rgba(0, 0, 0, 0.72)" : undefined,
                         }}
                       >
                         {"LIMITED EDITION"}
                       </div>
                     </div>
-
-                    <h3 className="text-2xl md:text-3xl font-bold" style={{ color: academyData[academy].goldColor }}>
-                      {academyData[academy].shortName}
-                    </h3>
-
-                    <p className="text-sm text-muted-foreground font-serif">{academyData[academy].tagline}</p>
                   </div>
                 </Card>
                 </Link>
