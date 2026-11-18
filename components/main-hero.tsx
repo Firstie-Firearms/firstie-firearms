@@ -45,7 +45,7 @@ export function MainHero() {
           <img
             src="/usna-2027/usna-collection-hero-pistol.jpg"
             alt="Custom commemorative GLOCK pistol for service academy graduation"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-30"
           />
         </div>
 
