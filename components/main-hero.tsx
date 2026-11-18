@@ -45,7 +45,7 @@ export function MainHero() {
           <img
             src="/usna-2027/usna-collection-hero-pistol.jpg"
             alt="Custom commemorative GLOCK pistol for service academy graduation"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover"
           />
         </div>
 
@@ -83,7 +83,9 @@ export function MainHero() {
                   className="relative overflow-hidden border-2 hover:border-secondary transition-all duration-300 cursor-pointer group h-[350px] md:h-[500px]"
                   style={{ borderColor: academyData[academy].borderColor }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10" />
+                  {academy !== "USNA" && (
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10" />
+                  )}
 
                   <img
                     src={
@@ -93,7 +95,7 @@ export function MainHero() {
                     }
                     alt={`${academy} Custom GLOCK`}
                     className="w-full h-full object-cover scale-[1.12] group-hover:scale-[1.18] transition-transform duration-500"
-                    style={grayedOut ? { filter: "grayscale(100%) brightness(0.5)" } : undefined}
+                    style={academy !== "USNA" && grayedOut ? { filter: "grayscale(100%) brightness(0.5)" } : undefined}
                   />
 
                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-20 flex flex-col gap-2 md:gap-3">
