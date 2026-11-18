@@ -14,21 +14,21 @@ import {
 
 const academyData = {
   USNA: {
-    name: "United States Naval Academy",
+    nameLines: ["United States", "Naval Academy"],
     shortName: "USNA",
     tagline: "Duty, Honor, Loyalty",
     borderColor: "#002147",
     goldColor: "#b99a6a",
   },
   USMA: {
-    name: "United States Military Academy",
+    nameLines: ["United States", "Military Academy"],
     shortName: "USMA",
     tagline: "Duty, Honor, Country",
     borderColor: "#b99a6a",
     goldColor: "#b99a6a",
   },
   USAFA: {
-    name: "United States Air Force Academy",
+    nameLines: ["United States", "Air Force Academy"],
     shortName: "USAFA",
     tagline: "Integrity, Service, Excellence",
     borderColor: "#6b7280",
@@ -76,7 +76,11 @@ export function MainHero() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="flex flex-col gap-3 md:gap-4"
               >
-                <h2 className="text-base md:text-lg font-bold tracking-wide text-center" style={{ color: "#b8946a" }}>{academyData[academy].name}</h2>
+                <h2 className="text-xl md:text-2xl font-bold tracking-wide text-center" style={{ color: "#b8946a" }}>
+                  {academyData[academy].nameLines.map((line) => (
+                    <span key={line} className="block">{line}</span>
+                  ))}
+                </h2>
 
                 <Link href={academyCollectionHref(academy)} className="block">
                 <Card
