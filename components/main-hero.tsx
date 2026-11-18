@@ -90,10 +90,14 @@ export function MainHero() {
                   <img
                     src={
                       academy === "USNA"
-                        ? "/usna-2027/usna-collection-hero-pistol.jpg"
+                        ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Case%20smaller-QrdGdFpMMZSUQEvISqByv322NB5tTM.jpg"
                         : `/custom-glock-pistol-.jpg?height=800&width=600&query=custom glock pistol ${academy} military academy themed on tactical background`
                     }
-                    alt={`${academy} Custom GLOCK`}
+                    alt={
+                      academy === "USNA"
+                        ? "Commemorative USNA Class Pistol displayed in an open case with a Naval Academy plaque"
+                        : `${academy} Custom GLOCK`
+                    }
                     className="w-full h-full object-cover scale-[1.12] group-hover:scale-[1.18] transition-transform duration-500"
                     style={academy !== "USNA" && grayedOut ? { filter: "grayscale(100%) brightness(0.5)" } : undefined}
                   />
