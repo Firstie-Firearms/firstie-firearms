@@ -17,6 +17,11 @@ export interface CommerceProductMapping {
 // the real product/variant below.
 const isProduction = process.env.NODE_ENV === "production";
 
+export const CHECKOUT_TEST_PRODUCT = {
+  productId: 118,
+  variantId: 83,
+} as const
+
 // Add future products here after creating the corresponding BigCommerce
 // product/variant. Never place IDs inside visual components.
 export const COMMERCE_PRODUCTS: Record<string, CommerceProductMapping> = {
