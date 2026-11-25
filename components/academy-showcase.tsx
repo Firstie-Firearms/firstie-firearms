@@ -9,7 +9,7 @@ import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-bread
 import { academyCollectionHref, getComingSoonLabel, isClassAvailable, isPreviewImageGrayedOut } from "@/lib/academies"
 import { commerceProductKey, isCommerceProductConfigured } from "@/lib/commerce-products"
 import type { Academy } from "@/types"
-import { UsnaDisclaimer } from "@/components/usna-disclaimer"
+import { AcademyDisclaimer } from "@/components/academy-disclaimer"
 
 interface AcademyShowcaseProps {
   academy: Academy
@@ -610,7 +610,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
                   <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Purchase Restrictions</h3>
                   <p className="text-sm text-muted-foreground">This firearm is not available for sale or shipment to:</p>
                   <ul className="space-y-1.5">
-                    {["California", "District of Columbia"].map((item) => (
+                    {["California", "Maryland", "District of Columbia"].map((item) => (
                       <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
                         {item}
@@ -922,7 +922,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
               <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Purchase Restrictions</h3>
               <p className="text-sm text-muted-foreground">This firearm is not available for sale or shipment to:</p>
               <ul className="space-y-1.5">
-                {["California", "District of Columbia"].map((item) => (
+                {["California", "Maryland", "District of Columbia"].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                     <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ backgroundColor: config.gold }} />
                     {item}
@@ -945,7 +945,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         productKey={productKey}
         isConfigured={productConfigured}
       />
-      {academy === "USNA" && <UsnaDisclaimer />}
+      <AcademyDisclaimer academy={academy} />
     </div>
   )
 }
