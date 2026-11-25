@@ -34,7 +34,7 @@ export interface AcademyPageContent {
  * a shared string) so no marketing copy is duplicated between academies.
  * All claims are limited to what the rest of the site already states —
  * no endorsement, affiliation, or relationship with USNA, USMA, USAFA, or
- * the Department of Defense is implied anywhere below.
+ * the Department of War is implied anywhere below.
  */
 export const ACADEMY_PAGE_CONTENT: Record<Academy, AcademyPageContent> = {
   USNA: {

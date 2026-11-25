@@ -83,6 +83,9 @@ export function Footer() {
             </div>
           </div>
         </div>
+        <p className="mt-6 text-center text-xs leading-relaxed text-muted-foreground">
+          {"Firstie Firearms is a private, independent company. Our products are not official products of, nor endorsed by, the United States Naval Academy, United States Military Academy, United States Air Force Academy, or the Department of War."}
+        </p>
       </div>
     </footer>
   )

@@ -7,6 +7,7 @@ import { ACADEMY_PAGE_CONTENT } from "@/lib/academy-page-content"
 import { SiteBreadcrumb } from "@/components/site-breadcrumb"
 import { AcademyClassGrid } from "@/components/academy-class-grid"
 import { AcademyFaqSection } from "@/components/academy-faq-section"
+import { AcademyDisclaimer } from "@/components/academy-disclaimer"
 
 const GOLD = "#b8946a"
 const ALL_ACADEMIES: Academy[] = ["USNA", "USMA", "USAFA"]
@@ -149,6 +150,7 @@ export function AcademyCollectionPage({ academy }: { academy: Academy }) {
           </nav>
         </div>
       </section>
+      <AcademyDisclaimer academy={academy} />
     </div>
   )
 }
