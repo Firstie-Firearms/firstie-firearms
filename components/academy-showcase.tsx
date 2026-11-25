@@ -9,6 +9,7 @@ import { SiteBreadcrumb, type SiteBreadcrumbItem } from "@/components/site-bread
 import { academyCollectionHref, getComingSoonLabel, isClassAvailable, isPreviewImageGrayedOut } from "@/lib/academies"
 import { commerceProductKey, isCommerceProductConfigured } from "@/lib/commerce-products"
 import type { Academy } from "@/types"
+import { UsnaDisclaimer } from "@/components/usna-disclaimer"
 
 interface AcademyShowcaseProps {
   academy: Academy
@@ -944,6 +945,7 @@ export function AcademyShowcase({ academy, classYear = "Class of 2027", h1, page
         productKey={productKey}
         isConfigured={productConfigured}
       />
+      {academy === "USNA" && <UsnaDisclaimer />}
     </div>
   )
 }
