@@ -77,15 +77,16 @@ describe("Age gate — full site protection", () => {
   })
 
   it("TEST: a new browser session (sessionStorage cleared) shows the gate again", () => {
-    renderSite()
+    const { unmount } = renderSite()
     fireEvent.click(screen.getByRole("button", { name: /i am 21 or older/i }))
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
 
     // Closing the browser entirely clears sessionStorage.
     window.sessionStorage.clear()
+    unmount()
+    renderSite()
 
-    const { unmount } = screen
-    unmount?.()
+    expect(screen.getByRole("dialog", { name: /age verification/i })).toBeInTheDocument()
   })
 
   it("TEST: selecting under-21 blocks access with the required message and no dismiss path", () => {

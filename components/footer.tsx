@@ -57,7 +57,29 @@ export function Footer() {
                   {"info@firstiefirearms.com"}
                 </a>
               </p>
-
+              <p>
+                <a href="tel:3198303553" className="hover:text-foreground transition-colors">
+                  {"319-830-3553"}
+                </a>
+              </p>
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 md:justify-start">
+                <a
+                  href="https://instagram.com/firstie_firearms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors underline"
+                >
+                  Instagram
+                </a>
+                <a
+                  href="https://facebook.com/firstiefirearms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors underline"
+                >
+                  Facebook
+                </a>
+              </div>
             </div>
           </div>
         </div>
